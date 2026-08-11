@@ -1,0 +1,73 @@
+<!--
+  BlockML VS Code — semantic highlight scheme
+
+  FQN: org.blockml.bml.vscode.theme.HighlightScheme
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:theme="org.blockml.bml.vscode.theme">
+
+  <name>HighlightScheme</name>
+  <type>theme:HighlightScheme</type>
+  <baseType>core:Entity</baseType>
+  <is>A semantic highlight scheme for BML</is>
+
+  <summary>Configurable role → tag → TextMate-scope map for BlockML's semantic XML. Active scheme
+    on GrammarContribution drives framework tag patterns when the TextMate grammar is re-rendered.</summary>
+
+  <documentation>
+    BML is semantic XML: framework elements (root, identity fields, member containers, facets) must
+    highlight differently from user/domain member tags. A HighlightScheme declares those roles and
+    tag lists as SSOT.
+
+    Workflow: edit roles/tags/scopes here (or add another concrete scheme under
+    org.blockml.bml.vscode.theme.*), point GrammarContribution.highlightScheme at the active
+    scheme type, then run an LLM render task to update GrammarContribution patterns and
+    syntaxes/bml.tmLanguage.json. Do not auto-build — regeneration is an explicit LLM / generator
+    step (see GenerationWorkflow).
+
+    Multiple schemes may coexist in the library; only the scheme referenced by the active
+    GrammarContribution is used when rendering TextMate.
+  </documentation>
+
+  <references>
+    <see type="theme:HighlightRole" relation="Defines">
+      Role entries with tags and TextMate scopes.
+    </see>
+    <see type="theme:FrameworkRoles" relation="SeeAlso">
+      Default scheme derived from the BlockML highlight.js grammar roles.
+    </see>
+    <see type="contrib:GrammarContribution" relation="SeeAlso">
+      Grammar that references the active scheme and emits TextMate patterns.
+    </see>
+    <see type="doc:GenerationWorkflow" relation="AuthoringGuide">
+      Scheme edit → LLM TextMate re-render rules.
+    </see>
+  </references>
+
+  <properties>
+    <schemeId type="Text">
+      <documentation>Stable scheme id (for example framework-roles). Used in docs and generator
+        logs; type FQN remains the canonical identity.</documentation>
+    </schemeId>
+    <domainScope type="Text">
+      <documentation>TextMate scope for tag names that are not listed in any role (domain /
+        user member names). Default entity.name.tag.bml.</documentation>
+      <value>entity.name.tag.bml</value>
+    </domainScope>
+  </properties>
+
+  <aggregations>
+    <roles type="theme:HighlightRole[]">
+      <documentation>Ordered semantic roles. Generators emit one TextMate repository pattern per
+        role (before the domain fallback tag pattern) so framework tags match first.</documentation>
+    </roles>
+  </aggregations>
+
+</block>

@@ -11,6 +11,7 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:contrib="org.blockml.bml.vscode.contribution"
   xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:theme="org.blockml.bml.vscode.theme"
   xmlns:vscode="org.blockml.bml.vscode">
 
   <name>PluginArchitecture</name>
@@ -24,6 +25,8 @@
     • vscode.contribution.* — Contribution branch (Language, Grammar, Icon, Configuration/Setting,
       Command, Keybinding, LanguageServer, Navigation, SemanticHighlighting) plus supporting
       entities CharacterPair and GrammarPattern
+    • vscode.theme.* — semantic highlight schemes (HighlightScheme, HighlightRole, FrameworkRoles)
+      that drive framework vs domain tag TextMate scopes when rendering the grammar
     • vscode.type.* — closed enums (ReleaseMilestone, SettingValueKind, ConfigurationScope,
       NavigationKind)
     • vscode.documentation.* — curated reading material for this library
@@ -45,6 +48,9 @@
     </see>
     <see type="contrib:Contribution" relation="Defines">
       Abstract contribution branch.
+    </see>
+    <see type="theme:HighlightScheme" relation="SeeAlso">
+      Semantic highlight scheme packages under vscode.theme.*.
     </see>
     <see type="doc:Introduction" relation="SeeAlso">
       Library goals and generation workflow overview.

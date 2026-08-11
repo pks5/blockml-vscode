@@ -10,6 +10,7 @@
                       "
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:theme="org.blockml.bml.vscode.theme"
   xmlns:vscode="org.blockml.bml.vscode">
 
   <name>GenerationWorkflow</name>
@@ -19,7 +20,8 @@
 
   <documentation>
     Workflow:
-    1. Author or update Blocks under org.blockml.bml.vscode (types, docs, BlockMlExtension).
+    1. Author or update Blocks under org.blockml.bml.vscode (types, docs, BlockMlExtension) and
+       highlight schemes under org.blockml.bml.vscode.theme.*.
     2. Export new types via Library.bml blocks when publishing catalogue membership.
     3. Run an LLM or deterministic generator with this library + BlockMlExtension as context.
     4. Emit / update: package.json, syntaxes, icons, src/extension.ts, language client, tests.
@@ -32,6 +34,11 @@
     • Prefer updating BML over hand-editing generated files for durable changes
     • Emit language-configuration.json only from LanguageContribution comment/pair fields
     • Emit tmLanguage only from GrammarContribution patterns / topLevelIncludes / scopes
+    • When GrammarContribution.highlightScheme is set, derive framework tag patterns (tagRoot,
+      tagIdentity, tagContainer, tagFacet, plus domain fallback tag) from that scheme's
+      roles / tags / textMateScope / domainScope — do not invent framework tag lists only in JSON
+    • Changing a HighlightScheme (tags or scopes) requires an explicit LLM / generator re-render
+      of GrammarContribution patterns and syntaxes/*.tmLanguage.json — never auto-build on save
     • Emit icon theme JSON only from IconContribution theme* / iconPath / fileExtension fields
     • For V1 (no LanguageServerContribution in the filtered set): omit package.json main and
       activationEvents even if Extension.main / activationEvents are present in BML for V2
@@ -49,6 +56,9 @@
     </see>
     <see type="doc:ContributionModel" relation="SeeAlso">
       Contribution to package.json / source mapping.
+    </see>
+    <see type="theme:HighlightScheme" relation="SeeAlso">
+      Semantic highlight schemes that drive framework tag TextMate scopes.
     </see>
   </references>
 

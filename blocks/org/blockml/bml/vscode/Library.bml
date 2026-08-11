@@ -17,6 +17,7 @@
   xmlns:contrib="org.blockml.bml.vscode.contribution"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:theme="org.blockml.bml.vscode.theme"
   xmlns:vscode="org.blockml.bml.vscode"
   xmlns:vtype="org.blockml.bml.vscode.type">
 
@@ -27,8 +28,9 @@
 
   <documentation>
     Publishable library org.blockml.bml.vscode.Library. Exports the VS Code extension domain model
-    (Extension, contributions, settings, enums), documentation blocks, and the concrete
-    BlockMlExtension catalogue used to generate or update the runnable plugin.
+    (Extension, contributions, settings, enums), semantic highlight schemes under vscode.theme.*,
+    documentation blocks, and the concrete BlockMlExtension catalogue used to generate or update
+    the runnable plugin.
 
     Depends on org.blockml.bml.Library for framework types. Membership is defined exclusively by
     this file's blocks list — not by directory layout.
@@ -79,6 +81,10 @@
       <contrib:LanguageServerContribution />
       <contrib:NavigationContribution />
       <contrib:SemanticHighlightingContribution />
+
+      <theme:HighlightRole />
+      <theme:HighlightScheme />
+      <theme:FrameworkRoles />
 
       <vtype:ReleaseMilestone />
       <vtype:SettingValueKind />

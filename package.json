@@ -1,5 +1,5 @@
 {
-  "name": "@blockml/vscode",
+  "name": "blockml",
   "version": "0.1.0",
   "description": "Language support for BlockML (BML) — syntax highlighting, file icons, and IDE features.",
   "displayName": "BlockML",

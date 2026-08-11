@@ -10,6 +10,7 @@
                       "
   xmlns:contrib="org.blockml.bml.vscode.contribution"
   xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:theme="org.blockml.bml.vscode.theme"
   xmlns:type="org.blockml.bml.type">
 
   <name>GrammarContribution</name>
@@ -28,6 +29,11 @@
 
     Structured GrammarPattern children are the SSOT for repository patterns; patternNotes remain
     human/LLM teaching hints and must not invent scopes or matches absent from patterns/scopes.
+
+    When highlightScheme is set, framework tag patterns (one per HighlightRole, plus domain
+    fallback) must be derived from that scheme's roles/tags/textMateScope/domainScope on TextMate
+    re-render. Edit the scheme first, then regenerate patterns + tmLanguage via LLM — do not invent
+    framework tag lists only in JSON.
   </documentation>
 
   <references>
@@ -42,6 +48,9 @@
     </see>
     <see type="contrib:GrammarPattern" relation="SeeAlso">
       Structured TextMate repository pattern.
+    </see>
+    <see type="theme:HighlightScheme" relation="SeeAlso">
+      Optional active semantic highlight scheme for framework tag roles.
     </see>
   </references>
 
@@ -60,6 +69,11 @@
       <documentation>Optional note for generators about embedded languages (CDATA, PseudoCode,
         expression embeds).</documentation>
     </embeddedLanguagesNote>
+    <highlightScheme type="TypeReference(theme:HighlightScheme)">
+      <documentation>Active semantic highlight scheme type (for example theme:FrameworkRoles).
+        Generators read roles/tags/scopes from that scheme when emitting framework tag patterns.
+        Omit only for grammars that do not distinguish framework vs domain tags.</documentation>
+    </highlightScheme>
   </properties>
 
   <aggregations>

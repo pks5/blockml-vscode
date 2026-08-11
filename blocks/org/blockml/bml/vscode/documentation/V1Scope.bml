@@ -11,6 +11,7 @@
   xmlns:contrib="org.blockml.bml.vscode.contribution"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:theme="org.blockml.bml.vscode.theme"
   xmlns:vtype="org.blockml.bml.vscode.type">
 
   <name>V1Scope</name>
@@ -24,7 +25,10 @@
     1. Simple syntax highlighting — TextMate grammar for XML-like BML structure: tags, attributes,
        comments, strings, and basic ${ } / &lt;$ $&gt; expression markers. No semantic resolution.
        Structured GrammarPattern entries in BlockMlExtension are SSOT; syntaxes/bml.tmLanguage.json
-       is a render artefact.
+       is a render artefact. Framework vs domain tag coloring comes from the active HighlightScheme
+       (theme:FrameworkRoles): root, identity, container, and facet tags use distinct TextMate
+       scope families; other tags keep entity.name.tag.bml. Edit the scheme, then re-render
+       patterns + tmLanguage via LLM — do not invent framework tag lists only in JSON.
     2. BML file type — language id bml, alias BlockML / BML, extension .bml. Language-configuration
        (block comments, brackets, autoClosingPairs) lives on LanguageContribution; the JSON file
        is a render artefact. Declarative V1 needs no extension main / activationEvents.
@@ -34,7 +38,9 @@
        icon (package.json icon field on Extension). Distinct from the filetype SVG.
 
     Out of scope for V1: language server, semantic tokens, cross-file navigation, rich settings
-    beyond the ConfigurationContribution already declared for forward-compatible V2 keys.
+    beyond the ConfigurationContribution already declared for forward-compatible V2 keys, and
+    custom VS Code color themes (contributes.themes) — colors rely on TextMate scope families
+    painted by the active editor theme.
   </documentation>
 
   <references>
@@ -46,6 +52,9 @@
     </see>
     <see type="contrib:GrammarContribution" relation="Defines">
       Simple TextMate grammar contribution.
+    </see>
+    <see type="theme:FrameworkRoles" relation="Defines">
+      Default semantic highlight scheme for framework tag roles.
     </see>
     <see type="contrib:IconContribution" relation="Defines">
       BML file icon contribution.

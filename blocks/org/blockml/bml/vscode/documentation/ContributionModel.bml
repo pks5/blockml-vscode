@@ -10,7 +10,8 @@
                       "
   xmlns:core="org.blockml.bml.core"
   xmlns:contrib="org.blockml.bml.vscode.contribution"
-  xmlns:doc="org.blockml.bml.vscode.documentation">
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:theme="org.blockml.bml.vscode.theme">
 
   <name>ContributionModel</name>
   <type>doc:ContributionModel</type>
@@ -22,7 +23,11 @@
     • LanguageContribution → contributes.languages + language-configuration.json (comments,
       brackets, autoClosingPairs, surroundingPairs from CharacterPair aggregations)
     • GrammarContribution → contributes.grammars + syntaxes/*.tmLanguage.json (from structured
-      GrammarPattern children, topLevelIncludes, and scopes)
+      GrammarPattern children, topLevelIncludes, and scopes). When highlightScheme is set,
+      framework tag patterns must follow that HighlightScheme's roles/tags/scopes.
+    • HighlightScheme / HighlightRole (org.blockml.bml.vscode.theme.*) → SSOT for semantic
+      framework-tag coloring; not a package.json contribution by itself — consumed when rendering
+      GrammarContribution / tmLanguage
     • IconContribution → contributes.iconThemes + icon theme JSON (themeId / themeLabel /
       themePath) mapping fileExtension / languageId to iconPath
     • ConfigurationContribution / Setting → contributes.configuration (SSOT for all settings)
@@ -34,7 +39,9 @@
 
     Settings must not be invented only in TypeScript — add a Setting under ConfigurationContribution
     first, then generate accessors from BML. Language-config and grammar regexes must not be
-    invented only in JSON — amend LanguageContribution / GrammarPattern in BML first.
+    invented only in JSON — amend LanguageContribution / GrammarPattern in BML first. Framework
+    tag lists and role scopes must not be invented only in JSON — amend HighlightScheme first, then
+    re-render GrammarPatterns + tmLanguage via LLM.
   </documentation>
 
   <references>
@@ -52,6 +59,9 @@
     </see>
     <see type="contrib:GrammarPattern" relation="SeeAlso">
       Structured TextMate repository patterns.
+    </see>
+    <see type="theme:HighlightScheme" relation="SeeAlso">
+      Semantic highlight schemes for framework vs domain tags.
     </see>
     <see type="doc:PluginArchitecture" relation="SeeAlso">
       Package and type overview.

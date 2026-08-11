@@ -6,6 +6,10 @@
     { "include": "#comment" },
     { "include": "#expression" },
     { "include": "#embed" },
+    { "include": "#tagRoot" },
+    { "include": "#tagIdentity" },
+    { "include": "#tagContainer" },
+    { "include": "#tagFacet" },
     { "include": "#tag" }
   ],
   "repository": {
@@ -21,14 +25,26 @@
       }
     },
     "expression": {
-      "name": "meta.expression.bml",
+      "name": "keyword.other.interpolation.bml",
       "begin": "\\$\\{",
-      "end": "\\}"
+      "end": "\\}",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.interpolation.begin.bml" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.interpolation.end.bml" }
+      }
     },
     "embed": {
-      "name": "meta.embed.bml",
+      "name": "keyword.control.embed.bml",
       "begin": "<\\$",
-      "end": "\\$>"
+      "end": "\\$>",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.embed.begin.bml" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.embed.end.bml" }
+      }
     },
     "stringDouble": {
       "name": "string.quoted.double.bml",
@@ -60,6 +76,66 @@
         "7": { "name": "string.quoted.single.bml" },
         "8": { "name": "punctuation.definition.string.end.bml" }
       }
+    },
+    "tagRoot": {
+      "name": "meta.tag.bml",
+      "begin": "(</?)(block)(?=[\\s/>])",
+      "end": "(/?>)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "entity.name.type.framework.root.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" }
+      ]
+    },
+    "tagIdentity": {
+      "name": "meta.tag.bml",
+      "begin": "(</?)(name|type|baseType|is|isnot|version|abstract|final|definition|language)(?=[\\s/>])",
+      "end": "(/?>)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "keyword.other.definition.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" }
+      ]
+    },
+    "tagContainer": {
+      "name": "meta.tag.bml",
+      "begin": "(</?)(properties|aggregations|associations|capabilities|constraints|contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references|blocks|readMe|library)(?=[\\s/>])",
+      "end": "(/?>)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "meta.tag.framework.container.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" }
+      ]
+    },
+    "tagFacet": {
+      "name": "meta.tag.bml",
+      "begin": "(</?)(value|documentation|summary|implementation|inputType|outputType|suggestions|override|readOnly|visibility|status|since|changelog|examples|relation|see|content|default|description|title|bml:xml|bml:container)(?=[\\s/>])",
+      "end": "(/?>)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "support.type.framework.facet.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" }
+      ]
     },
     "tag": {
       "name": "meta.tag.bml",

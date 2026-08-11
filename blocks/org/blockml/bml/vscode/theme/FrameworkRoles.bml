@@ -1,0 +1,140 @@
+<!--
+  BlockML VS Code — framework highlight scheme (highlight.js roles)
+
+  FQN: org.blockml.bml.vscode.theme.FrameworkRoles
+
+  Tag lists derived from the BlockML highlight.js grammar (stage B roles:
+  title / keyword / meta / built_in / name) and org.blockml.bml.definition
+  (BlockDefinition, StructuralDefinition, MemberDefinition, …).
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:theme="org.blockml.bml.vscode.theme"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>FrameworkRoles</name>
+  <type>theme:FrameworkRoles</type>
+  <baseType>theme:HighlightScheme</baseType>
+  <is>The default BlockML framework highlight scheme</is>
+
+  <summary>Default semantic highlight scheme: root, identity, containers, and facets map to
+    distinct TextMate scope families; all other tags use the domain fallback scope.</summary>
+
+  <documentation>
+    Concrete HighlightScheme used by bmlSimpleGrammar. Role → TextMate scope families are chosen so
+    common VS Code themes color &lt;block&gt;, identity fields, containers, facets, and domain tags
+    differently without a custom color theme.
+
+    When changing tags or scopes, re-render GrammarContribution patterns and
+    syntaxes/bml.tmLanguage.json via an explicit LLM / generator task — do not hand-edit the JSON
+    as SSOT.
+  </documentation>
+
+  <references>
+    <see type="theme:HighlightScheme" relation="Extends">
+      Scheme shape (schemeId, domainScope, roles).
+    </see>
+  </references>
+
+  <properties>
+    <schemeId>
+      <value>framework-roles</value>
+    </schemeId>
+    <domainScope>
+      <value>entity.name.tag.bml</value>
+    </domainScope>
+  </properties>
+
+  <aggregations>
+    <roles>
+
+      <theme:HighlightRole bml:id="roleRoot">
+        <roleId><value>root</value></roleId>
+        <textMateScope><value>entity.name.type.framework.root.bml</value></textMateScope>
+        <hljsClass><value>title</value></hljsClass>
+        <tags>
+          <type:TextEntity value="block" />
+        </tags>
+      </theme:HighlightRole>
+
+      <theme:HighlightRole bml:id="roleIdentity">
+        <roleId><value>identity</value></roleId>
+        <textMateScope><value>keyword.other.definition.bml</value></textMateScope>
+        <hljsClass><value>keyword</value></hljsClass>
+        <tags>
+          <type:TextEntity value="name" />
+          <type:TextEntity value="type" />
+          <type:TextEntity value="baseType" />
+          <type:TextEntity value="is" />
+          <type:TextEntity value="isnot" />
+          <type:TextEntity value="version" />
+          <type:TextEntity value="abstract" />
+          <type:TextEntity value="final" />
+          <type:TextEntity value="definition" />
+          <type:TextEntity value="language" />
+        </tags>
+      </theme:HighlightRole>
+
+      <theme:HighlightRole bml:id="roleContainer">
+        <roleId><value>container</value></roleId>
+        <textMateScope><value>meta.tag.framework.container.bml</value></textMateScope>
+        <hljsClass><value>meta</value></hljsClass>
+        <tags>
+          <type:TextEntity value="properties" />
+          <type:TextEntity value="aggregations" />
+          <type:TextEntity value="associations" />
+          <type:TextEntity value="capabilities" />
+          <type:TextEntity value="constraints" />
+          <type:TextEntity value="contracts" />
+          <type:TextEntity value="subBlocks" />
+          <type:TextEntity value="embeddedBlocks" />
+          <type:TextEntity value="composition" />
+          <type:TextEntity value="genericTypes" />
+          <type:TextEntity value="groups" />
+          <type:TextEntity value="aliases" />
+          <type:TextEntity value="keywords" />
+          <type:TextEntity value="references" />
+          <type:TextEntity value="blocks" />
+          <type:TextEntity value="readMe" />
+          <type:TextEntity value="library" />
+        </tags>
+      </theme:HighlightRole>
+
+      <theme:HighlightRole bml:id="roleFacet">
+        <roleId><value>facet</value></roleId>
+        <textMateScope><value>support.type.framework.facet.bml</value></textMateScope>
+        <hljsClass><value>built_in</value></hljsClass>
+        <tags>
+          <type:TextEntity value="value" />
+          <type:TextEntity value="documentation" />
+          <type:TextEntity value="summary" />
+          <type:TextEntity value="implementation" />
+          <type:TextEntity value="inputType" />
+          <type:TextEntity value="outputType" />
+          <type:TextEntity value="suggestions" />
+          <type:TextEntity value="override" />
+          <type:TextEntity value="readOnly" />
+          <type:TextEntity value="visibility" />
+          <type:TextEntity value="status" />
+          <type:TextEntity value="since" />
+          <type:TextEntity value="changelog" />
+          <type:TextEntity value="examples" />
+          <type:TextEntity value="relation" />
+          <type:TextEntity value="see" />
+          <type:TextEntity value="content" />
+          <type:TextEntity value="default" />
+          <type:TextEntity value="description" />
+          <type:TextEntity value="title" />
+          <type:TextEntity value="bml:xml" />
+          <type:TextEntity value="bml:container" />
+        </tags>
+      </theme:HighlightRole>
+
+    </roles>
+  </aggregations>
+
+</block>

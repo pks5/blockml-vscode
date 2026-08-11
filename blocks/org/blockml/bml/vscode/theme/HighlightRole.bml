@@ -1,0 +1,59 @@
+<!--
+  BlockML VS Code — semantic highlight role
+
+  FQN: org.blockml.bml.vscode.theme.HighlightRole
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:theme="org.blockml.bml.vscode.theme"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>HighlightRole</name>
+  <type>theme:HighlightRole</type>
+  <baseType>core:Entity</baseType>
+  <is>A semantic highlight role for framework tags</is>
+
+  <summary>Maps a closed set of BML framework tag names to one TextMate scope family so semantic
+    XML elements (root, identity, containers, facets) color differently from domain tags.</summary>
+
+  <documentation>
+    One role inside a HighlightScheme. Generators / LLMs turn tags + textMateScope into TextMate
+    repository patterns (begin/end with role-specific beginCaptures on the tag name). Tag names are
+    local (no xmlns prefix). Prefer distinct TextMate scope families across roles (entity.name.type,
+    keyword, meta, support, entity.name.tag) so editor themes paint them differently without a
+    custom color theme.
+  </documentation>
+
+  <references>
+    <see type="theme:HighlightScheme" relation="Requires">
+      Roles are aggregated under HighlightScheme.roles.
+    </see>
+  </references>
+
+  <properties>
+    <roleId type="Text">
+      <documentation>Stable role id (for example root, identity, container, facet). Used as
+        patternKey suffix and teaching label for LLMs.</documentation>
+    </roleId>
+    <textMateScope type="Text">
+      <documentation>TextMate scope applied to the tag local name (for example
+        keyword.other.definition.bml). Choose a scope family that themes already color distinctly.</documentation>
+    </textMateScope>
+    <hljsClass type="Text">
+      <documentation>Optional highlight.js class name this role corresponds to (title, keyword,
+        meta, built_in). Documentation / cross-tool mapping only — not emitted to TextMate.</documentation>
+    </hljsClass>
+  </properties>
+
+  <aggregations>
+    <tags type="type:TextEntity[]">
+      <documentation>Local framework tag names assigned to this role (for example name, type,
+        properties). Generators build an alternation regex from this list.</documentation>
+    </tags>
+  </aggregations>
+
+</block>
