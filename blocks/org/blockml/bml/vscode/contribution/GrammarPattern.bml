@@ -1,0 +1,77 @@
+<!--
+  BlockML VS Code — TextMate grammar pattern
+
+  FQN: org.blockml.bml.vscode.contribution.GrammarPattern
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>GrammarPattern</name>
+  <type>contrib:GrammarPattern</type>
+  <baseType>core:Entity</baseType>
+  <is>A TextMate repository pattern</is>
+
+  <documentation>
+    Structured TextMate pattern that generators emit into tmLanguage repository entries and top-level
+    patterns includes. Prefer match XOR begin/end. Include-only patterns reference other repository
+    keys via includeRef (for example #comment).
+  </documentation>
+
+  <references>
+    <see type="contrib:GrammarContribution" relation="Requires">
+      Patterns are aggregated under GrammarContribution.patterns.
+    </see>
+  </references>
+
+  <properties>
+    <patternKey type="Text">
+      <documentation>Repository key (for example comment, tag, expression). Used as
+        repository.&lt;patternKey&gt; and as #patternKey includes.</documentation>
+    </patternKey>
+    <scopeName type="Text">
+      <documentation>TextMate name / scope for this pattern (for example comment.block.bml).
+        Optional for include-only or container patterns.</documentation>
+    </scopeName>
+    <match type="Text">
+      <documentation>Oniguruma match regex. Mutually exclusive with begin/end for simple
+        patterns.</documentation>
+    </match>
+    <begin type="Text">
+      <documentation>Begin regex for multi-line / region patterns.</documentation>
+    </begin>
+    <end type="Text">
+      <documentation>End regex pairing with begin.</documentation>
+    </end>
+    <contentName type="Text">
+      <documentation>Optional TextMate contentName scope applied between begin and end.</documentation>
+    </contentName>
+    <includeRef type="Text">
+      <documentation>When set, emit { "include": "#key" } or { "include": "source.other" }.
+        Other regex fields should be empty.</documentation>
+    </includeRef>
+    <capturesJson type="Text">
+      <documentation>Optional captures object as JSON text for match-based patterns
+        (for example {"1":{"name":"entity.name.tag.bml"}}).</documentation>
+    </capturesJson>
+    <beginCapturesJson type="Text">
+      <documentation>Optional beginCaptures object as JSON text.</documentation>
+    </beginCapturesJson>
+    <endCapturesJson type="Text">
+      <documentation>Optional endCaptures object as JSON text.</documentation>
+    </endCapturesJson>
+  </properties>
+
+  <aggregations>
+    <nestedIncludes type="type:TextEntity[]">
+      <documentation>Repository include refs applied inside begin/end patterns
+        (for example #attribute, #expression). Emitted as patterns: [ { include: … } ].</documentation>
+    </nestedIncludes>
+  </aggregations>
+
+</block>

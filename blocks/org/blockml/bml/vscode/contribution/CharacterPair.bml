@@ -1,0 +1,39 @@
+<!--
+  BlockML VS Code — character pair for language configuration
+
+  FQN: org.blockml.bml.vscode.contribution.CharacterPair
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:core="org.blockml.bml.core">
+
+  <name>CharacterPair</name>
+  <type>contrib:CharacterPair</type>
+  <baseType>core:Entity</baseType>
+  <is>A paired open/close character sequence</is>
+
+  <documentation>
+    Open/close pair used in language-configuration.json for brackets, autoClosingPairs, and
+    surroundingPairs. Generators emit { "open": …, "close": … } objects from these properties.
+  </documentation>
+
+  <references>
+    <see type="contrib:LanguageContribution" relation="Requires">
+      Aggregated under LanguageContribution brackets / autoClosingPairs / surroundingPairs.
+    </see>
+  </references>
+
+  <properties>
+    <open type="Text">
+      <documentation>Opening character or string (for example &lt;, &quot;, &lt;!--).</documentation>
+    </open>
+    <close type="Text">
+      <documentation>Closing character or string (for example &gt;, &quot;, --&gt;).</documentation>
+    </close>
+  </properties>
+
+</block>

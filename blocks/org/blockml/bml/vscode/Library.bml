@@ -67,6 +67,8 @@
       <vscode:BlockMlExtension />
 
       <contrib:Contribution />
+      <contrib:CharacterPair />
+      <contrib:GrammarPattern />
       <contrib:LanguageContribution />
       <contrib:GrammarContribution />
       <contrib:IconContribution />

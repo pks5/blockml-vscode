@@ -1,0 +1,13 @@
+{
+  "iconDefinitions": {
+    "bml_file": {
+      "iconPath": "./blockml.svg"
+    }
+  },
+  "fileExtensions": {
+    "bml": "bml_file"
+  },
+  "languageIds": {
+    "bml": "bml_file"
+  }
+}

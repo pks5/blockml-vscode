@@ -30,6 +30,11 @@
     • Do not add settings missing from ConfigurationContribution.settings
     • Honour milestone and enabled when filtering V1 vs V2 output
     • Prefer updating BML over hand-editing generated files for durable changes
+    • Emit language-configuration.json only from LanguageContribution comment/pair fields
+    • Emit tmLanguage only from GrammarContribution patterns / topLevelIncludes / scopes
+    • Emit icon theme JSON only from IconContribution theme* / iconPath / fileExtension fields
+    • For V1 (no LanguageServerContribution in the filtered set): omit package.json main and
+      activationEvents even if Extension.main / activationEvents are present in BML for V2
 
     The runnable extension lives beside this library in the blockml-vscode repository; BML remains
     the semantic SSOT.

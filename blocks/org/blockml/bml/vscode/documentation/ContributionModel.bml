@@ -19,9 +19,12 @@
 
   <documentation>
     Contribution → generator mapping:
-    • LanguageContribution → contributes.languages (+ language-configuration.json)
-    • GrammarContribution → contributes.grammars + syntaxes/*.tmLanguage.json
-    • IconContribution → icon assets + file icon / language icon association
+    • LanguageContribution → contributes.languages + language-configuration.json (comments,
+      brackets, autoClosingPairs, surroundingPairs from CharacterPair aggregations)
+    • GrammarContribution → contributes.grammars + syntaxes/*.tmLanguage.json (from structured
+      GrammarPattern children, topLevelIncludes, and scopes)
+    • IconContribution → contributes.iconThemes + icon theme JSON (themeId / themeLabel /
+      themePath) mapping fileExtension / languageId to iconPath
     • ConfigurationContribution / Setting → contributes.configuration (SSOT for all settings)
     • CommandContribution → contributes.commands
     • KeybindingContribution → contributes.keybindings
@@ -30,7 +33,8 @@
     • SemanticHighlightingContribution → semantic token legend / LSP semanticTokens
 
     Settings must not be invented only in TypeScript — add a Setting under ConfigurationContribution
-    first, then generate accessors from BML.
+    first, then generate accessors from BML. Language-config and grammar regexes must not be
+    invented only in JSON — amend LanguageContribution / GrammarPattern in BML first.
   </documentation>
 
   <references>
@@ -42,6 +46,12 @@
     </see>
     <see type="contrib:ConfigurationContribution" relation="Defines">
       Configuration section holding settings.
+    </see>
+    <see type="contrib:CharacterPair" relation="SeeAlso">
+      Bracket / auto-closing pairs for language-configuration.json.
+    </see>
+    <see type="contrib:GrammarPattern" relation="SeeAlso">
+      Structured TextMate repository patterns.
     </see>
     <see type="doc:PluginArchitecture" relation="SeeAlso">
       Package and type overview.

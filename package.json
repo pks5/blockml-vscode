@@ -1,7 +1,9 @@
 {
   "name": "@blockml/vscode",
-  "version": "1.0.0",
-  "description": "Visual Studio Code integration for BlockML",
+  "version": "0.1.0",
+  "description": "Language support for BlockML (BML) — syntax highlighting, file icons, and IDE features.",
+  "displayName": "BlockML",
+  "publisher": "blockml",
   "license": "Apache-2.0",
   "icon": "icons/blockml.png",
 
@@ -10,13 +12,81 @@
     "url": "https://github.com/pks5/blockml-vscode.git"
   },
 
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+
+  "categories": [
+    "Programming Languages"
+  ],
+
   "blockml": {
     "library": "./blocks/org/blockml/bml/vscode/Library.bml"
+  },
+
+  "contributes": {
+    "languages": [
+      {
+        "id": "bml",
+        "aliases": [
+          "BlockML",
+          "BML"
+        ],
+        "extensions": [
+          ".bml"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "bml",
+        "scopeName": "source.bml",
+        "path": "./syntaxes/bml.tmLanguage.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "blockml-icons",
+        "label": "BlockML Icons",
+        "path": "./icons/blockml-icon-theme.json"
+      }
+    ],
+    "configuration": {
+      "title": "BlockML",
+      "properties": {
+        "blockml.bml.trace.server": {
+          "type": "string",
+          "default": "off",
+          "description": "Traces the communication between VS Code and the BlockML language server (V2).",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "scope": "window"
+        },
+        "blockml.bml.enableLanguageServer": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the BlockML language server client (V2). Ignored until the V2 milestone is shipped.",
+          "scope": "window"
+        },
+        "blockml.bml.enableSemanticHighlighting": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable LSP semantic highlighting on top of the TextMate grammar (V2).",
+          "scope": "window"
+        }
+      }
+    }
   },
 
   "files": [
     "blocks",
     "icons",
+    "syntaxes",
+    "language-configuration.json",
     "README.md",
     "LICENSE"
   ],

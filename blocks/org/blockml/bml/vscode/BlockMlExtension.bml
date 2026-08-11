@@ -105,6 +105,12 @@
         <configurationPath>
           <value>./language-configuration.json</value>
         </configurationPath>
+        <blockCommentOpen>
+          <value>&lt;!--</value>
+        </blockCommentOpen>
+        <blockCommentClose>
+          <value>--&gt;</value>
+        </blockCommentClose>
         <aliases>
           <type:TextEntity value="BlockML" />
           <type:TextEntity value="BML" />
@@ -112,6 +118,80 @@
         <extensions>
           <type:TextEntity value=".bml" />
         </extensions>
+        <brackets>
+          <contrib:CharacterPair bml:id="bracketAngle">
+            <open><value>&lt;</value></open>
+            <close><value>&gt;</value></close>
+          </contrib:CharacterPair>
+          <contrib:CharacterPair bml:id="bracketCurly">
+            <open><value>{</value></open>
+            <close><value>}</value></close>
+          </contrib:CharacterPair>
+          <contrib:CharacterPair bml:id="bracketParen">
+            <open><value>(</value></open>
+            <close><value>)</value></close>
+          </contrib:CharacterPair>
+          <contrib:CharacterPair bml:id="bracketSquare">
+            <open><value>[</value></open>
+            <close><value>]</value></close>
+          </contrib:CharacterPair>
+        </brackets>
+        <autoClosingPairs>
+          <contrib:CharacterPair bml:id="autoAngle">
+            <open><value>&lt;</value></open>
+            <close><value>&gt;</value></close>
+          </contrib:CharacterPair>
+          <contrib:CharacterPair bml:id="autoDoubleQuote">
+            <open><value>"</value></open>
+            <close><value>"</value></close>
+          </contrib:CharacterPair>
+          <contrib:CharacterPair bml:id="autoSingleQuote">
+            <open><value>'</value></open>
+            <close><value>'</value></close>
+          </contrib:CharacterPair>
+          <contrib:CharacterPair bml:id="autoCurly">
+            <open><value>{</value></open>
+            <close><value>}</value></close>
+          </contrib:CharacterPair>
+          <contrib:CharacterPair bml:id="autoParen">
+            <open><value>(</value></open>
+            <close><value>)</value></close>
+          </contrib:CharacterPair>
+          <contrib:CharacterPair bml:id="autoSquare">
+            <open><value>[</value></open>
+            <close><value>]</value></close>
+          </contrib:CharacterPair>
+          <contrib:CharacterPair bml:id="autoBlockComment">
+            <open><value>&lt;!--</value></open>
+            <close><value>--&gt;</value></close>
+          </contrib:CharacterPair>
+        </autoClosingPairs>
+        <surroundingPairs>
+          <contrib:CharacterPair bml:id="surroundAngle">
+            <open><value>&lt;</value></open>
+            <close><value>&gt;</value></close>
+          </contrib:CharacterPair>
+          <contrib:CharacterPair bml:id="surroundDoubleQuote">
+            <open><value>"</value></open>
+            <close><value>"</value></close>
+          </contrib:CharacterPair>
+          <contrib:CharacterPair bml:id="surroundSingleQuote">
+            <open><value>'</value></open>
+            <close><value>'</value></close>
+          </contrib:CharacterPair>
+          <contrib:CharacterPair bml:id="surroundCurly">
+            <open><value>{</value></open>
+            <close><value>}</value></close>
+          </contrib:CharacterPair>
+          <contrib:CharacterPair bml:id="surroundParen">
+            <open><value>(</value></open>
+            <close><value>)</value></close>
+          </contrib:CharacterPair>
+          <contrib:CharacterPair bml:id="surroundSquare">
+            <open><value>[</value></open>
+            <close><value>]</value></close>
+          </contrib:CharacterPair>
+        </surroundingPairs>
       </contrib:LanguageContribution>
 
       <contrib:GrammarContribution bml:id="bmlSimpleGrammar">
@@ -142,6 +222,8 @@
           <type:TextEntity value="string.quoted.single.bml" />
           <type:TextEntity value="meta.expression.bml" />
           <type:TextEntity value="meta.embed.bml" />
+          <type:TextEntity value="punctuation.definition.comment.bml" />
+          <type:TextEntity value="punctuation.definition.tag.bml" />
         </scopes>
         <patternNotes>
           <type:TextEntity value="XML-style comments &lt;!-- --&gt;" />
@@ -150,6 +232,76 @@
           <type:TextEntity value="${ ... } expression interpolations" />
           <type:TextEntity value="&lt;$ ... $&gt; embedded expression markers" />
         </patternNotes>
+        <topLevelIncludes>
+          <type:TextEntity value="comment" />
+          <type:TextEntity value="expression" />
+          <type:TextEntity value="embed" />
+          <type:TextEntity value="tag" />
+        </topLevelIncludes>
+        <patterns>
+          <contrib:GrammarPattern bml:id="patternComment">
+            <patternKey><value>comment</value></patternKey>
+            <scopeName><value>comment.block.bml</value></scopeName>
+            <begin><value>&lt;!--</value></begin>
+            <end><value>--&gt;</value></end>
+            <beginCapturesJson><value>{"0":{"name":"punctuation.definition.comment.bml"}}</value></beginCapturesJson>
+            <endCapturesJson><value>{"0":{"name":"punctuation.definition.comment.bml"}}</value></endCapturesJson>
+          </contrib:GrammarPattern>
+
+          <contrib:GrammarPattern bml:id="patternExpression">
+            <patternKey><value>expression</value></patternKey>
+            <scopeName><value>meta.expression.bml</value></scopeName>
+            <begin><value>\$\{</value></begin>
+            <end><value>\}</value></end>
+          </contrib:GrammarPattern>
+
+          <contrib:GrammarPattern bml:id="patternEmbed">
+            <patternKey><value>embed</value></patternKey>
+            <scopeName><value>meta.embed.bml</value></scopeName>
+            <begin><value>&lt;\$</value></begin>
+            <end><value>\$&gt;</value></end>
+          </contrib:GrammarPattern>
+
+          <contrib:GrammarPattern bml:id="patternDoubleQuoted">
+            <patternKey><value>stringDouble</value></patternKey>
+            <scopeName><value>string.quoted.double.bml</value></scopeName>
+            <begin><value>"</value></begin>
+            <end><value>"</value></end>
+            <nestedIncludes>
+              <type:TextEntity value="#expression" />
+              <type:TextEntity value="#embed" />
+            </nestedIncludes>
+          </contrib:GrammarPattern>
+
+          <contrib:GrammarPattern bml:id="patternSingleQuoted">
+            <patternKey><value>stringSingle</value></patternKey>
+            <scopeName><value>string.quoted.single.bml</value></scopeName>
+            <begin><value>'</value></begin>
+            <end><value>'</value></end>
+            <nestedIncludes>
+              <type:TextEntity value="#expression" />
+              <type:TextEntity value="#embed" />
+            </nestedIncludes>
+          </contrib:GrammarPattern>
+
+          <contrib:GrammarPattern bml:id="patternAttribute">
+            <patternKey><value>attribute</value></patternKey>
+            <match><value>\s+([A-Za-z_:][\w:.-]*)(\s*=\s*)(?:(")([^"]*)(")|(')([^']*)('))?</value></match>
+            <capturesJson><value>{"1":{"name":"entity.other.attribute-name.bml"},"2":{"name":"punctuation.separator.key-value.bml"},"3":{"name":"punctuation.definition.string.begin.bml"},"4":{"name":"string.quoted.double.bml"},"5":{"name":"punctuation.definition.string.end.bml"},"6":{"name":"punctuation.definition.string.begin.bml"},"7":{"name":"string.quoted.single.bml"},"8":{"name":"punctuation.definition.string.end.bml"}}</value></capturesJson>
+          </contrib:GrammarPattern>
+
+          <contrib:GrammarPattern bml:id="patternTag">
+            <patternKey><value>tag</value></patternKey>
+            <scopeName><value>meta.tag.bml</value></scopeName>
+            <begin><value>(&lt;/?)(([A-Za-z_:][\w:.-]*))</value></begin>
+            <end><value>(/?&gt;)</value></end>
+            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.tag.bml"},"3":{"name":"entity.name.tag.bml"}}</value></beginCapturesJson>
+            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
+            <nestedIncludes>
+              <type:TextEntity value="#attribute" />
+            </nestedIncludes>
+          </contrib:GrammarPattern>
+        </patterns>
       </contrib:GrammarContribution>
 
       <contrib:IconContribution bml:id="bmlFileIcon">
@@ -168,6 +320,18 @@
         <fileExtension>
           <value>.bml</value>
         </fileExtension>
+        <themeId>
+          <value>blockml-icons</value>
+        </themeId>
+        <themeLabel>
+          <value>BlockML Icons</value>
+        </themeLabel>
+        <themePath>
+          <value>./icons/blockml-icon-theme.json</value>
+        </themePath>
+        <iconDefinitionId>
+          <value>bml_file</value>
+        </iconDefinitionId>
       </contrib:IconContribution>
 
       <contrib:ConfigurationContribution bml:id="blockmlConfiguration">

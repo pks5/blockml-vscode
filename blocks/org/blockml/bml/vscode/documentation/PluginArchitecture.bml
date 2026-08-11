@@ -22,7 +22,8 @@
     Package layout under org.blockml.bml.vscode:
     • vscode.Extension — abstract extension descriptor (publisher, engines, activation, contributions)
     • vscode.contribution.* — Contribution branch (Language, Grammar, Icon, Configuration/Setting,
-      Command, Keybinding, LanguageServer, Navigation, SemanticHighlighting)
+      Command, Keybinding, LanguageServer, Navigation, SemanticHighlighting) plus supporting
+      entities CharacterPair and GrammarPattern
     • vscode.type.* — closed enums (ReleaseMilestone, SettingValueKind, ConfigurationScope,
       NavigationKind)
     • vscode.documentation.* — curated reading material for this library

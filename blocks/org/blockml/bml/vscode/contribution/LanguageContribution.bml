@@ -18,9 +18,10 @@
   <is>A VS Code languages contribution</is>
 
   <documentation>
-    Declares a language id, aliases, extensions, filenames, and optional configuration path —
-    maps to package.json contributes.languages. V1 of the BlockML extension registers language
-    id bml for .bml files.
+    Declares a language id, aliases, extensions, filenames, configuration path, and the semantic
+    contents of language-configuration.json (comments, brackets, autoClosingPairs,
+    surroundingPairs). Maps to package.json contributes.languages plus the generated configuration
+    file. V1 of the BlockML extension registers language id bml for .bml files.
   </documentation>
 
   <references>
@@ -33,6 +34,9 @@
     <see type="contrib:IconContribution" relation="SeeAlso">
       File icon for the language / extension.
     </see>
+    <see type="contrib:CharacterPair" relation="SeeAlso">
+      Open/close pairs for brackets and auto-closing.
+    </see>
   </references>
 
   <properties>
@@ -40,9 +44,19 @@
       <documentation>VS Code language identifier (for example bml).</documentation>
     </languageId>
     <configurationPath type="FilePath">
-      <documentation>Optional path to language-configuration.json (brackets, comments, autoClosing).
-        Relative to the extension package root.</documentation>
+      <documentation>Path to the generated language-configuration.json (brackets, comments,
+        autoClosing). Relative to the extension package root.</documentation>
     </configurationPath>
+    <lineComment type="Text">
+      <documentation>Optional line comment token. Omit when the language has none (BML V1 uses
+        only block comments).</documentation>
+    </lineComment>
+    <blockCommentOpen type="Text">
+      <documentation>Block comment open delimiter (BML: &lt;!--).</documentation>
+    </blockCommentOpen>
+    <blockCommentClose type="Text">
+      <documentation>Block comment close delimiter (BML: --&gt;).</documentation>
+    </blockCommentClose>
   </properties>
 
   <aggregations>
@@ -55,6 +69,15 @@
     <filenames type="type:TextEntity[]">
       <documentation>Exact filenames associated with this language (rarely used).</documentation>
     </filenames>
+    <brackets type="contrib:CharacterPair[]">
+      <documentation>Bracket pairs for matching / rainbow highlighting.</documentation>
+    </brackets>
+    <autoClosingPairs type="contrib:CharacterPair[]">
+      <documentation>Pairs auto-inserted when typing the open character.</documentation>
+    </autoClosingPairs>
+    <surroundingPairs type="contrib:CharacterPair[]">
+      <documentation>Pairs used when surrounding a selection.</documentation>
+    </surroundingPairs>
   </aggregations>
 
 </block>

@@ -25,6 +25,9 @@
     scope set (XML-like tags, attributes, comments, strings, ${ } expressions). V2 adds richer
     scopes for type references, directives, and capability bodies — and may coexist with
     semantic tokens from the language server.
+
+    Structured GrammarPattern children are the SSOT for repository patterns; patternNotes remain
+    human/LLM teaching hints and must not invent scopes or matches absent from patterns/scopes.
   </documentation>
 
   <references>
@@ -37,6 +40,9 @@
     <see type="contrib:SemanticHighlightingContribution" relation="SeeAlso">
       LSP-driven semantic tokens (V2).
     </see>
+    <see type="contrib:GrammarPattern" relation="SeeAlso">
+      Structured TextMate repository pattern.
+    </see>
   </references>
 
   <properties>
@@ -47,7 +53,7 @@
       <documentation>TextMate root scope name (for example source.bml).</documentation>
     </scopeName>
     <path type="FilePath">
-      <documentation>Generated or authored grammar file path relative to the extension root
+      <documentation>Generated grammar file path relative to the extension root
         (for example ./syntaxes/bml.tmLanguage.json).</documentation>
     </path>
     <embeddedLanguagesNote type="Text">
@@ -62,9 +68,17 @@
         priority / teaching order for LLMs.</documentation>
     </scopes>
     <patternNotes type="type:TextEntity[]">
-      <documentation>Human/LLM-oriented pattern descriptions that generators turn into TextMate
-        repository patterns (tags, attributes, comments, strings, expressions, …).</documentation>
+      <documentation>Human/LLM-oriented pattern descriptions. Not a substitute for structured
+        patterns — durable regex/scope changes belong in patterns.</documentation>
     </patternNotes>
+    <patterns type="contrib:GrammarPattern[]">
+      <documentation>Structured TextMate repository patterns. Generators emit repository entries
+        and top-level includes from patternKey order.</documentation>
+    </patterns>
+    <topLevelIncludes type="type:TextEntity[]">
+      <documentation>Ordered top-level patterns includes (repository keys without #, for example
+        comment, tag). Emitted as { "include": "#key" }.</documentation>
+    </topLevelIncludes>
   </aggregations>
 
 </block>
