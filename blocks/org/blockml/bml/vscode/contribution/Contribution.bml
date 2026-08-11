@@ -1,0 +1,53 @@
+<!--
+  BlockML VS Code — abstract contribution
+
+  FQN: org.blockml.bml.vscode.contribution.Contribution
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:vtype="org.blockml.bml.vscode.type">
+
+  <name>Contribution</name>
+  <type>contrib:Contribution</type>
+  <baseType>core:Entity</baseType>
+  <is>A VS Code extension contribution</is>
+
+  <documentation>
+    Abstract branch for everything an Extension contributes — languages, grammars, icons,
+    settings, commands, keybindings, language-server wiring, navigation, and semantic tokens.
+    Concrete subtypes map to package.json contributes keys and/or generated feature modules.
+
+    Every contribution declares a release milestone (V1 or V2) so generators can emit a partial
+    extension matching the target roadmap slice.
+  </documentation>
+
+  <references>
+    <see type="doc:ContributionModel" relation="AuthoringGuide">
+      Contribution taxonomy and generator mapping.
+    </see>
+    <see type="vtype:ReleaseMilestone" relation="Requires">
+      V1 / V2 milestone marker on every contribution.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+  <properties>
+    <milestone type="vtype:ReleaseMilestone">
+      <documentation>Roadmap slice this contribution belongs to. Generators may filter by
+        milestone when emitting a V1-only or full V2 extension.</documentation>
+    </milestone>
+    <enabled type="Boolean">
+      <documentation>Whether this contribution is active in the generated extension. Use false to
+        keep a planned contribution in BML without shipping it yet.</documentation>
+      <value>true</value>
+    </enabled>
+  </properties>
+
+</block>

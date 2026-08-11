@@ -1,0 +1,48 @@
+<!--
+  BlockML VS Code — command contribution
+
+  FQN: org.blockml.bml.vscode.contribution.CommandContribution
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution">
+
+  <name>CommandContribution</name>
+  <type>contrib:CommandContribution</type>
+  <baseType>contrib:Contribution</baseType>
+  <is>A VS Code command contribution</is>
+
+  <documentation>
+    Maps to contributes.commands. Navigation shortcuts and editor actions register commands here;
+    KeybindingContribution references the same command id.
+  </documentation>
+
+  <references>
+    <see type="contrib:KeybindingContribution" relation="SeeAlso">
+      Optional keybinding bound to this command id.
+    </see>
+    <see type="contrib:NavigationContribution" relation="SeeAlso">
+      Navigation features often expose commands and editor gestures.
+    </see>
+  </references>
+
+  <properties>
+    <commandId type="Text">
+      <documentation>Fully qualified command id (for example blockml.bml.goToDefinition).</documentation>
+    </commandId>
+    <title type="Text">
+      <documentation>Command palette title.</documentation>
+    </title>
+    <category type="Text">
+      <documentation>Optional command category (for example BlockML).</documentation>
+      <value>BlockML</value>
+    </category>
+    <icon type="Text">
+      <documentation>Optional codicon name or path for the command icon.</documentation>
+    </icon>
+  </properties>
+
+</block>

@@ -1,0 +1,51 @@
+<!--
+  BlockML VS Code — documentation
+
+  FQN: org.blockml.bml.vscode.documentation.ContributionModel
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:doc="org.blockml.bml.vscode.documentation">
+
+  <name>ContributionModel</name>
+  <type>doc:ContributionModel</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to VS Code contributions in BML</is>
+
+  <documentation>
+    Contribution → generator mapping:
+    • LanguageContribution → contributes.languages (+ language-configuration.json)
+    • GrammarContribution → contributes.grammars + syntaxes/*.tmLanguage.json
+    • IconContribution → icon assets + file icon / language icon association
+    • ConfigurationContribution / Setting → contributes.configuration (SSOT for all settings)
+    • CommandContribution → contributes.commands
+    • KeybindingContribution → contributes.keybindings
+    • LanguageServerContribution → vscode-languageclient bootstrap (not a package.json key alone)
+    • NavigationContribution → LSP definition/references expectations + optional client providers
+    • SemanticHighlightingContribution → semantic token legend / LSP semanticTokens
+
+    Settings must not be invented only in TypeScript — add a Setting under ConfigurationContribution
+    first, then generate accessors from BML.
+  </documentation>
+
+  <references>
+    <see type="doc:GenerationWorkflow" relation="ReadNext">
+      Next — BML to generated extension workflow.
+    </see>
+    <see type="contrib:Setting" relation="Defines">
+      Individual setting entity.
+    </see>
+    <see type="contrib:ConfigurationContribution" relation="Defines">
+      Configuration section holding settings.
+    </see>
+    <see type="doc:PluginArchitecture" relation="SeeAlso">
+      Package and type overview.
+    </see>
+  </references>
+
+</block>

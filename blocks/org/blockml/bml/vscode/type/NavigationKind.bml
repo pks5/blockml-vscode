@@ -1,0 +1,38 @@
+<!--
+  BlockML VS Code — navigation kind enum
+
+  FQN: org.blockml.bml.vscode.type.NavigationKind
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:type="org.blockml.bml.type"
+  xmlns:vtype="org.blockml.bml.vscode.type">
+
+  <name>NavigationKind</name>
+  <type>vtype:NavigationKind</type>
+  <baseType>type:EnumType</baseType>
+  <is>A BML symbol navigation kind</is>
+
+  <documentation>Kinds of click-to-navigate targets between BML files — analogous to Java class,
+    field, and method navigation. Used by NavigationContribution and LSP go-to-definition
+    providers.</documentation>
+
+  <aggregations>
+    <values>
+      <NavigationKind bml:id="BlockType" />
+      <NavigationKind bml:id="BaseType" />
+      <NavigationKind bml:id="Property" />
+      <NavigationKind bml:id="Aggregation" />
+      <NavigationKind bml:id="Association" />
+      <NavigationKind bml:id="Capability" />
+      <NavigationKind bml:id="ReferenceSee" />
+      <NavigationKind bml:id="InstanceId" />
+      <NavigationKind bml:id="NamespacePrefix" />
+    </values>
+  </aggregations>
+
+</block>

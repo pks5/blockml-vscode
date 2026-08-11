@@ -1,0 +1,67 @@
+<!--
+  BlockML VS Code — setting entry
+
+  FQN: org.blockml.bml.vscode.contribution.Setting
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:type="org.blockml.bml.type"
+  xmlns:vtype="org.blockml.bml.vscode.type">
+
+  <name>Setting</name>
+  <type>contrib:Setting</type>
+  <baseType>core:Entity</baseType>
+  <is>A VS Code configuration setting</is>
+
+  <documentation>
+    Single contributes.configuration property — key, type, default, description, and scope.
+    Stored entirely in BML so settings remain the SSOT for package.json configuration schema and
+    for runtime reads (vscode.workspace.getConfiguration).
+  </documentation>
+
+  <references>
+    <see type="contrib:ConfigurationContribution" relation="Requires">
+      Settings are aggregated under a ConfigurationContribution section.
+    </see>
+    <see type="vtype:SettingValueKind" relation="Requires">
+      JSON schema type of the setting value.
+    </see>
+    <see type="vtype:ConfigurationScope" relation="SeeAlso">
+      Optional VS Code configuration scope.
+    </see>
+  </references>
+
+  <properties>
+    <key type="Text">
+      <documentation>Full setting key including section prefix (for example blockml.bml.enableLanguageServer).</documentation>
+    </key>
+    <valueKind type="vtype:SettingValueKind">
+      <documentation>JSON schema type emitted under contributes.configuration.properties.</documentation>
+    </valueKind>
+    <defaultValue type="Text">
+      <documentation>Default value serialized as text (true/false, numbers, JSON literals for
+        arrays/objects). Generators parse according to valueKind.</documentation>
+    </defaultValue>
+    <description type="Text">
+      <documentation>User-facing setting description shown in Settings UI.</documentation>
+    </description>
+    <scope type="vtype:ConfigurationScope">
+      <documentation>Optional configuration scope. Omit for VS Code default (window).</documentation>
+    </scope>
+    <order type="Integer">
+      <documentation>Optional display order within the configuration section.</documentation>
+    </order>
+  </properties>
+
+  <aggregations>
+    <enumValues type="type:TextEntity[]">
+      <documentation>When valueKind is String, optional closed list of allowed enum strings.</documentation>
+    </enumValues>
+  </aggregations>
+
+</block>

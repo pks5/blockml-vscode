@@ -1,0 +1,30 @@
+<!--
+  BlockML VS Code — release milestone enum
+
+  FQN: org.blockml.bml.vscode.type.ReleaseMilestone
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:type="org.blockml.bml.type"
+  xmlns:vtype="org.blockml.bml.vscode.type">
+
+  <name>ReleaseMilestone</name>
+  <type>vtype:ReleaseMilestone</type>
+  <baseType>type:EnumType</baseType>
+  <is>A plugin release milestone</is>
+
+  <documentation>Closed set of BlockML VS Code extension roadmap slices. Contributions declare
+    milestone V1 or V2 so documentation and generators stay aligned.</documentation>
+
+  <aggregations>
+    <values>
+      <ReleaseMilestone bml:id="V1" />
+      <ReleaseMilestone bml:id="V2" />
+    </values>
+  </aggregations>
+
+</block>

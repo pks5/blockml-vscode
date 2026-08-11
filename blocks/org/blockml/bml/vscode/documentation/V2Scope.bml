@@ -1,0 +1,59 @@
+<!--
+  BlockML VS Code — documentation
+
+  FQN: org.blockml.bml.vscode.documentation.V2Scope
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:vtype="org.blockml.bml.vscode.type">
+
+  <name>V2Scope</name>
+  <type>doc:V2Scope</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to VS Code plugin V2 features</is>
+
+  <documentation>
+    V2 (milestone ReleaseMilestone::V2) — IDE-grade BML support on top of V1:
+
+    1. Language Server integration — vscode-languageclient wiring to a BlockML LSP for diagnostics,
+       hover, completion, and related capabilities declared on LanguageServerContribution.
+    2. Advanced syntax highlighting — richer TextMate scopes and/or LSP semantic tokens for
+       resolved types, members, directives, and invalid symbols
+       (SemanticHighlightingContribution + optional GrammarContribution updates).
+    3. Navigation between BML files — Ctrl/Cmd-click and shortcuts (go to definition, peek,
+       find references) for Block types, baseType, properties, aggregations, associations,
+       capabilities, see targets, instance ids, and xmlns prefixes — analogous to Java
+       class/field navigation (NavigationContribution + Command/Keybinding contributions).
+
+    V2 contributions are authored with milestone V2 and may remain enabled=false until the
+    language server is ready; generators honour both flags.
+  </documentation>
+
+  <references>
+    <see type="doc:GenerationWorkflow" relation="SeeAlso">
+      How V2 slices are filtered during generation.
+    </see>
+    <see type="contrib:LanguageServerContribution" relation="Defines">
+      Language server client contribution.
+    </see>
+    <see type="contrib:SemanticHighlightingContribution" relation="Defines">
+      Advanced / semantic highlighting.
+    </see>
+    <see type="contrib:NavigationContribution" relation="Defines">
+      Cross-file navigation feature.
+    </see>
+    <see type="vtype:NavigationKind" relation="SeeAlso">
+      Navigable symbol kinds.
+    </see>
+    <see type="doc:V1Scope" relation="SeeAlso">
+      V1 baseline that V2 builds on.
+    </see>
+  </references>
+
+</block>

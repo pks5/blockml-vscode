@@ -1,0 +1,50 @@
+<!--
+  BlockML VS Code — documentation
+
+  FQN: org.blockml.bml.vscode.documentation.GenerationWorkflow
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:vscode="org.blockml.bml.vscode">
+
+  <name>GenerationWorkflow</name>
+  <type>doc:GenerationWorkflow</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to generating the extension from BML</is>
+
+  <documentation>
+    Workflow:
+    1. Author or update Blocks under org.blockml.bml.vscode (types, docs, BlockMlExtension).
+    2. Export new types via Library.bml blocks when publishing catalogue membership.
+    3. Run an LLM or deterministic generator with this library + BlockMlExtension as context.
+    4. Emit / update: package.json, syntaxes, icons, src/extension.ts, language client, tests.
+    5. Diff generated artefacts against BML — drift means regenerate or amend BML first.
+
+    Rules for generators:
+    • Do not add contributes.* entries missing from BlockMlExtension.contributions
+    • Do not add settings missing from ConfigurationContribution.settings
+    • Honour milestone and enabled when filtering V1 vs V2 output
+    • Prefer updating BML over hand-editing generated files for durable changes
+
+    The runnable extension lives beside this library in the blockml-vscode repository; BML remains
+    the semantic SSOT.
+  </documentation>
+
+  <references>
+    <see type="doc:V1Scope" relation="ReadNext">
+      Next — V1 feature scope.
+    </see>
+    <see type="vscode:BlockMlExtension" relation="Requires">
+      Concrete catalogue the generator reads.
+    </see>
+    <see type="doc:ContributionModel" relation="SeeAlso">
+      Contribution to package.json / source mapping.
+    </see>
+  </references>
+
+</block>

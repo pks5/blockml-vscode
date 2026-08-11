@@ -1,0 +1,51 @@
+<!--
+  BlockML VS Code — documentation
+
+  FQN: org.blockml.bml.vscode.documentation.V1Scope
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:vtype="org.blockml.bml.vscode.type">
+
+  <name>V1Scope</name>
+  <type>doc:V1Scope</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to VS Code plugin V1 features</is>
+
+  <documentation>
+    V1 (milestone ReleaseMilestone::V1) — minimal usable BML editing support:
+
+    1. Simple syntax highlighting — TextMate grammar for XML-like BML structure: tags, attributes,
+       comments, strings, and basic ${ } / &lt;$ $&gt; expression markers. No semantic resolution.
+    2. BML file type — language id bml, alias BlockML / BML, extension .bml, activation onLanguage:bml.
+    3. File icon — dedicated icon asset associated with .bml / language bml.
+
+    Out of scope for V1: language server, semantic tokens, cross-file navigation, rich settings
+    beyond a small configuration section.
+  </documentation>
+
+  <references>
+    <see type="doc:V2Scope" relation="ReadNext">
+      Next — V2 language server, advanced highlighting, navigation.
+    </see>
+    <see type="contrib:LanguageContribution" relation="Defines">
+      File type / language id contribution.
+    </see>
+    <see type="contrib:GrammarContribution" relation="Defines">
+      Simple TextMate grammar contribution.
+    </see>
+    <see type="contrib:IconContribution" relation="Defines">
+      BML file icon contribution.
+    </see>
+    <see type="vtype:ReleaseMilestone" relation="SeeAlso">
+      V1 / V2 milestone enum.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,57 @@
+<!--
+  BlockML VS Code — semantic highlighting contribution
+
+  FQN: org.blockml.bml.vscode.contribution.SemanticHighlightingContribution
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>SemanticHighlightingContribution</name>
+  <type>contrib:SemanticHighlightingContribution</type>
+  <baseType>contrib:Contribution</baseType>
+  <is>An advanced / semantic highlighting feature</is>
+
+  <documentation>
+    V2 advanced highlighting beyond TextMate — typically LSP semantic tokens that color resolved
+    type references, member names, directives, and invalid/unknown symbols differently. Works
+    together with GrammarContribution (lexical) rather than replacing it.
+  </documentation>
+
+  <references>
+    <see type="doc:V2Scope" relation="AuthoringGuide">
+      Advanced syntax highlighting is a V2 milestone.
+    </see>
+    <see type="contrib:GrammarContribution" relation="SeeAlso">
+      Lexical TextMate baseline highlighting.
+    </see>
+    <see type="contrib:LanguageServerContribution" relation="SeeAlso">
+      Semantic tokens usually require the language server.
+    </see>
+  </references>
+
+  <properties>
+    <viaLanguageServer type="Boolean">
+      <documentation>When true, semantic tokens come from the LSP; otherwise a client
+        DocumentSemanticTokensProvider may be generated.</documentation>
+      <value>true</value>
+    </viaLanguageServer>
+  </properties>
+
+  <aggregations>
+    <tokenTypes type="type:TextEntity[]">
+      <documentation>Semantic token types to register / request (namespace, type, property,
+        variable, keyword, modifier, …).</documentation>
+    </tokenTypes>
+    <tokenModifiers type="type:TextEntity[]">
+      <documentation>Semantic token modifiers (declaration, definition, readonly, deprecated,
+        abstract, …).</documentation>
+    </tokenModifiers>
+  </aggregations>
+
+</block>

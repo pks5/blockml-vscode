@@ -1,0 +1,60 @@
+<!--
+  BlockML VS Code — language contribution
+
+  FQN: org.blockml.bml.vscode.contribution.LanguageContribution
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>LanguageContribution</name>
+  <type>contrib:LanguageContribution</type>
+  <baseType>contrib:Contribution</baseType>
+  <is>A VS Code languages contribution</is>
+
+  <documentation>
+    Declares a language id, aliases, extensions, filenames, and optional configuration path —
+    maps to package.json contributes.languages. V1 of the BlockML extension registers language
+    id bml for .bml files.
+  </documentation>
+
+  <references>
+    <see type="doc:V1Scope" relation="AuthoringGuide">
+      V1 includes BML file type registration.
+    </see>
+    <see type="contrib:GrammarContribution" relation="SeeAlso">
+      TextMate grammar bound to the same language id.
+    </see>
+    <see type="contrib:IconContribution" relation="SeeAlso">
+      File icon for the language / extension.
+    </see>
+  </references>
+
+  <properties>
+    <languageId type="Text">
+      <documentation>VS Code language identifier (for example bml).</documentation>
+    </languageId>
+    <configurationPath type="FilePath">
+      <documentation>Optional path to language-configuration.json (brackets, comments, autoClosing).
+        Relative to the extension package root.</documentation>
+    </configurationPath>
+  </properties>
+
+  <aggregations>
+    <aliases type="type:TextEntity[]">
+      <documentation>Human-readable language aliases (BlockML, BML, …).</documentation>
+    </aliases>
+    <extensions type="type:TextEntity[]">
+      <documentation>File extensions including the leading dot (for example .bml).</documentation>
+    </extensions>
+    <filenames type="type:TextEntity[]">
+      <documentation>Exact filenames associated with this language (rarely used).</documentation>
+    </filenames>
+  </aggregations>
+
+</block>

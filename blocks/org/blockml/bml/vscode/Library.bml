@@ -1,0 +1,95 @@
+<!--
+  BlockML VS Code Library Descriptor
+
+  Name: Library
+  Filename: Library.bml
+  FQN: org.blockml.bml.vscode.Library
+
+  Describes the BlockML VS Code / Cursor extension entirely in BML.
+  Block .bml sources live under blocks/org/blockml/bml/vscode/.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:blockml="org.blockml.bml"
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:vscode="org.blockml.bml.vscode"
+  xmlns:vtype="org.blockml.bml.vscode.type">
+
+  <name>Library</name>
+  <type>vscode:Library</type>
+  <baseType>core:BlockLibrary</baseType>
+  <is>A BlockML VS Code extension library catalog</is>
+
+  <documentation>
+    Publishable library org.blockml.bml.vscode.Library. Exports the VS Code extension domain model
+    (Extension, contributions, settings, enums), documentation blocks, and the concrete
+    BlockMlExtension catalogue used to generate or update the runnable plugin.
+
+    Depends on org.blockml.bml.Library for framework types. Membership is defined exclusively by
+    this file's blocks list — not by directory layout.
+  </documentation>
+
+  <references>
+    <see type="vscode:README" relation="ReadFirst">
+      Human/LLM reading entry for this library.
+    </see>
+  </references>
+
+  <version>0.1.0</version>
+
+  <language>
+    <English />
+  </language>
+
+  <properties>
+    <description>
+      <value>BlockML VS Code extension library</value>
+    </description>
+  </properties>
+
+  <aggregations>
+    <readMe>
+      <vscode:README />
+    </readMe>
+
+    <dependencies>
+      <blockml:Library />
+    </dependencies>
+
+    <blocks>
+      <vscode:README />
+      <vscode:Extension />
+      <vscode:BlockMlExtension />
+
+      <contrib:Contribution />
+      <contrib:LanguageContribution />
+      <contrib:GrammarContribution />
+      <contrib:IconContribution />
+      <contrib:Setting />
+      <contrib:ConfigurationContribution />
+      <contrib:CommandContribution />
+      <contrib:KeybindingContribution />
+      <contrib:LanguageServerContribution />
+      <contrib:NavigationContribution />
+      <contrib:SemanticHighlightingContribution />
+
+      <vtype:ReleaseMilestone />
+      <vtype:SettingValueKind />
+      <vtype:ConfigurationScope />
+      <vtype:NavigationKind />
+
+      <doc:Introduction />
+      <doc:PluginArchitecture />
+      <doc:ContributionModel />
+      <doc:GenerationWorkflow />
+      <doc:V1Scope />
+      <doc:V2Scope />
+    </blocks>
+  </aggregations>
+
+</block>

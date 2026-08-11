@@ -1,0 +1,51 @@
+<!--
+  BlockML VS Code — file icon contribution
+
+  FQN: org.blockml.bml.vscode.contribution.IconContribution
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:doc="org.blockml.bml.vscode.documentation">
+
+  <name>IconContribution</name>
+  <type>contrib:IconContribution</type>
+  <baseType>contrib:Contribution</baseType>
+  <is>A language or file icon contribution</is>
+
+  <documentation>
+    Describes the BML file icon for the explorer and editor tabs. Generators may emit a product
+    icon theme fragment, language icon association, or document the asset path used by
+    contributes.iconThemes / file icon packaging. V1 ships a dedicated .bml icon.
+  </documentation>
+
+  <references>
+    <see type="doc:V1Scope" relation="AuthoringGuide">
+      V1 includes BML file type icon.
+    </see>
+    <see type="contrib:LanguageContribution" relation="SeeAlso">
+      Language id / extension the icon is associated with.
+    </see>
+  </references>
+
+  <properties>
+    <languageId type="Text">
+      <documentation>Language id or file association target for the icon.</documentation>
+    </languageId>
+    <iconPath type="FilePath">
+      <documentation>Path to the icon asset relative to the extension root
+        (for example ./icons/bml.svg).</documentation>
+    </iconPath>
+    <iconPathDark type="FilePath">
+      <documentation>Optional dark-theme variant of the icon.</documentation>
+    </iconPathDark>
+    <fileExtension type="Text">
+      <documentation>File extension the icon applies to (for example .bml).</documentation>
+      <value>.bml</value>
+    </fileExtension>
+  </properties>
+
+</block>

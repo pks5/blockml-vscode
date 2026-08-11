@@ -1,0 +1,70 @@
+<!--
+  BlockML VS Code — README / library reading entry point
+
+  FQN: org.blockml.bml.vscode.README
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:vscode="org.blockml.bml.vscode">
+
+  <name>README</name>
+  <type>vscode:README</type>
+  <baseType>core:ReadMe</baseType>
+  <is>A library reading entry point</is>
+
+  <documentation>
+    README for the BlockML VS Code library (org.blockml.bml.vscode.Library). Start with references
+    marked relation=ReadFirst — documentation in mental order from introduction through
+    architecture, contributions, generation workflow, and V1 / V2 scope. Library.bml points here
+    via the required readMe aggregation (&lt;vscode:README /&gt;).
+
+    After reading, inspect vscode:BlockMlExtension — the concrete extension catalogue an LLM or
+    generator uses to produce or update the runnable plugin.
+  </documentation>
+
+  <references>
+
+    <see type="doc:Introduction" relation="ReadFirst">
+      Start here — what this library is for.
+    </see>
+
+    <see type="doc:PluginArchitecture" relation="ReadFirst">
+      Extension, contribution packages, and catalogue layout.
+    </see>
+
+    <see type="doc:ContributionModel" relation="ReadFirst">
+      Contribution kinds and package.json / source mapping.
+    </see>
+
+    <see type="doc:GenerationWorkflow" relation="ReadFirst">
+      BML → generated VS Code extension workflow.
+    </see>
+
+    <see type="doc:V1Scope" relation="ReadFirst">
+      V1 — simple highlighting, file type, icon.
+    </see>
+
+    <see type="doc:V2Scope" relation="ReadFirst">
+      V2 — language server, advanced highlighting, navigation.
+    </see>
+
+    <see type="vscode:BlockMlExtension" relation="SeeAlso">
+      Concrete BlockML extension SSOT for generators.
+    </see>
+
+    <see type="vscode:Extension" relation="SeeAlso">
+      Abstract extension descriptor type.
+    </see>
+
+    <see type="core:ReadMe" relation="Defines">
+      Abstract ReadMe role marker.
+    </see>
+
+  </references>
+
+</block>

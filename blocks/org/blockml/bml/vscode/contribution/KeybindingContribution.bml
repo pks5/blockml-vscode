@@ -1,0 +1,48 @@
+<!--
+  BlockML VS Code — keybinding contribution
+
+  FQN: org.blockml.bml.vscode.contribution.KeybindingContribution
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution">
+
+  <name>KeybindingContribution</name>
+  <type>contrib:KeybindingContribution</type>
+  <baseType>contrib:Contribution</baseType>
+  <is>A VS Code keybinding contribution</is>
+
+  <documentation>
+    Maps to contributes.keybindings. Used for navigation shortcuts (go to definition, peek,
+    find references) analogous to Java IDE gestures — typically F12 / Alt+F12 / Shift+F12 when
+    not already provided by the LSP client defaults.
+  </documentation>
+
+  <references>
+    <see type="contrib:CommandContribution" relation="Requires">
+      commandId must match a contributed command.
+    </see>
+    <see type="contrib:NavigationContribution" relation="SeeAlso">
+      Navigation feature that owns or documents these shortcuts.
+    </see>
+  </references>
+
+  <properties>
+    <commandId type="Text">
+      <documentation>Command id to invoke.</documentation>
+    </commandId>
+    <key type="Text">
+      <documentation>Default key chord for Windows/Linux (for example f12).</documentation>
+    </key>
+    <mac type="Text">
+      <documentation>Optional macOS-specific key chord.</documentation>
+    </mac>
+    <when type="Text">
+      <documentation>Optional when-clause (for example editorLangId == 'bml').</documentation>
+    </when>
+  </properties>
+
+</block>

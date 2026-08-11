@@ -1,0 +1,49 @@
+<!--
+  BlockML VS Code — configuration contribution
+
+  FQN: org.blockml.bml.vscode.contribution.ConfigurationContribution
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:doc="org.blockml.bml.vscode.documentation">
+
+  <name>ConfigurationContribution</name>
+  <type>contrib:ConfigurationContribution</type>
+  <baseType>contrib:Contribution</baseType>
+  <is>A VS Code configuration section</is>
+
+  <documentation>
+    Maps to one contributes.configuration object (title + properties). All extension settings
+    live as Setting children in BML — the generator writes package.json schema and typed
+    accessors from this tree.
+  </documentation>
+
+  <references>
+    <see type="doc:ContributionModel" relation="AuthoringGuide">
+      Settings as first-class BML entities.
+    </see>
+    <see type="contrib:Setting" relation="Requires">
+      Individual settings aggregated under settings.
+    </see>
+  </references>
+
+  <properties>
+    <title type="Text">
+      <documentation>Configuration section title in the Settings UI (for example BlockML).</documentation>
+    </title>
+    <order type="Integer">
+      <documentation>Optional section order among configuration contributions.</documentation>
+    </order>
+  </properties>
+
+  <aggregations>
+    <settings type="contrib:Setting[]">
+      <documentation>All settings in this section — SSOT for package.json and runtime defaults.</documentation>
+    </settings>
+  </aggregations>
+
+</block>

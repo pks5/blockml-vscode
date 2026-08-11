@@ -1,0 +1,70 @@
+<!--
+  BlockML VS Code — language server contribution
+
+  FQN: org.blockml.bml.vscode.contribution.LanguageServerContribution
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>LanguageServerContribution</name>
+  <type>contrib:LanguageServerContribution</type>
+  <baseType>contrib:Contribution</baseType>
+  <is>A language server client contribution</is>
+
+  <summary>V2 integration of a BlockML Language Server — transport, document selectors, middleware
+    notes, and feature flags for diagnostics, completion, and hover.</summary>
+
+  <documentation>
+    Describes how the extension hosts or connects to a BlockML LSP. Generators emit
+    vscode-languageclient bootstrap code from this Block. Does not implement the server itself —
+    it specifies client wiring and expected server capabilities the extension relies on.
+  </documentation>
+
+  <references>
+    <see type="doc:V2Scope" relation="AuthoringGuide">
+      Language server is a V2 milestone feature.
+    </see>
+    <see type="contrib:SemanticHighlightingContribution" relation="SeeAlso">
+      Semantic tokens often require LSP support.
+    </see>
+    <see type="contrib:NavigationContribution" relation="SeeAlso">
+      Go-to-definition and references via LSP.
+    </see>
+  </references>
+
+  <properties>
+    <serverModulePath type="FilePath">
+      <documentation>Path to the language server entry module relative to the extension root
+        (for example ./server/out/server.js), or a note when the server is an external binary.</documentation>
+    </serverModulePath>
+    <transport type="Text">
+      <documentation>Client transport (ipc, stdio, socket). Default ipc for Node servers.</documentation>
+      <value>ipc</value>
+    </transport>
+    <debugPort type="Integer">
+      <documentation>Optional debug port for --inspect of the server process.</documentation>
+    </debugPort>
+    <traceSettingKey type="Text">
+      <documentation>Configuration key that controls LSP trace level
+        (for example blockml.bml.trace.server).</documentation>
+    </traceSettingKey>
+  </properties>
+
+  <aggregations>
+    <documentSelectors type="type:TextEntity[]">
+      <documentation>Language client document selector entries (typically language:bml and
+        scheme:file).</documentation>
+    </documentSelectors>
+    <clientFeatures type="type:TextEntity[]">
+      <documentation>Expected client-side features to enable (diagnostics, hover, completion,
+        definition, references, documentSymbol, semanticTokens, …).</documentation>
+    </clientFeatures>
+  </aggregations>
+
+</block>

@@ -1,0 +1,70 @@
+<!--
+  BlockML VS Code — TextMate grammar contribution
+
+  FQN: org.blockml.bml.vscode.contribution.GrammarContribution
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>GrammarContribution</name>
+  <type>contrib:GrammarContribution</type>
+  <baseType>contrib:Contribution</baseType>
+  <is>A TextMate grammar contribution</is>
+
+  <summary>Declarative TextMate / tmLanguage description for BML syntax highlighting — simple
+    (V1) or advanced (V2). Generators emit JSON/plist grammars from scopes and patterns.</summary>
+
+  <documentation>
+    Maps to package.json contributes.grammars plus a generated grammar file. V1 uses a simple
+    scope set (XML-like tags, attributes, comments, strings, ${ } expressions). V2 adds richer
+    scopes for type references, directives, and capability bodies — and may coexist with
+    semantic tokens from the language server.
+  </documentation>
+
+  <references>
+    <see type="doc:V1Scope" relation="AuthoringGuide">
+      V1 simple syntax highlighting.
+    </see>
+    <see type="doc:V2Scope" relation="AuthoringGuide">
+      V2 advanced highlighting and LSP semantic tokens.
+    </see>
+    <see type="contrib:SemanticHighlightingContribution" relation="SeeAlso">
+      LSP-driven semantic tokens (V2).
+    </see>
+  </references>
+
+  <properties>
+    <languageId type="Text">
+      <documentation>Language id this grammar applies to (must match a LanguageContribution).</documentation>
+    </languageId>
+    <scopeName type="Text">
+      <documentation>TextMate root scope name (for example source.bml).</documentation>
+    </scopeName>
+    <path type="FilePath">
+      <documentation>Generated or authored grammar file path relative to the extension root
+        (for example ./syntaxes/bml.tmLanguage.json).</documentation>
+    </path>
+    <embeddedLanguagesNote type="Text">
+      <documentation>Optional note for generators about embedded languages (CDATA, PseudoCode,
+        expression embeds).</documentation>
+    </embeddedLanguagesNote>
+  </properties>
+
+  <aggregations>
+    <scopes type="type:TextEntity[]">
+      <documentation>TextMate scope names the grammar emits (for theme token coloring). Author in
+        priority / teaching order for LLMs.</documentation>
+    </scopes>
+    <patternNotes type="type:TextEntity[]">
+      <documentation>Human/LLM-oriented pattern descriptions that generators turn into TextMate
+        repository patterns (tags, attributes, comments, strings, expressions, …).</documentation>
+    </patternNotes>
+  </aggregations>
+
+</block>

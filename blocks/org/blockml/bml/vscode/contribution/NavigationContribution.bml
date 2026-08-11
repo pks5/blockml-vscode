@@ -1,0 +1,69 @@
+<!--
+  BlockML VS Code — navigation contribution
+
+  FQN: org.blockml.bml.vscode.contribution.NavigationContribution
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:type="org.blockml.bml.type"
+  xmlns:vtype="org.blockml.bml.vscode.type">
+
+  <name>NavigationContribution</name>
+  <type>contrib:NavigationContribution</type>
+  <baseType>contrib:Contribution</baseType>
+  <is>A BML cross-file navigation feature</is>
+
+  <summary>Click-to-navigate between BML files — type references, baseType, members, see targets,
+    and instance ids — analogous to Java class/variable navigation.</summary>
+
+  <documentation>
+    V2 feature describing which symbol kinds are navigable and which editor gestures / LSP
+    methods provide them. Generators wire DefinitionProvider / ReferenceProvider (or rely on the
+    language server) and optional keybindings/commands declared alongside this contribution.
+  </documentation>
+
+  <references>
+    <see type="doc:V2Scope" relation="AuthoringGuide">
+      Navigation shortcuts are part of V2.
+    </see>
+    <see type="vtype:NavigationKind" relation="Requires">
+      Enum of navigable symbol kinds.
+    </see>
+    <see type="contrib:LanguageServerContribution" relation="SeeAlso">
+      Preferred implementation path via LSP definition/references.
+    </see>
+    <see type="contrib:KeybindingContribution" relation="SeeAlso">
+      Shortcut bindings for navigation commands.
+    </see>
+  </references>
+
+  <properties>
+    <preferLanguageServer type="Boolean">
+      <documentation>When true, navigation is delegated to the language server; client-only
+        providers are a fallback.</documentation>
+      <value>true</value>
+    </preferLanguageServer>
+    <ctrlClickEnabled type="Boolean">
+      <documentation>Whether Ctrl/Cmd-click on symbols should jump (editor.gotoLocation behaviour
+        for BML).</documentation>
+      <value>true</value>
+    </ctrlClickEnabled>
+  </properties>
+
+  <aggregations>
+    <kinds type="type:TextEntity[]">
+      <documentation>NavigationKind ids this feature supports (BlockType, BaseType, Property, …).
+        Prefer TextEntity values matching vtype:NavigationKind member ids.</documentation>
+    </kinds>
+    <gestures type="type:TextEntity[]">
+      <documentation>User gestures to support (goToDefinition, peekDefinition, findReferences,
+        goToTypeDefinition, …).</documentation>
+    </gestures>
+  </aggregations>
+
+</block>

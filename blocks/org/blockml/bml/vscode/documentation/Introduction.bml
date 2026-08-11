@@ -1,0 +1,44 @@
+<!--
+  BlockML VS Code — documentation
+
+  FQN: org.blockml.bml.vscode.documentation.Introduction
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:vscode="org.blockml.bml.vscode">
+
+  <name>Introduction</name>
+  <type>doc:Introduction</type>
+  <baseType>core:Documentation</baseType>
+  <is>A short introduction to the BlockML VS Code library</is>
+
+  <documentation>
+    org.blockml.bml.vscode is the BlockML library that describes the VS Code / Cursor extension
+    for authoring .bml files. The library is the single source of truth for extension identity,
+    contributions (languages, grammars, icons, settings, LSP, navigation), and curated
+    documentation of the V1 / V2 roadmap.
+
+    The intended workflow: humans and LLMs edit BML under blocks/org/blockml/bml/vscode/; a
+    generator (or LLM coding pass) materializes the runnable extension (package.json, TextMate
+    grammar, icons, TypeScript client). Regenerating from BML updates the plugin without
+    drifting from the model.
+  </documentation>
+
+  <references>
+    <see type="doc:PluginArchitecture" relation="ReadNext">
+      Next — Extension, contributions, and packages.
+    </see>
+    <see type="vscode:Extension" relation="Extends">
+      Root descriptor type for a VS Code extension in BML.
+    </see>
+    <see type="vscode:BlockMlExtension" relation="SeeAlso">
+      Concrete BlockML extension catalogue.
+    </see>
+  </references>
+
+</block>

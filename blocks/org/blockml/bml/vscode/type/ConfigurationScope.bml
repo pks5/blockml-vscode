@@ -1,0 +1,33 @@
+<!--
+  BlockML VS Code — configuration scope enum
+
+  FQN: org.blockml.bml.vscode.type.ConfigurationScope
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:type="org.blockml.bml.type"
+  xmlns:vtype="org.blockml.bml.vscode.type">
+
+  <name>ConfigurationScope</name>
+  <type>vtype:ConfigurationScope</type>
+  <baseType>type:EnumType</baseType>
+  <is>A VS Code configuration scope</is>
+
+  <documentation>Maps to VS Code ConfigurationScope for contributes.configuration properties
+    (application, machine, window, resource, language-overridable).</documentation>
+
+  <aggregations>
+    <values>
+      <ConfigurationScope bml:id="Application" />
+      <ConfigurationScope bml:id="Machine" />
+      <ConfigurationScope bml:id="Window" />
+      <ConfigurationScope bml:id="Resource" />
+      <ConfigurationScope bml:id="LanguageOverridable" />
+    </values>
+  </aggregations>
+
+</block>

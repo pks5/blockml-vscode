@@ -1,0 +1,106 @@
+<!--
+  BlockML VS Code — extension descriptor type
+
+  FQN: org.blockml.bml.vscode.Extension
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:type="org.blockml.bml.type"
+  xmlns:vscode="org.blockml.bml.vscode"
+  xmlns:contrib="org.blockml.bml.vscode.contribution">
+
+  <name>Extension</name>
+  <type>vscode:Extension</type>
+  <baseType>core:Entity</baseType>
+  <is>A VS Code extension descriptor</is>
+
+  <summary>Root Block for a VS Code extension — publisher metadata, engines, activation, and
+    contribution aggregations that an LLM or generator materializes into package.json, assets, and
+    TypeScript sources.</summary>
+
+  <documentation>
+    Domain Entity for describing a VS Code / Cursor-compatible extension entirely in BML.
+    Concrete plugin catalogues (for example vscode:BlockMlExtension) extend this type and fill
+    properties plus contribution aggregations.
+
+    Mapping intent (generator / LLM):
+    • publisher, name, displayName, description, version → package.json identity fields
+    • enginesVscode → engines.vscode
+    • categories → package.json categories
+    • activationEvents → activationEvents
+    • main → main entry (compiled JS)
+    • contributions → package.json contributes.* plus supporting source files
+
+    This Block is the SSOT for extension surface area. Generated TypeScript must not invent
+    contribution points that are absent from the BML model.
+  </documentation>
+
+  <references>
+    <see type="doc:PluginArchitecture" relation="AuthoringGuide">
+      How Extension, contributions, and generation relate.
+    </see>
+    <see type="doc:GenerationWorkflow" relation="AuthoringGuide">
+      BML → generated extension workflow.
+    </see>
+    <see type="contrib:Contribution" relation="SeeAlso">
+      Abstract contribution branch aggregated under contributions.
+    </see>
+    <see type="vscode:BlockMlExtension" relation="SeeAlso">
+      Concrete BlockML VS Code extension catalogue.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+  <properties>
+    <publisher type="Text">
+      <documentation>VS Code Marketplace / Open VSX publisher id (for example blockml).</documentation>
+    </publisher>
+    <name type="Text">
+      <documentation>Extension id segment after publisher (for example bml). Full id is
+        publisher.name.</documentation>
+    </name>
+    <displayName type="Text">
+      <documentation>Human-readable extension title shown in the Extensions view.</documentation>
+    </displayName>
+    <description type="Text">
+      <documentation>Short Marketplace description of what the extension does.</documentation>
+    </description>
+    <version type="Version">
+      <documentation>SemVer of the published extension package (distinct from Library.version).</documentation>
+    </version>
+    <enginesVscode type="Text">
+      <documentation>Minimum VS Code engine range (for example ^1.85.0).</documentation>
+      <value>^1.85.0</value>
+    </enginesVscode>
+    <main type="FilePath">
+      <documentation>Compiled extension entry relative to the extension package root
+        (for example ./out/extension.js).</documentation>
+      <value>./out/extension.js</value>
+    </main>
+    <license type="Text">
+      <documentation>SPDX license identifier for the extension package.</documentation>
+      <value>Apache-2.0</value>
+    </license>
+  </properties>
+
+  <aggregations>
+    <categories type="type:TextEntity[]">
+      <documentation>Marketplace categories (Programming Languages, Linters, …). Each child is a
+        TextEntity value.</documentation>
+    </categories>
+    <activationEvents type="type:TextEntity[]">
+      <documentation>VS Code activationEvents strings (for example onLanguage:bml).</documentation>
+    </activationEvents>
+    <contributions type="contrib:Contribution[]">
+      <documentation>All package.json contributes.* and related feature descriptors. Order is
+        authoring order; generators may group by contribution kind.</documentation>
+    </contributions>
+  </aggregations>
+
+</block>

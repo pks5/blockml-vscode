@@ -1,0 +1,482 @@
+<!--
+  BlockML VS Code — concrete BlockML extension catalogue
+
+  FQN: org.blockml.bml.vscode.BlockMlExtension
+
+  SSOT for the BlockML VS Code / Cursor plugin — V1 and V2 contributions and settings.
+  Generators / LLMs materialize the runnable extension from this Block.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:type="org.blockml.bml.type"
+  xmlns:vscode="org.blockml.bml.vscode"
+  xmlns:vtype="org.blockml.bml.vscode.type">
+
+  <name>BlockMlExtension</name>
+  <type>vscode:BlockMlExtension</type>
+  <baseType>vscode:Extension</baseType>
+  <is>The BlockML VS Code extension</is>
+
+  <summary>Concrete extension catalogue for BlockML (.bml) authoring — V1 file type, icon, and
+    simple highlighting; V2 language server, advanced highlighting, and Java-like navigation.</summary>
+
+  <documentation>
+    Filled Extension descriptor for publisher blockml / name bml. Contribution children declare
+    milestone V1 or V2. Settings under configuration are the SSOT for package.json
+    contributes.configuration.
+
+    Read documentation blocks (V1Scope, V2Scope, GenerationWorkflow) before generating sources.
+  </documentation>
+
+  <references>
+    <see type="doc:V1Scope" relation="AuthoringGuide">
+      V1 feature scope.
+    </see>
+    <see type="doc:V2Scope" relation="AuthoringGuide">
+      V2 feature scope.
+    </see>
+    <see type="doc:GenerationWorkflow" relation="AuthoringGuide">
+      BML → extension generation rules.
+    </see>
+    <see type="vscode:Extension" relation="Extends">
+      Abstract extension descriptor.
+    </see>
+  </references>
+
+  <properties>
+    <publisher>
+      <value>blockml</value>
+    </publisher>
+    <name>
+      <value>bml</value>
+    </name>
+    <displayName>
+      <value>BlockML</value>
+    </displayName>
+    <description>
+      <value>Language support for BlockML (BML) — syntax highlighting, file icons, and IDE features.</value>
+    </description>
+    <version>
+      <value>0.1.0</value>
+    </version>
+    <enginesVscode>
+      <value>^1.85.0</value>
+    </enginesVscode>
+    <main>
+      <value>./out/extension.js</value>
+    </main>
+    <license>
+      <value>Apache-2.0</value>
+    </license>
+  </properties>
+
+  <aggregations>
+    <categories>
+      <type:TextEntity value="Programming Languages" />
+    </categories>
+
+    <activationEvents>
+      <type:TextEntity value="onLanguage:bml" />
+    </activationEvents>
+
+    <contributions>
+
+      <!-- ========== V1 ========== -->
+
+      <contrib:LanguageContribution bml:id="bmlLanguage">
+        <milestone>
+          <value>V1</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <languageId>
+          <value>bml</value>
+        </languageId>
+        <configurationPath>
+          <value>./language-configuration.json</value>
+        </configurationPath>
+        <aliases>
+          <type:TextEntity value="BlockML" />
+          <type:TextEntity value="BML" />
+        </aliases>
+        <extensions>
+          <type:TextEntity value=".bml" />
+        </extensions>
+      </contrib:LanguageContribution>
+
+      <contrib:GrammarContribution bml:id="bmlSimpleGrammar">
+        <milestone>
+          <value>V1</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <languageId>
+          <value>bml</value>
+        </languageId>
+        <scopeName>
+          <value>source.bml</value>
+        </scopeName>
+        <path>
+          <value>./syntaxes/bml.tmLanguage.json</value>
+        </path>
+        <embeddedLanguagesNote>
+          <value>CDATA and capability implementation bodies may embed PseudoCode or other dialects later; V1 treats them as plain text/string scopes.</value>
+        </embeddedLanguagesNote>
+        <scopes>
+          <type:TextEntity value="comment.block.bml" />
+          <type:TextEntity value="meta.tag.bml" />
+          <type:TextEntity value="entity.name.tag.bml" />
+          <type:TextEntity value="entity.other.attribute-name.bml" />
+          <type:TextEntity value="string.quoted.double.bml" />
+          <type:TextEntity value="string.quoted.single.bml" />
+          <type:TextEntity value="meta.expression.bml" />
+          <type:TextEntity value="meta.embed.bml" />
+        </scopes>
+        <patternNotes>
+          <type:TextEntity value="XML-style comments &lt;!-- --&gt;" />
+          <type:TextEntity value="Opening/closing/self-closing tags with optional xmlns prefixes" />
+          <type:TextEntity value="Attribute names and quoted attribute values" />
+          <type:TextEntity value="${ ... } expression interpolations" />
+          <type:TextEntity value="&lt;$ ... $&gt; embedded expression markers" />
+        </patternNotes>
+      </contrib:GrammarContribution>
+
+      <contrib:IconContribution bml:id="bmlFileIcon">
+        <milestone>
+          <value>V1</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <languageId>
+          <value>bml</value>
+        </languageId>
+        <iconPath>
+          <value>./icons/bml.svg</value>
+        </iconPath>
+        <fileExtension>
+          <value>.bml</value>
+        </fileExtension>
+      </contrib:IconContribution>
+
+      <contrib:ConfigurationContribution bml:id="blockmlConfiguration">
+        <milestone>
+          <value>V1</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <title>
+          <value>BlockML</value>
+        </title>
+        <settings>
+
+          <contrib:Setting bml:id="traceServer">
+            <key>
+              <value>blockml.bml.trace.server</value>
+            </key>
+            <valueKind>
+              <value>String</value>
+            </valueKind>
+            <defaultValue>
+              <value>off</value>
+            </defaultValue>
+            <description>
+              <value>Traces the communication between VS Code and the BlockML language server (V2).</value>
+            </description>
+            <scope>
+              <value>Window</value>
+            </scope>
+            <enumValues>
+              <type:TextEntity value="off" />
+              <type:TextEntity value="messages" />
+              <type:TextEntity value="verbose" />
+            </enumValues>
+          </contrib:Setting>
+
+          <contrib:Setting bml:id="enableLanguageServer">
+            <key>
+              <value>blockml.bml.enableLanguageServer</value>
+            </key>
+            <valueKind>
+              <value>Boolean</value>
+            </valueKind>
+            <defaultValue>
+              <value>true</value>
+            </defaultValue>
+            <description>
+              <value>Enable the BlockML language server client (V2). Ignored until the V2 milestone is shipped.</value>
+            </description>
+            <scope>
+              <value>Window</value>
+            </scope>
+          </contrib:Setting>
+
+          <contrib:Setting bml:id="enableSemanticHighlighting">
+            <key>
+              <value>blockml.bml.enableSemanticHighlighting</value>
+            </key>
+            <valueKind>
+              <value>Boolean</value>
+            </valueKind>
+            <defaultValue>
+              <value>true</value>
+            </defaultValue>
+            <description>
+              <value>Enable LSP semantic highlighting on top of the TextMate grammar (V2).</value>
+            </description>
+            <scope>
+              <value>Window</value>
+            </scope>
+          </contrib:Setting>
+
+        </settings>
+      </contrib:ConfigurationContribution>
+
+      <!-- ========== V2 ========== -->
+
+      <contrib:LanguageServerContribution bml:id="bmlLanguageServer">
+        <milestone>
+          <value>V2</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <serverModulePath>
+          <value>./server/out/server.js</value>
+        </serverModulePath>
+        <transport>
+          <value>ipc</value>
+        </transport>
+        <traceSettingKey>
+          <value>blockml.bml.trace.server</value>
+        </traceSettingKey>
+        <documentSelectors>
+          <type:TextEntity value="language:bml" />
+          <type:TextEntity value="scheme:file" />
+        </documentSelectors>
+        <clientFeatures>
+          <type:TextEntity value="diagnostics" />
+          <type:TextEntity value="hover" />
+          <type:TextEntity value="completion" />
+          <type:TextEntity value="definition" />
+          <type:TextEntity value="references" />
+          <type:TextEntity value="documentSymbol" />
+          <type:TextEntity value="semanticTokens" />
+        </clientFeatures>
+      </contrib:LanguageServerContribution>
+
+      <contrib:GrammarContribution bml:id="bmlAdvancedGrammar">
+        <milestone>
+          <value>V2</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <languageId>
+          <value>bml</value>
+        </languageId>
+        <scopeName>
+          <value>source.bml</value>
+        </scopeName>
+        <path>
+          <value>./syntaxes/bml.tmLanguage.json</value>
+        </path>
+        <embeddedLanguagesNote>
+          <value>V2 extends V1 patterns with type-reference-looking QNames, bml:* directives, and clearer member/property name scopes; semantic tokens refine further.</value>
+        </embeddedLanguagesNote>
+        <scopes>
+          <type:TextEntity value="entity.name.type.bml" />
+          <type:TextEntity value="entity.name.namespace.bml" />
+          <type:TextEntity value="keyword.control.directive.bml" />
+          <type:TextEntity value="variable.other.member.bml" />
+          <type:TextEntity value="support.type.property-name.bml" />
+        </scopes>
+        <patternNotes>
+          <type:TextEntity value="Prefixed type references (core:Block, type:Text, …)" />
+          <type:TextEntity value="bml:id / bml:version / bml:each / bml:if / bml:xml directive attributes" />
+          <type:TextEntity value="Member element names under properties/aggregations/associations/capabilities" />
+        </patternNotes>
+      </contrib:GrammarContribution>
+
+      <contrib:SemanticHighlightingContribution bml:id="bmlSemanticHighlighting">
+        <milestone>
+          <value>V2</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <viaLanguageServer>
+          <value>true</value>
+        </viaLanguageServer>
+        <tokenTypes>
+          <type:TextEntity value="namespace" />
+          <type:TextEntity value="type" />
+          <type:TextEntity value="class" />
+          <type:TextEntity value="property" />
+          <type:TextEntity value="variable" />
+          <type:TextEntity value="keyword" />
+          <type:TextEntity value="modifier" />
+        </tokenTypes>
+        <tokenModifiers>
+          <type:TextEntity value="declaration" />
+          <type:TextEntity value="definition" />
+          <type:TextEntity value="readonly" />
+          <type:TextEntity value="deprecated" />
+          <type:TextEntity value="abstract" />
+          <type:TextEntity value="defaultLibrary" />
+        </tokenModifiers>
+      </contrib:SemanticHighlightingContribution>
+
+      <contrib:NavigationContribution bml:id="bmlNavigation">
+        <milestone>
+          <value>V2</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <preferLanguageServer>
+          <value>true</value>
+        </preferLanguageServer>
+        <ctrlClickEnabled>
+          <value>true</value>
+        </ctrlClickEnabled>
+        <kinds>
+          <type:TextEntity value="BlockType" />
+          <type:TextEntity value="BaseType" />
+          <type:TextEntity value="Property" />
+          <type:TextEntity value="Aggregation" />
+          <type:TextEntity value="Association" />
+          <type:TextEntity value="Capability" />
+          <type:TextEntity value="ReferenceSee" />
+          <type:TextEntity value="InstanceId" />
+          <type:TextEntity value="NamespacePrefix" />
+        </kinds>
+        <gestures>
+          <type:TextEntity value="goToDefinition" />
+          <type:TextEntity value="peekDefinition" />
+          <type:TextEntity value="findReferences" />
+          <type:TextEntity value="goToTypeDefinition" />
+        </gestures>
+      </contrib:NavigationContribution>
+
+      <contrib:CommandContribution bml:id="goToDefinitionCommand">
+        <milestone>
+          <value>V2</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <commandId>
+          <value>blockml.bml.goToDefinition</value>
+        </commandId>
+        <title>
+          <value>Go to Definition</value>
+        </title>
+        <category>
+          <value>BlockML</value>
+        </category>
+      </contrib:CommandContribution>
+
+      <contrib:CommandContribution bml:id="peekDefinitionCommand">
+        <milestone>
+          <value>V2</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <commandId>
+          <value>blockml.bml.peekDefinition</value>
+        </commandId>
+        <title>
+          <value>Peek Definition</value>
+        </title>
+        <category>
+          <value>BlockML</value>
+        </category>
+      </contrib:CommandContribution>
+
+      <contrib:CommandContribution bml:id="findReferencesCommand">
+        <milestone>
+          <value>V2</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <commandId>
+          <value>blockml.bml.findReferences</value>
+        </commandId>
+        <title>
+          <value>Find All References</value>
+        </title>
+        <category>
+          <value>BlockML</value>
+        </category>
+      </contrib:CommandContribution>
+
+      <contrib:KeybindingContribution bml:id="goToDefinitionKey">
+        <milestone>
+          <value>V2</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <commandId>
+          <value>blockml.bml.goToDefinition</value>
+        </commandId>
+        <key>
+          <value>f12</value>
+        </key>
+        <when>
+          <value>editorLangId == 'bml'</value>
+        </when>
+      </contrib:KeybindingContribution>
+
+      <contrib:KeybindingContribution bml:id="peekDefinitionKey">
+        <milestone>
+          <value>V2</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <commandId>
+          <value>blockml.bml.peekDefinition</value>
+        </commandId>
+        <key>
+          <value>alt+f12</value>
+        </key>
+        <when>
+          <value>editorLangId == 'bml'</value>
+        </when>
+      </contrib:KeybindingContribution>
+
+      <contrib:KeybindingContribution bml:id="findReferencesKey">
+        <milestone>
+          <value>V2</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <commandId>
+          <value>blockml.bml.findReferences</value>
+        </commandId>
+        <key>
+          <value>shift+f12</value>
+        </key>
+        <when>
+          <value>editorLangId == 'bml'</value>
+        </when>
+      </contrib:KeybindingContribution>
+
+    </contributions>
+  </aggregations>
+
+</block>
