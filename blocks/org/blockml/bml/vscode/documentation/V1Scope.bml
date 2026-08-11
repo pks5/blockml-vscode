@@ -24,7 +24,10 @@
     1. Simple syntax highlighting — TextMate grammar for XML-like BML structure: tags, attributes,
        comments, strings, and basic ${ } / &lt;$ $&gt; expression markers. No semantic resolution.
     2. BML file type — language id bml, alias BlockML / BML, extension .bml, activation onLanguage:bml.
-    3. File icon — dedicated icon asset associated with .bml / language bml.
+    3. File icon — use the repository asset icons/blockml.svg as the VS Code / Cursor filetype icon
+       for .bml / language bml (explorer, tabs, and language association).
+    4. Marketplace icon — use icons/blockml.png as the large VS Code Marketplace / Open VSX gallery
+       icon (package.json icon field on Extension). Distinct from the filetype SVG.
 
     Out of scope for V1: language server, semantic tokens, cross-file navigation, rich settings
     beyond a small configuration section.
@@ -42,6 +45,12 @@
     </see>
     <see type="contrib:IconContribution" relation="Defines">
       BML file icon contribution.
+    </see>
+    <see file="icons/blockml.svg" relation="Requires">
+      Filetype icon asset for .bml / language bml in VS Code.
+    </see>
+    <see file="icons/blockml.png" relation="Requires">
+      Large Marketplace gallery icon (package.json icon).
     </see>
     <see type="vtype:ReleaseMilestone" relation="SeeAlso">
       V1 / V2 milestone enum.

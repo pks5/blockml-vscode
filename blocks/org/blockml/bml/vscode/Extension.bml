@@ -30,6 +30,7 @@
 
     Mapping intent (generator / LLM):
     • publisher, name, displayName, description, version → package.json identity fields
+    • icon → package.json icon (Marketplace gallery image)
     • enginesVscode → engines.vscode
     • categories → package.json categories
     • activationEvents → activationEvents
@@ -49,6 +50,9 @@
     </see>
     <see type="contrib:Contribution" relation="SeeAlso">
       Abstract contribution branch aggregated under contributions.
+    </see>
+    <see type="contrib:IconContribution" relation="ContrastsWith">
+      Filetype icon contribution — separate from Extension.icon Marketplace gallery image.
     </see>
     <see type="vscode:BlockMlExtension" relation="SeeAlso">
       Concrete BlockML VS Code extension catalogue.
@@ -71,6 +75,11 @@
     <description type="Text">
       <documentation>Short Marketplace description of what the extension does.</documentation>
     </description>
+    <icon type="FilePath">
+      <documentation>Large Marketplace gallery icon path relative to the extension package root
+        (package.json icon). Distinct from the filetype icon in IconContribution — for BlockML
+        this is icons/blockml.png.</documentation>
+    </icon>
     <version type="Version">
       <documentation>SemVer of the published extension package (distinct from Library.version).</documentation>
     </version>

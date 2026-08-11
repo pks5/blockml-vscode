@@ -19,12 +19,22 @@
   <documentation>
     Describes the BML file icon for the explorer and editor tabs. Generators may emit a product
     icon theme fragment, language icon association, or document the asset path used by
-    contributes.iconThemes / file icon packaging. V1 ships a dedicated .bml icon.
+    contributes.iconThemes / file icon packaging. For the BlockML extension, the filetype icon
+    asset is icons/blockml.svg at the repository root — use it for .bml / language bml.
+
+    Do not confuse with Extension.icon (icons/blockml.png) — that large PNG is the Marketplace
+    gallery image in package.json, not the editor filetype glyph.
   </documentation>
 
   <references>
     <see type="doc:V1Scope" relation="AuthoringGuide">
       V1 includes BML file type icon.
+    </see>
+    <see file="icons/blockml.svg" relation="Requires">
+      Canonical filetype icon asset for .bml in VS Code.
+    </see>
+    <see file="icons/blockml.png" relation="ContrastsWith">
+      Marketplace gallery icon — Extension.icon / package.json icon, not this contribution.
     </see>
     <see type="contrib:LanguageContribution" relation="SeeAlso">
       Language id / extension the icon is associated with.
@@ -37,7 +47,7 @@
     </languageId>
     <iconPath type="FilePath">
       <documentation>Path to the icon asset relative to the extension root
-        (for example ./icons/bml.svg).</documentation>
+        (for BlockML: ./icons/blockml.svg).</documentation>
     </iconPath>
     <iconPathDark type="FilePath">
       <documentation>Optional dark-theme variant of the icon.</documentation>
