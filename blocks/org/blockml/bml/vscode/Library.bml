@@ -56,51 +56,57 @@
 
   <aggregations>
     <readMe>
-      <vscode:README />
+      <composition>
+        <vscode:README />
+      </composition>
     </readMe>
 
     <dependencies>
-      <blockml:Library />
+      <composition>
+        <blockml:Library />
+      </composition>
     </dependencies>
 
     <blocks>
-      <vscode:README />
-      <vscode:Extension />
-      <vscode:BlockMlExtension />
+      <composition>
+        <vscode:README />
+        <vscode:Extension />
+        <vscode:BlockMlExtension />
 
-      <contrib:Contribution />
-      <contrib:CharacterPair />
-      <contrib:GrammarPattern />
-      <contrib:LanguageContribution />
-      <contrib:GrammarContribution />
-      <contrib:IconContribution />
-      <contrib:ColorThemeContribution />
-      <contrib:Setting />
-      <contrib:ConfigurationContribution />
-      <contrib:CommandContribution />
-      <contrib:KeybindingContribution />
-      <contrib:LanguageServerContribution />
-      <contrib:NavigationContribution />
-      <contrib:SemanticHighlightingContribution />
+        <contrib:Contribution />
+        <contrib:CharacterPair />
+        <contrib:GrammarPattern />
+        <contrib:LanguageContribution />
+        <contrib:GrammarContribution />
+        <contrib:IconContribution />
+        <contrib:ColorThemeContribution />
+        <contrib:Setting />
+        <contrib:ConfigurationContribution />
+        <contrib:CommandContribution />
+        <contrib:KeybindingContribution />
+        <contrib:LanguageServerContribution />
+        <contrib:NavigationContribution />
+        <contrib:SemanticHighlightingContribution />
 
-      <theme:HighlightRole />
-      <theme:HighlightScheme />
-      <theme:FrameworkRoles />
-      <theme:TokenColorRule />
-      <theme:ColorTheme />
-      <theme:BlockMlDevColorTheme />
+        <theme:HighlightRole />
+        <theme:HighlightScheme />
+        <theme:FrameworkRoles />
+        <theme:TokenColorRule />
+        <theme:ColorTheme />
+        <theme:BlockMlDevColorTheme />
 
-      <vtype:ReleaseMilestone />
-      <vtype:SettingValueKind />
-      <vtype:ConfigurationScope />
-      <vtype:NavigationKind />
+        <vtype:ReleaseMilestone />
+        <vtype:SettingValueKind />
+        <vtype:ConfigurationScope />
+        <vtype:NavigationKind />
 
-      <doc:Introduction />
-      <doc:PluginArchitecture />
-      <doc:ContributionModel />
-      <doc:GenerationWorkflow />
-      <doc:V1Scope />
-      <doc:V2Scope />
+        <doc:Introduction />
+        <doc:PluginArchitecture />
+        <doc:ContributionModel />
+        <doc:GenerationWorkflow />
+        <doc:V1Scope />
+        <doc:V2Scope />
+      </composition>
     </blocks>
   </aggregations>
 

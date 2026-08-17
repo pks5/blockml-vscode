@@ -104,6 +104,6 @@
   },
 
   "dependencies": {
-    "@blockml/core": "^1.0.1"
+    "@blockml/core": "^1.0.2"
   }
 }
