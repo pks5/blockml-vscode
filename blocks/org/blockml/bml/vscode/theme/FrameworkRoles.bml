@@ -81,8 +81,8 @@
 
       <theme:HighlightRole bml:id="roleContainer">
         <roleId><value>container</value></roleId>
-        <textMateScope><value>meta.tag.framework.container.bml</value></textMateScope>
-        <hljsClass><value>meta</value></hljsClass>
+        <textMateScope><value>keyword.other.container.bml</value></textMateScope>
+        <hljsClass><value>keyword</value></hljsClass>
         <tags>
           <type:TextEntity value="properties" />
           <type:TextEntity value="aggregations" />
@@ -115,7 +115,6 @@
           <type:TextEntity value="implementation" />
           <type:TextEntity value="inputType" />
           <type:TextEntity value="outputType" />
-          <type:TextEntity value="suggestions" />
           <type:TextEntity value="override" />
           <type:TextEntity value="readOnly" />
           <type:TextEntity value="visibility" />

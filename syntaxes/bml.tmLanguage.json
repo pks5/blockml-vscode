@@ -6,9 +6,11 @@
     { "include": "#comment" },
     { "include": "#expression" },
     { "include": "#embed" },
+    { "include": "#block" },
     { "include": "#tagRoot" },
     { "include": "#tagIdentity" },
-    { "include": "#tagContainer" },
+    { "include": "#tagBlockContainer" },
+    { "include": "#tagMemberContainer" },
     { "include": "#tagFacet" },
     { "include": "#tag" }
   ],
@@ -77,6 +79,267 @@
         "8": { "name": "punctuation.definition.string.end.bml" }
       }
     },
+    "block": {
+      "name": "meta.tag.bml",
+      "begin": "(<)(block)(?=[\\s/>])",
+      "end": "(/?>)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "entity.name.type.framework.root.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" },
+        {
+          "begin": ">",
+          "end": "(?=</block>)",
+          "patterns": [
+            { "include": "#blockBody" }
+          ]
+        }
+      ]
+    },
+    "blockBody": {
+      "patterns": [
+        { "include": "#comment" },
+        { "include": "#expression" },
+        { "include": "#embed" },
+        { "include": "#closeTagBlock" },
+        { "include": "#tagIdentityElement" },
+        { "include": "#tagMemberContainerElement" },
+        { "include": "#tagBlockContainerElement" },
+        { "include": "#tagFacetElement" },
+        { "include": "#block" },
+        { "include": "#genericElement" }
+      ]
+    },
+    "memberBody": {
+      "patterns": [
+        { "include": "#comment" },
+        { "include": "#expression" },
+        { "include": "#embed" },
+        { "include": "#closeTagMemberField" },
+        { "include": "#tagIdentityElement" },
+        { "include": "#tagFacetElement" },
+        { "include": "#tagMemberSubContainerElement" },
+        { "include": "#genericElement" }
+      ]
+    },
+    "memberContainerBody": {
+      "patterns": [
+        { "include": "#comment" },
+        { "include": "#expression" },
+        { "include": "#embed" },
+        { "include": "#closeTagMemberContainer" },
+        { "include": "#memberElement" }
+      ]
+    },
+    "blockContainerBody": {
+      "patterns": [
+        { "include": "#comment" },
+        { "include": "#expression" },
+        { "include": "#embed" },
+        { "include": "#closeTagBlockContainer" },
+        { "include": "#blockBody" }
+      ]
+    },
+    "memberSubContainerBody": {
+      "patterns": [
+        { "include": "#comment" },
+        { "include": "#expression" },
+        { "include": "#embed" },
+        { "include": "#closeTagMemberSubContainer" },
+        { "include": "#memberBody" },
+        { "include": "#genericElement" }
+      ]
+    },
+    "memberElement": {
+      "name": "meta.tag.bml",
+      "begin": "(<)((?:[A-Za-z_][\\w.-]*:)?[A-Za-z_][\\w.-]*)(?=[\\s/>])",
+      "end": "(/?>)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "entity.name.tag.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" },
+        {
+          "begin": ">",
+          "end": "(?=</\\2>)",
+          "patterns": [
+            { "include": "#memberBody" }
+          ]
+        }
+      ]
+    },
+    "genericElement": {
+      "name": "meta.tag.bml",
+      "begin": "(<)((?:[A-Za-z_][\\w.-]*:)?[A-Za-z_][\\w.-]*)(?=[\\s/>])",
+      "end": "(/?>)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "entity.name.tag.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" }
+      ]
+    },
+    "tagIdentityElement": {
+      "name": "meta.tag.bml",
+      "begin": "(<)(name|type|baseType|is|isnot|version|abstract|final|definition|language)(?=[\\s/>])",
+      "end": "(/?>)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "keyword.other.definition.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" }
+      ]
+    },
+    "tagFacetElement": {
+      "name": "meta.tag.bml",
+      "begin": "(<)(value|documentation|summary|implementation|inputType|outputType|override|readOnly|visibility|status|since|changelog|examples|relation|see|content|default|description|title|bml:xml|bml:container)(?=[\\s/>])",
+      "end": "(/?>)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "support.type.framework.facet.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" }
+      ]
+    },
+    "tagMemberContainerElement": {
+      "name": "meta.tag.bml",
+      "begin": "(<)(properties|aggregations|associations|capabilities|constraints)(?=[\\s/>])",
+      "end": "(/?>)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "keyword.other.container.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" },
+        {
+          "begin": ">",
+          "end": "(?=</(?:properties|aggregations|associations|capabilities|constraints)>)",
+          "patterns": [
+            { "include": "#memberContainerBody" }
+          ]
+        }
+      ]
+    },
+    "tagBlockContainerElement": {
+      "name": "meta.tag.bml",
+      "begin": "(<)(contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references|blocks|readMe|library)(?=[\\s/>])",
+      "end": "(/?>)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "keyword.other.container.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" },
+        {
+          "begin": ">",
+          "end": "(?=</(?:contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references|blocks|readMe|library)>)",
+          "patterns": [
+            { "include": "#blockContainerBody" }
+          ]
+        }
+      ]
+    },
+    "tagMemberSubContainerElement": {
+      "name": "meta.tag.bml",
+      "begin": "(<)(suggestions|composition|constraints|groups|implementation)(?=[\\s/>])",
+      "end": "(/?>)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "keyword.other.container.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" },
+        {
+          "begin": ">",
+          "end": "(?=</(?:suggestions|composition|constraints|groups|implementation)>)",
+          "patterns": [
+            { "include": "#memberSubContainerBody" }
+          ]
+        }
+      ]
+    },
+    "closeTagBlock": {
+      "match": "(</)(block)(\\s*(>))",
+      "captures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "entity.name.type.framework.root.bml" },
+        "3": { "name": "punctuation.definition.tag.bml" }
+      }
+    },
+    "closeTagMemberContainer": {
+      "match": "(</)(properties|aggregations|associations|capabilities|constraints)(\\s*(>))",
+      "captures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "keyword.other.container.bml" },
+        "3": { "name": "punctuation.definition.tag.bml" }
+      }
+    },
+    "closeTagBlockContainer": {
+      "match": "(</)(contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references|blocks|readMe|library)(\\s*(>))",
+      "captures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "keyword.other.container.bml" },
+        "3": { "name": "punctuation.definition.tag.bml" }
+      }
+    },
+    "closeTagMemberSubContainer": {
+      "match": "(</)(suggestions|composition|constraints|groups|implementation)(\\s*(>))",
+      "captures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "keyword.other.container.bml" },
+        "3": { "name": "punctuation.definition.tag.bml" }
+      }
+    },
+    "closeTagMemberField": {
+      "patterns": [
+        {
+          "match": "(</)(name|type|baseType|is|isnot|version|abstract|final|definition|language)(\\s*(>))",
+          "captures": {
+            "1": { "name": "punctuation.definition.tag.bml" },
+            "2": { "name": "keyword.other.definition.bml" },
+            "3": { "name": "punctuation.definition.tag.bml" }
+          }
+        },
+        {
+          "match": "(</)(value|documentation|summary|implementation|inputType|outputType|override|readOnly|visibility|status|since|changelog|examples|relation|see|content|default|description|title|bml:xml|bml:container)(\\s*(>))",
+          "captures": {
+            "1": { "name": "punctuation.definition.tag.bml" },
+            "2": { "name": "support.type.framework.facet.bml" },
+            "3": { "name": "punctuation.definition.tag.bml" }
+          }
+        }
+      ]
+    },
     "tagRoot": {
       "name": "meta.tag.bml",
       "begin": "(</?)(block)(?=[\\s/>])",
@@ -107,13 +370,28 @@
         { "include": "#attribute" }
       ]
     },
-    "tagContainer": {
+    "tagBlockContainer": {
       "name": "meta.tag.bml",
-      "begin": "(</?)(properties|aggregations|associations|capabilities|constraints|contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references|blocks|readMe|library)(?=[\\s/>])",
+      "begin": "(</?)(contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references|blocks|readMe|library)(?=[\\s/>])",
       "end": "(/?>)",
       "beginCaptures": {
         "1": { "name": "punctuation.definition.tag.bml" },
-        "2": { "name": "meta.tag.framework.container.bml" }
+        "2": { "name": "keyword.other.container.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" }
+      ]
+    },
+    "tagMemberContainer": {
+      "name": "meta.tag.bml",
+      "begin": "(</?)(properties|aggregations|associations|capabilities|constraints)(?=[\\s/>])",
+      "end": "(/?>)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "keyword.other.container.bml" }
       },
       "endCaptures": {
         "1": { "name": "punctuation.definition.tag.bml" }
@@ -124,7 +402,7 @@
     },
     "tagFacet": {
       "name": "meta.tag.bml",
-      "begin": "(</?)(value|documentation|summary|implementation|inputType|outputType|suggestions|override|readOnly|visibility|status|since|changelog|examples|relation|see|content|default|description|title|bml:xml|bml:container)(?=[\\s/>])",
+      "begin": "(</?)(value|documentation|summary|implementation|inputType|outputType|override|readOnly|visibility|status|since|changelog|examples|relation|see|content|default|description|title|bml:xml|bml:container)(?=[\\s/>])",
       "end": "(/?>)",
       "beginCaptures": {
         "1": { "name": "punctuation.definition.tag.bml" },
