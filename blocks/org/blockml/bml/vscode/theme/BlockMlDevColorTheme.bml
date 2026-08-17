@@ -1,0 +1,207 @@
+<!--
+  BlockML VS Code — development color theme (1:1 BML scope colors)
+
+  FQN: org.blockml.bml.vscode.theme.BlockMlDevColorTheme
+
+  Distinct, high-contrast colors for every *.bml TextMate scope — grammar development SSOT.
+  Paired with theme:FrameworkRoles scopes from bmlSimpleGrammar.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:theme="org.blockml.bml.vscode.theme">
+
+  <name>BlockMlDevColorTheme</name>
+  <type>theme:BlockMlDevColorTheme</type>
+  <baseType>theme:ColorTheme</baseType>
+  <is>The BlockML grammar development color theme</is>
+
+  <summary>Dev color theme: one unmistakable color per BML TextMate scope for grammar authoring.</summary>
+
+  <documentation>
+    Concrete ColorTheme for extension contributors. Colors are deliberately exaggerated — readability
+    in production themes is not the goal; unambiguous scope discrimination is.
+
+    When HighlightScheme roles or GrammarContribution scopes change, update tokenColors here and
+    re-render themes/blockml-dev-color-theme.json.
+  </documentation>
+
+  <properties>
+    <themeId>
+      <value>blockml-dev</value>
+    </themeId>
+    <label>
+      <value>BlockML Dev</value>
+    </label>
+    <uiTheme>
+      <value>vs-dark</value>
+    </uiTheme>
+    <themePath>
+      <value>./themes/blockml-dev-color-theme.json</value>
+    </themePath>
+    <highlightScheme>
+      <value>theme:FrameworkRoles</value>
+    </highlightScheme>
+    <editorForeground>
+      <value>#D4D4D4</value>
+    </editorForeground>
+    <editorBackground>
+      <value>#1E1E1E</value>
+    </editorBackground>
+  </properties>
+
+  <aggregations>
+    <tokenColors>
+
+      <theme:TokenColorRule bml:id="colorRoot">
+        <ruleName><value>BML: root (block)</value></ruleName>
+        <scope><value>entity.name.type.framework.root.bml</value></scope>
+        <foreground><value>#FF79C6</value></foreground>
+        <fontStyle><value>bold</value></fontStyle>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorIdentity">
+        <ruleName><value>BML: identity</value></ruleName>
+        <scope><value>keyword.other.definition.bml</value></scope>
+        <foreground><value>#C586C0</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorContainer">
+        <ruleName><value>BML: container</value></ruleName>
+        <scope><value>keyword.other.container.bml</value></scope>
+        <foreground><value>#4EC9B0</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorFacet">
+        <ruleName><value>BML: facet</value></ruleName>
+        <scope><value>support.type.framework.facet.bml</value></scope>
+        <foreground><value>#6A9955</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorDomainType">
+        <ruleName><value>BML: domain type (PascalCase)</value></ruleName>
+        <scope><value>entity.name.type.bml</value></scope>
+        <foreground><value>#DCDCAA</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorDomainTag">
+        <ruleName><value>BML: domain member tag</value></ruleName>
+        <scope><value>entity.name.tag.bml</value></scope>
+        <foreground><value>#CE9178</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorAttribute">
+        <ruleName><value>BML: attribute name</value></ruleName>
+        <scope><value>entity.other.attribute-name.bml</value></scope>
+        <foreground><value>#9CDCFE</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorStringDouble">
+        <ruleName><value>BML: double-quoted string</value></ruleName>
+        <scope><value>string.quoted.double.bml</value></scope>
+        <foreground><value>#CE9178</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorStringSingle">
+        <ruleName><value>BML: single-quoted string</value></ruleName>
+        <scope><value>string.quoted.single.bml</value></scope>
+        <foreground><value>#D7BA7D</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorComment">
+        <ruleName><value>BML: comment</value></ruleName>
+        <scope><value>comment.block.bml</value></scope>
+        <foreground><value>#608B4E</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorInterpolation">
+        <ruleName><value>BML: interpolation</value></ruleName>
+        <scope><value>keyword.other.interpolation.bml</value></scope>
+        <foreground><value>#D7BA7D</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorEmbed">
+        <ruleName><value>BML: embed marker</value></ruleName>
+        <scope><value>keyword.control.embed.bml</value></scope>
+        <foreground><value>#D16969</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorMetaTag">
+        <ruleName><value>BML: meta tag region</value></ruleName>
+        <scope><value>meta.tag.bml</value></scope>
+        <foreground><value>#808080</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorPunctTag">
+        <ruleName><value>BML: tag punctuation</value></ruleName>
+        <scope><value>punctuation.definition.tag.bml</value></scope>
+        <foreground><value>#808080</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorPunctComment">
+        <ruleName><value>BML: comment punctuation</value></ruleName>
+        <scope><value>punctuation.definition.comment.bml</value></scope>
+        <foreground><value>#608B4E</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorPunctInterpolation">
+        <ruleName><value>BML: interpolation punctuation</value></ruleName>
+        <scope><value>punctuation.definition.interpolation.bml</value></scope>
+        <foreground><value>#808080</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorPunctInterpolationBegin">
+        <ruleName><value>BML: interpolation begin</value></ruleName>
+        <scope><value>punctuation.definition.interpolation.begin.bml</value></scope>
+        <foreground><value>#808080</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorPunctInterpolationEnd">
+        <ruleName><value>BML: interpolation end</value></ruleName>
+        <scope><value>punctuation.definition.interpolation.end.bml</value></scope>
+        <foreground><value>#808080</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorPunctEmbed">
+        <ruleName><value>BML: embed punctuation</value></ruleName>
+        <scope><value>punctuation.definition.embed.bml</value></scope>
+        <foreground><value>#808080</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorPunctEmbedBegin">
+        <ruleName><value>BML: embed begin</value></ruleName>
+        <scope><value>punctuation.definition.embed.begin.bml</value></scope>
+        <foreground><value>#808080</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorPunctEmbedEnd">
+        <ruleName><value>BML: embed end</value></ruleName>
+        <scope><value>punctuation.definition.embed.end.bml</value></scope>
+        <foreground><value>#808080</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorPunctStringBegin">
+        <ruleName><value>BML: string begin quote</value></ruleName>
+        <scope><value>punctuation.definition.string.begin.bml</value></scope>
+        <foreground><value>#808080</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorPunctStringEnd">
+        <ruleName><value>BML: string end quote</value></ruleName>
+        <scope><value>punctuation.definition.string.end.bml</value></scope>
+        <foreground><value>#808080</value></foreground>
+      </theme:TokenColorRule>
+
+      <theme:TokenColorRule bml:id="colorPunctKeyValue">
+        <ruleName><value>BML: attribute key-value separator</value></ruleName>
+        <scope><value>punctuation.separator.key-value.bml</value></scope>
+        <foreground><value>#D4D4D4</value></foreground>
+      </theme:TokenColorRule>
+
+    </tokenColors>
+  </aggregations>
+
+</block>

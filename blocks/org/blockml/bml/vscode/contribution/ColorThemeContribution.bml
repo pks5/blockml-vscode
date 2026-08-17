@@ -1,0 +1,52 @@
+<!--
+  BlockML VS Code — editor color theme contribution
+
+  FQN: org.blockml.bml.vscode.contribution.ColorThemeContribution
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:contrib="org.blockml.bml.vscode.contribution"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:theme="org.blockml.bml.vscode.theme"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>ColorThemeContribution</name>
+  <type>contrib:ColorThemeContribution</type>
+  <baseType>contrib:Contribution</baseType>
+  <is>An editor color theme contribution</is>
+
+  <documentation>
+    Registers a generated VS Code color theme for BML grammar development and validation.
+    Maps to package.json contributes.themes plus a generated theme JSON file from the referenced
+    theme:ColorTheme block (tokenColors, editor colors, label, uiTheme, themePath).
+
+    Primary use: BlockML Dev theme with one distinct color per *.bml TextMate scope so grammar
+    authors can see whether scopes match intent. End users may select the theme manually; workspace
+    settings in .vscode/settings.json can default to it during extension development.
+
+    Do not invent tokenColors only in JSON — amend theme:ColorTheme / TokenColorRule in BML first,
+    then re-render.
+  </documentation>
+
+  <references>
+    <see type="doc:GenerationWorkflow" relation="AuthoringGuide">
+      ColorTheme → themes/*.json render rules.
+    </see>
+    <see type="theme:ColorTheme" relation="Requires">
+      Theme descriptor with tokenColors SSOT.
+    </see>
+    <see type="theme:HighlightScheme" relation="SeeAlso">
+      Scopes the theme should cover.
+    </see>
+  </references>
+
+  <properties>
+    <colorTheme type="TypeReference(theme:ColorTheme)">
+      <documentation>Concrete ColorTheme block (for example theme:BlockMlDevColorTheme).</documentation>
+    </colorTheme>
+  </properties>
+
+</block>

@@ -21,13 +21,14 @@
   <baseType>theme:HighlightScheme</baseType>
   <is>The default BlockML framework highlight scheme</is>
 
-  <summary>Default semantic highlight scheme: root, identity, containers, and facets map to
-    distinct TextMate scope families; all other tags use the domain fallback scope.</summary>
+  <summary>Default semantic highlight scheme: root, identity, containers, facets, and PascalCase
+    domain type tags map to distinct TextMate scope families; camelCase domain tags use domainScope.</summary>
 
   <documentation>
     Concrete HighlightScheme used by bmlSimpleGrammar. Role → TextMate scope families are chosen so
-    common VS Code themes color &lt;block&gt;, identity fields, containers, facets, and domain tags
-    differently without a custom color theme.
+    common VS Code themes color &lt;block&gt;, identity fields, containers, facets, PascalCase Block
+    type references (&lt;MyBlock&gt;, &lt;ns:MyBlock&gt;), and camelCase domain tags differently
+    without a custom color theme.
 
     When changing tags or scopes, re-render GrammarContribution patterns and
     syntaxes/bml.tmLanguage.json via an explicit LLM / generator task — do not hand-edit the JSON
@@ -131,6 +132,12 @@
           <type:TextEntity value="bml:xml" />
           <type:TextEntity value="bml:container" />
         </tags>
+      </theme:HighlightRole>
+
+      <theme:HighlightRole bml:id="roleDomainType">
+        <roleId><value>domainType</value></roleId>
+        <textMateScope><value>entity.name.type.bml</value></textMateScope>
+        <hljsClass><value>title</value></hljsClass>
       </theme:HighlightRole>
 
     </roles>

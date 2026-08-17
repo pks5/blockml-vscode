@@ -48,6 +48,9 @@
     <see type="theme:FrameworkRoles" relation="SeeAlso">
       Active V1 semantic highlight scheme for framework tag colors.
     </see>
+    <see type="theme:BlockMlDevColorTheme" relation="SeeAlso">
+      Dev color theme — one color per BML TextMate scope for grammar authoring.
+    </see>
     <see type="vscode:Extension" relation="Extends">
       Abstract extension descriptor.
     </see>
@@ -227,6 +230,7 @@
           <type:TextEntity value="keyword.other.definition.bml" />
           <type:TextEntity value="keyword.other.container.bml" />
           <type:TextEntity value="support.type.framework.facet.bml" />
+          <type:TextEntity value="entity.name.type.bml" />
           <type:TextEntity value="entity.name.tag.bml" />
           <type:TextEntity value="entity.other.attribute-name.bml" />
           <type:TextEntity value="string.quoted.double.bml" />
@@ -247,7 +251,8 @@
           <type:TextEntity value="Framework identity tags name/type/baseType/… (role identity)" />
           <type:TextEntity value="Framework container tags — keyword.other.container.bml (role container)" />
           <type:TextEntity value="Framework facet tags value/documentation/… (role facet) — block level and member interior only" />
-          <type:TextEntity value="Domain / user member tags — fallback entity.name.tag.bml" />
+          <type:TextEntity value="Domain / user member tags — fallback entity.name.tag.bml (camelCase / lowercase local name)" />
+          <type:TextEntity value="PascalCase domain type tags — entity.name.type.bml (&lt;MyBlock&gt;, &lt;ns:MyBlock&gt;, role domainType; regex (?:prefix:)?[A-Z]…)" />
           <type:TextEntity value="Attribute names and quoted attribute values" />
           <type:TextEntity value="${ ... } expression interpolations" />
           <type:TextEntity value="&lt;$ ... $&gt; embedded expression markers" />
@@ -262,6 +267,7 @@
           <type:TextEntity value="tagBlockContainer" />
           <type:TextEntity value="tagMemberContainer" />
           <type:TextEntity value="tagFacet" />
+          <type:TextEntity value="tagDomainType" />
           <type:TextEntity value="tag" />
         </topLevelIncludes>
         <patterns>
@@ -338,10 +344,41 @@
             <includeRef><value>#tagIdentityElement</value></includeRef>
           </contrib:GrammarPattern>
 
+          <contrib:GrammarPattern bml:id="patternMemberTypeElement">
+            <patternKey><value>memberTypeElement</value></patternKey>
+            <scopeName><value>meta.tag.bml</value></scopeName>
+            <begin><value>(&lt;)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\s/>])</value></begin>
+            <end><value>(/?&gt;)</value></end>
+            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.bml"}}</value></beginCapturesJson>
+            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
+            <nestedIncludes>
+              <type:TextEntity value="#attribute" />
+              <type:TextEntity value="#memberBody" />
+            </nestedIncludes>
+          </contrib:GrammarPattern>
+
+          <contrib:GrammarPattern bml:id="patternDomainTypeElement">
+            <patternKey><value>domainTypeElement</value></patternKey>
+            <scopeName><value>meta.tag.bml</value></scopeName>
+            <begin><value>(&lt;)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\s/>])</value></begin>
+            <end><value>(/?&gt;)</value></end>
+            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.bml"}}</value></beginCapturesJson>
+            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
+            <nestedIncludes>
+              <type:TextEntity value="#attribute" />
+            </nestedIncludes>
+          </contrib:GrammarPattern>
+
+          <contrib:GrammarPattern bml:id="patternCloseTagDomainType">
+            <patternKey><value>closeTagDomainType</value></patternKey>
+            <match><value>(&lt;/)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(\s*(>))</value></match>
+            <capturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.bml"},"3":{"name":"punctuation.definition.tag.bml"}}</value></capturesJson>
+          </contrib:GrammarPattern>
+
           <contrib:GrammarPattern bml:id="patternMemberElement">
             <patternKey><value>memberElement</value></patternKey>
             <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;)((?:[A-Za-z_][\w.-]*:)?[A-Za-z_][\w.-]*)(?=[\s/>])</value></begin>
+            <begin><value>(&lt;)((?:[A-Za-z_][\w.-]*:)?[a-z_][\w.-]*)(?=[\s/>])</value></begin>
             <end><value>(/?&gt;)</value></end>
             <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.tag.bml"}}</value></beginCapturesJson>
             <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
@@ -461,12 +498,24 @@
             </nestedIncludes>
           </contrib:GrammarPattern>
 
+          <contrib:GrammarPattern bml:id="patternTagDomainType">
+            <patternKey><value>tagDomainType</value></patternKey>
+            <scopeName><value>meta.tag.bml</value></scopeName>
+            <begin><value>(&lt;/?)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\s/>])</value></begin>
+            <end><value>(/?&gt;)</value></end>
+            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.bml"}}</value></beginCapturesJson>
+            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
+            <nestedIncludes>
+              <type:TextEntity value="#attribute" />
+            </nestedIncludes>
+          </contrib:GrammarPattern>
+
           <contrib:GrammarPattern bml:id="patternTag">
             <patternKey><value>tag</value></patternKey>
             <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;/?)(([A-Za-z_:][\w:.-]*))</value></begin>
+            <begin><value>(&lt;/?)((?:[A-Za-z_][\w.-]*:)?[a-z_][\w.-]*)</value></begin>
             <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.tag.bml"},"3":{"name":"entity.name.tag.bml"}}</value></beginCapturesJson>
+            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.tag.bml"}}</value></beginCapturesJson>
             <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
             <nestedIncludes>
               <type:TextEntity value="#attribute" />
@@ -504,6 +553,18 @@
           <value>bml_file</value>
         </iconDefinitionId>
       </contrib:IconContribution>
+
+      <contrib:ColorThemeContribution bml:id="bmlDevColorTheme">
+        <milestone>
+          <value>V1</value>
+        </milestone>
+        <enabled>
+          <value>true</value>
+        </enabled>
+        <colorTheme>
+          <value>theme:BlockMlDevColorTheme</value>
+        </colorTheme>
+      </contrib:ColorThemeContribution>
 
       <contrib:ConfigurationContribution bml:id="blockmlConfiguration">
         <milestone>

@@ -40,6 +40,11 @@
     • Changing a HighlightScheme (tags or scopes) requires an explicit LLM / generator re-render
       of GrammarContribution patterns and syntaxes/*.tmLanguage.json — never auto-build on save
     • Emit icon theme JSON only from IconContribution theme* / iconPath / fileExtension fields
+    • Emit color theme JSON only from ColorTheme (tokenColors, editorForeground/Background,
+      label, uiTheme, themePath) referenced by ColorThemeContribution — do not invent colors only
+      in themes/*.json
+    • When ColorTheme.highlightScheme is set, verify tokenColors cover every
+      HighlightRole.textMateScope, domainScope, and GrammarContribution.scopes entry
     • For V1 (no LanguageServerContribution in the filtered set): omit package.json main and
       activationEvents even if Extension.main / activationEvents are present in BML for V2
 
@@ -59,6 +64,9 @@
     </see>
     <see type="theme:HighlightScheme" relation="SeeAlso">
       Semantic highlight schemes that drive framework tag TextMate scopes.
+    </see>
+    <see type="theme:ColorTheme" relation="SeeAlso">
+      Dev / optional editor color themes with explicit *.bml scope colors.
     </see>
   </references>
 

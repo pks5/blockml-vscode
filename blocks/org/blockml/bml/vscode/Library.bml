@@ -74,6 +74,7 @@
       <contrib:LanguageContribution />
       <contrib:GrammarContribution />
       <contrib:IconContribution />
+      <contrib:ColorThemeContribution />
       <contrib:Setting />
       <contrib:ConfigurationContribution />
       <contrib:CommandContribution />
@@ -85,6 +86,9 @@
       <theme:HighlightRole />
       <theme:HighlightScheme />
       <theme:FrameworkRoles />
+      <theme:TokenColorRule />
+      <theme:ColorTheme />
+      <theme:BlockMlDevColorTheme />
 
       <vtype:ReleaseMilestone />
       <vtype:SettingValueKind />

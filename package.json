@@ -52,6 +52,13 @@
         "path": "./icons/blockml-icon-theme.json"
       }
     ],
+    "themes": [
+      {
+        "label": "BlockML Dev",
+        "uiTheme": "vs-dark",
+        "path": "./themes/blockml-dev-color-theme.json"
+      }
+    ],
     "configuration": {
       "title": "BlockML",
       "properties": {
@@ -86,6 +93,7 @@
     "blocks",
     "icons",
     "syntaxes",
+    "themes",
     "language-configuration.json",
     "README.md",
     "LICENSE"

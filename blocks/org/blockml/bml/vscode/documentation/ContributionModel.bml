@@ -30,6 +30,8 @@
       GrammarContribution / tmLanguage
     • IconContribution → contributes.iconThemes + icon theme JSON (themeId / themeLabel /
       themePath) mapping fileExtension / languageId to iconPath
+    • ColorThemeContribution → contributes.themes + themes/*.json from theme:ColorTheme
+      tokenColors and editor colors (grammar dev — theme:BlockMlDevColorTheme)
     • ConfigurationContribution / Setting → contributes.configuration (SSOT for all settings)
     • CommandContribution → contributes.commands
     • KeybindingContribution → contributes.keybindings
@@ -41,7 +43,8 @@
     first, then generate accessors from BML. Language-config and grammar regexes must not be
     invented only in JSON — amend LanguageContribution / GrammarPattern in BML first. Framework
     tag lists and role scopes must not be invented only in JSON — amend HighlightScheme first, then
-    re-render GrammarPatterns + tmLanguage via LLM.
+    re-render GrammarPatterns + tmLanguage via LLM. Token colors must not be invented only in
+    themes/*.json — amend theme:ColorTheme / TokenColorRule in BML first, then re-render.
   </documentation>
 
   <references>
@@ -62,6 +65,12 @@
     </see>
     <see type="theme:HighlightScheme" relation="SeeAlso">
       Semantic highlight schemes for framework vs domain tags.
+    </see>
+    <see type="theme:ColorTheme" relation="SeeAlso">
+      Editor color theme SSOT (TokenColorRule → themes/*.json).
+    </see>
+    <see type="contrib:ColorThemeContribution" relation="SeeAlso">
+      contributes.themes registration.
     </see>
     <see type="doc:PluginArchitecture" relation="SeeAlso">
       Package and type overview.

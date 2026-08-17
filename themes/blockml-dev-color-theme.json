@@ -1,0 +1,180 @@
+{
+  "$schema": "vscode://schemas/color-theme",
+  "name": "BlockML Dev",
+  "type": "dark",
+  "colors": {
+    "editor.foreground": "#D4D4D4",
+    "editor.background": "#1E1E1E"
+  },
+  "tokenColors": [
+    {
+      "name": "BML: root (block)",
+      "scope": "entity.name.type.framework.root.bml",
+      "settings": {
+        "foreground": "#FF79C6",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "BML: identity",
+      "scope": "keyword.other.definition.bml",
+      "settings": {
+        "foreground": "#C586C0"
+      }
+    },
+    {
+      "name": "BML: container",
+      "scope": "keyword.other.container.bml",
+      "settings": {
+        "foreground": "#4EC9B0"
+      }
+    },
+    {
+      "name": "BML: facet",
+      "scope": "support.type.framework.facet.bml",
+      "settings": {
+        "foreground": "#6A9955"
+      }
+    },
+    {
+      "name": "BML: domain type (PascalCase)",
+      "scope": "entity.name.type.bml",
+      "settings": {
+        "foreground": "#DCDCAA"
+      }
+    },
+    {
+      "name": "BML: domain member tag",
+      "scope": "entity.name.tag.bml",
+      "settings": {
+        "foreground": "#CE9178"
+      }
+    },
+    {
+      "name": "BML: attribute name",
+      "scope": "entity.other.attribute-name.bml",
+      "settings": {
+        "foreground": "#9CDCFE"
+      }
+    },
+    {
+      "name": "BML: double-quoted string",
+      "scope": "string.quoted.double.bml",
+      "settings": {
+        "foreground": "#CE9178"
+      }
+    },
+    {
+      "name": "BML: single-quoted string",
+      "scope": "string.quoted.single.bml",
+      "settings": {
+        "foreground": "#D7BA7D"
+      }
+    },
+    {
+      "name": "BML: comment",
+      "scope": "comment.block.bml",
+      "settings": {
+        "foreground": "#608B4E"
+      }
+    },
+    {
+      "name": "BML: interpolation",
+      "scope": "keyword.other.interpolation.bml",
+      "settings": {
+        "foreground": "#D7BA7D"
+      }
+    },
+    {
+      "name": "BML: embed marker",
+      "scope": "keyword.control.embed.bml",
+      "settings": {
+        "foreground": "#D16969"
+      }
+    },
+    {
+      "name": "BML: meta tag region",
+      "scope": "meta.tag.bml",
+      "settings": {
+        "foreground": "#808080"
+      }
+    },
+    {
+      "name": "BML: tag punctuation",
+      "scope": "punctuation.definition.tag.bml",
+      "settings": {
+        "foreground": "#808080"
+      }
+    },
+    {
+      "name": "BML: comment punctuation",
+      "scope": "punctuation.definition.comment.bml",
+      "settings": {
+        "foreground": "#608B4E"
+      }
+    },
+    {
+      "name": "BML: interpolation punctuation",
+      "scope": "punctuation.definition.interpolation.bml",
+      "settings": {
+        "foreground": "#808080"
+      }
+    },
+    {
+      "name": "BML: interpolation begin",
+      "scope": "punctuation.definition.interpolation.begin.bml",
+      "settings": {
+        "foreground": "#808080"
+      }
+    },
+    {
+      "name": "BML: interpolation end",
+      "scope": "punctuation.definition.interpolation.end.bml",
+      "settings": {
+        "foreground": "#808080"
+      }
+    },
+    {
+      "name": "BML: embed punctuation",
+      "scope": "punctuation.definition.embed.bml",
+      "settings": {
+        "foreground": "#808080"
+      }
+    },
+    {
+      "name": "BML: embed begin",
+      "scope": "punctuation.definition.embed.begin.bml",
+      "settings": {
+        "foreground": "#808080"
+      }
+    },
+    {
+      "name": "BML: embed end",
+      "scope": "punctuation.definition.embed.end.bml",
+      "settings": {
+        "foreground": "#808080"
+      }
+    },
+    {
+      "name": "BML: string begin quote",
+      "scope": "punctuation.definition.string.begin.bml",
+      "settings": {
+        "foreground": "#808080"
+      }
+    },
+    {
+      "name": "BML: string end quote",
+      "scope": "punctuation.definition.string.end.bml",
+      "settings": {
+        "foreground": "#808080"
+      }
+    },
+    {
+      "name": "BML: attribute key-value separator",
+      "scope": "punctuation.separator.key-value.bml",
+      "settings": {
+        "foreground": "#D4D4D4"
+      }
+    }
+  ]
+}

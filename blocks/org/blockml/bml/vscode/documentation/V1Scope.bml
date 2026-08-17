@@ -39,8 +39,9 @@
 
     Out of scope for V1: language server, semantic tokens, cross-file navigation, rich settings
     beyond the ConfigurationContribution already declared for forward-compatible V2 keys, and
-    custom VS Code color themes (contributes.themes) — colors rely on TextMate scope families
-    painted by the active editor theme.
+    polished end-user color themes. V1 ships BlockML Dev (theme:BlockMlDevColorTheme) for grammar
+    authoring — explicit *.bml scope colors rendered from BML; contributors enable it via
+    workbench.colorTheme in .vscode/settings.json.
   </documentation>
 
   <references>
