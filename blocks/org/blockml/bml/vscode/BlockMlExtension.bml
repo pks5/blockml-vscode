@@ -89,822 +89,642 @@
 
   <aggregations>
     <categories>
-      <type:TextEntity value="Programming Languages" />
-      <type:TextEntity value="Themes" />
+      <composition>
+        <type:TextEntity value="Programming Languages" />
+        <type:TextEntity value="Themes" />
+      </composition>
     </categories>
 
     <activationEvents>
-      <type:TextEntity value="onLanguage:bml" />
+      <composition>
+        <type:TextEntity value="onLanguage:bml" />
+      </composition>
     </activationEvents>
 
     <contributions>
+      <composition>
+        <!-- ========== V1 ========== -->
 
-      <!-- ========== V1 ========== -->
+        <contrib:LanguageContribution bml:id="bmlLanguage">
+          <milestone>V1</milestone>
+          <enabled>true</enabled>
+          <languageId>bml</languageId>
+          <configurationPath>./language-configuration.json</configurationPath>
+          <blockCommentOpen>&lt;!--</blockCommentOpen>
+          <blockCommentClose>--&gt;</blockCommentClose>
+          <aliases>
+            <type:TextEntity value="BlockML" />
+            <type:TextEntity value="BML" />
+          </aliases>
+          <extensions>
+            <type:TextEntity value=".bml" />
+          </extensions>
+          <brackets>
+            <contrib:CharacterPair bml:id="bracketAngle">
+              <open>&lt;</open>
+              <close>&gt;</close>
+            </contrib:CharacterPair>
+            <contrib:CharacterPair bml:id="bracketCurly">
+              <open>{</open>
+              <close>}</close>
+            </contrib:CharacterPair>
+            <contrib:CharacterPair bml:id="bracketParen">
+              <open>(</open>
+              <close>)</close>
+            </contrib:CharacterPair>
+            <contrib:CharacterPair bml:id="bracketSquare">
+              <open>[</open>
+              <close>]</close>
+            </contrib:CharacterPair>
+          </brackets>
+          <autoClosingPairs>
+            <contrib:CharacterPair bml:id="autoAngle">
+              <open>&lt;</open>
+              <close>&gt;</close>
+            </contrib:CharacterPair>
+            <contrib:CharacterPair bml:id="autoDoubleQuote">
+              <open>"</open>
+              <close>"</close>
+            </contrib:CharacterPair>
+            <contrib:CharacterPair bml:id="autoSingleQuote">
+              <open>'</open>
+              <close>'</close>
+            </contrib:CharacterPair>
+            <contrib:CharacterPair bml:id="autoCurly">
+              <open>{</open>
+              <close>}</close>
+            </contrib:CharacterPair>
+            <contrib:CharacterPair bml:id="autoParen">
+              <open>(</open>
+              <close>)</close>
+            </contrib:CharacterPair>
+            <contrib:CharacterPair bml:id="autoSquare">
+              <open>[</open>
+              <close>]</close>
+            </contrib:CharacterPair>
+            <contrib:CharacterPair bml:id="autoBlockComment">
+              <open>&lt;!--</open>
+              <close>--&gt;</close>
+            </contrib:CharacterPair>
+          </autoClosingPairs>
+          <surroundingPairs>
+            <contrib:CharacterPair bml:id="surroundAngle">
+              <open>&lt;</open>
+              <close>&gt;</close>
+            </contrib:CharacterPair>
+            <contrib:CharacterPair bml:id="surroundDoubleQuote">
+              <open>"</open>
+              <close>"</close>
+            </contrib:CharacterPair>
+            <contrib:CharacterPair bml:id="surroundSingleQuote">
+              <open>'</open>
+              <close>'</close>
+            </contrib:CharacterPair>
+            <contrib:CharacterPair bml:id="surroundCurly">
+              <open>{</open>
+              <close>}</close>
+            </contrib:CharacterPair>
+            <contrib:CharacterPair bml:id="surroundParen">
+              <open>(</open>
+              <close>)</close>
+            </contrib:CharacterPair>
+            <contrib:CharacterPair bml:id="surroundSquare">
+              <open>[</open>
+              <close>]</close>
+            </contrib:CharacterPair>
+          </surroundingPairs>
+        </contrib:LanguageContribution>
 
-      <contrib:LanguageContribution bml:id="bmlLanguage">
-        <milestone>
-          <value>V1</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <languageId>
-          <value>bml</value>
-        </languageId>
-        <configurationPath>
-          <value>./language-configuration.json</value>
-        </configurationPath>
-        <blockCommentOpen>
-          <value>&lt;!--</value>
-        </blockCommentOpen>
-        <blockCommentClose>
-          <value>--&gt;</value>
-        </blockCommentClose>
-        <aliases>
-          <type:TextEntity value="BlockML" />
-          <type:TextEntity value="BML" />
-        </aliases>
-        <extensions>
-          <type:TextEntity value=".bml" />
-        </extensions>
-        <brackets>
-          <contrib:CharacterPair bml:id="bracketAngle">
-            <open><value>&lt;</value></open>
-            <close><value>&gt;</value></close>
-          </contrib:CharacterPair>
-          <contrib:CharacterPair bml:id="bracketCurly">
-            <open><value>{</value></open>
-            <close><value>}</value></close>
-          </contrib:CharacterPair>
-          <contrib:CharacterPair bml:id="bracketParen">
-            <open><value>(</value></open>
-            <close><value>)</value></close>
-          </contrib:CharacterPair>
-          <contrib:CharacterPair bml:id="bracketSquare">
-            <open><value>[</value></open>
-            <close><value>]</value></close>
-          </contrib:CharacterPair>
-        </brackets>
-        <autoClosingPairs>
-          <contrib:CharacterPair bml:id="autoAngle">
-            <open><value>&lt;</value></open>
-            <close><value>&gt;</value></close>
-          </contrib:CharacterPair>
-          <contrib:CharacterPair bml:id="autoDoubleQuote">
-            <open><value>"</value></open>
-            <close><value>"</value></close>
-          </contrib:CharacterPair>
-          <contrib:CharacterPair bml:id="autoSingleQuote">
-            <open><value>'</value></open>
-            <close><value>'</value></close>
-          </contrib:CharacterPair>
-          <contrib:CharacterPair bml:id="autoCurly">
-            <open><value>{</value></open>
-            <close><value>}</value></close>
-          </contrib:CharacterPair>
-          <contrib:CharacterPair bml:id="autoParen">
-            <open><value>(</value></open>
-            <close><value>)</value></close>
-          </contrib:CharacterPair>
-          <contrib:CharacterPair bml:id="autoSquare">
-            <open><value>[</value></open>
-            <close><value>]</value></close>
-          </contrib:CharacterPair>
-          <contrib:CharacterPair bml:id="autoBlockComment">
-            <open><value>&lt;!--</value></open>
-            <close><value>--&gt;</value></close>
-          </contrib:CharacterPair>
-        </autoClosingPairs>
-        <surroundingPairs>
-          <contrib:CharacterPair bml:id="surroundAngle">
-            <open><value>&lt;</value></open>
-            <close><value>&gt;</value></close>
-          </contrib:CharacterPair>
-          <contrib:CharacterPair bml:id="surroundDoubleQuote">
-            <open><value>"</value></open>
-            <close><value>"</value></close>
-          </contrib:CharacterPair>
-          <contrib:CharacterPair bml:id="surroundSingleQuote">
-            <open><value>'</value></open>
-            <close><value>'</value></close>
-          </contrib:CharacterPair>
-          <contrib:CharacterPair bml:id="surroundCurly">
-            <open><value>{</value></open>
-            <close><value>}</value></close>
-          </contrib:CharacterPair>
-          <contrib:CharacterPair bml:id="surroundParen">
-            <open><value>(</value></open>
-            <close><value>)</value></close>
-          </contrib:CharacterPair>
-          <contrib:CharacterPair bml:id="surroundSquare">
-            <open><value>[</value></open>
-            <close><value>]</value></close>
-          </contrib:CharacterPair>
-        </surroundingPairs>
-      </contrib:LanguageContribution>
+        <contrib:GrammarContribution bml:id="bmlSimpleGrammar">
+          <milestone>V1</milestone>
+          <enabled>true</enabled>
+          <languageId>bml</languageId>
+          <scopeName>source.bml</scopeName>
+          <path>./syntaxes/bml.tmLanguage.json</path>
+          <embeddedLanguagesNote>CDATA and capability implementation bodies may embed PseudoCode or other dialects later; V1 treats them as plain text/string scopes.</embeddedLanguagesNote>
+          <highlightScheme>theme:FrameworkRoles</highlightScheme>
+          <scopes>
+            <type:TextEntity value="comment.block.bml" />
+            <type:TextEntity value="meta.tag.bml" />
+            <type:TextEntity value="entity.name.type.framework.root.bml" />
+            <type:TextEntity value="keyword.other.block-declaration.bml" />
+            <type:TextEntity value="support.type.block-facet.bml" />
+            <type:TextEntity value="keyword.other.block-container.bml" />
+            <type:TextEntity value="keyword.other.member-container.bml" />
+            <type:TextEntity value="entity.name.member.bml" />
+            <type:TextEntity value="keyword.other.member-field.bml" />
+            <type:TextEntity value="support.type.member-facet.bml" />
+            <type:TextEntity value="keyword.other.member-subcontainer.bml" />
+            <type:TextEntity value="entity.name.type.bml" />
+            <type:TextEntity value="entity.name.type.instance.bml" />
+            <type:TextEntity value="entity.name.tag.bml" />
+            <type:TextEntity value="entity.other.attribute-name.bml" />
+            <type:TextEntity value="string.quoted.double.bml" />
+            <type:TextEntity value="string.quoted.single.bml" />
+            <type:TextEntity value="keyword.other.interpolation.bml" />
+            <type:TextEntity value="keyword.control.embed.bml" />
+            <type:TextEntity value="punctuation.definition.comment.bml" />
+            <type:TextEntity value="punctuation.definition.tag.bml" />
+            <type:TextEntity value="punctuation.separator.key-value.bml" />
+          </scopes>
+          <patternNotes>
+            <type:TextEntity value="Position-based scopes (theme:FrameworkRoles) — same tag name, different color by nesting" />
+            <type:TextEntity value="L0 block root — entity.name.type.framework.root.bml" />
+            <type:TextEntity value="L1 blockBody: block-declaration (name/type/abstract/…) + block-facet (documentation/summary/…) + block-container (subBlocks/…) + member-container (properties/aggregations/associations/…)" />
+            <type:TextEntity value="L2 memberContainerBody: every direct child is a user member name (entity.name.member.bml) — including names that collide with containers (properties/aggregations) or Library aggregations (dependencies, blocks, readMe). Containers wrap until the matching &lt;/same-name&gt;." />
+            <type:TextEntity value="L3 memberBody: member-field (type/override/abstract/…) + member-facet (documentation/value/…) + member-subcontainer (composition/suggestions/…)" />
+            <type:TextEntity value="L4 memberSubContainerBody: PascalCase composition instances — entity.name.type.instance.bml" />
+            <type:TextEntity value="Nested &lt;block&gt; in subBlocks re-enters blockBody (same L1 rules)" />
+            <type:TextEntity value="Block-level PascalCase type refs — entity.name.type.bml" />
+            <type:TextEntity value="Attribute names — entity.other.attribute-name.bml (V1: no framework attribute whitelist)" />
+          </patternNotes>
+          <topLevelIncludes>
+            <type:TextEntity value="comment" />
+            <type:TextEntity value="expression" />
+            <type:TextEntity value="embed" />
+            <type:TextEntity value="block" />
+            <type:TextEntity value="tagRoot" />
+            <type:TextEntity value="tagBlockDeclaration" />
+            <type:TextEntity value="tagBlockFacet" />
+            <type:TextEntity value="tagBlockContainer" />
+            <type:TextEntity value="tagMemberContainer" />
+            <type:TextEntity value="tagDomainType" />
+            <type:TextEntity value="tag" />
+          </topLevelIncludes>
+          <patterns>
+            <contrib:GrammarPattern bml:id="patternComment">
+              <patternKey>comment</patternKey>
+              <scopeName>comment.block.bml</scopeName>
+              <begin>&lt;!--</begin>
+              <end>--&gt;</end>
+              <beginCapturesJson>{"0":{"name":"punctuation.definition.comment.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"0":{"name":"punctuation.definition.comment.bml"}}</endCapturesJson>
+            </contrib:GrammarPattern>
 
-      <contrib:GrammarContribution bml:id="bmlSimpleGrammar">
-        <milestone>
-          <value>V1</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <languageId>
-          <value>bml</value>
-        </languageId>
-        <scopeName>
-          <value>source.bml</value>
-        </scopeName>
-        <path>
-          <value>./syntaxes/bml.tmLanguage.json</value>
-        </path>
-        <embeddedLanguagesNote>
-          <value>CDATA and capability implementation bodies may embed PseudoCode or other dialects later; V1 treats them as plain text/string scopes.</value>
-        </embeddedLanguagesNote>
-        <highlightScheme>
-          <value>theme:FrameworkRoles</value>
-        </highlightScheme>
-        <scopes>
-          <type:TextEntity value="comment.block.bml" />
-          <type:TextEntity value="meta.tag.bml" />
-          <type:TextEntity value="entity.name.type.framework.root.bml" />
-          <type:TextEntity value="keyword.other.block-declaration.bml" />
-          <type:TextEntity value="support.type.block-facet.bml" />
-          <type:TextEntity value="keyword.other.block-container.bml" />
-          <type:TextEntity value="keyword.other.member-container.bml" />
-          <type:TextEntity value="entity.name.member.bml" />
-          <type:TextEntity value="keyword.other.member-field.bml" />
-          <type:TextEntity value="support.type.member-facet.bml" />
-          <type:TextEntity value="keyword.other.member-subcontainer.bml" />
-          <type:TextEntity value="entity.name.type.bml" />
-          <type:TextEntity value="entity.name.type.instance.bml" />
-          <type:TextEntity value="entity.name.tag.bml" />
-          <type:TextEntity value="entity.other.attribute-name.bml" />
-          <type:TextEntity value="string.quoted.double.bml" />
-          <type:TextEntity value="string.quoted.single.bml" />
-          <type:TextEntity value="keyword.other.interpolation.bml" />
-          <type:TextEntity value="keyword.control.embed.bml" />
-          <type:TextEntity value="punctuation.definition.comment.bml" />
-          <type:TextEntity value="punctuation.definition.tag.bml" />
-          <type:TextEntity value="punctuation.separator.key-value.bml" />
-        </scopes>
-        <patternNotes>
-          <type:TextEntity value="Position-based scopes (theme:FrameworkRoles) — same tag name, different color by nesting" />
-          <type:TextEntity value="L0 block root — entity.name.type.framework.root.bml" />
-          <type:TextEntity value="L1 blockBody: block-declaration (name/type/abstract/…) + block-facet (documentation/summary/…) + block-container (subBlocks/…) + member-container (properties/aggregations/associations/…)" />
-          <type:TextEntity value="L2 memberContainerBody: every direct child is a user member name (entity.name.member.bml) — including names that collide with containers (properties/aggregations) or Library aggregations (dependencies, blocks, readMe). Containers wrap until the matching &lt;/same-name&gt;." />
-          <type:TextEntity value="L3 memberBody: member-field (type/override/abstract/…) + member-facet (documentation/value/…) + member-subcontainer (composition/suggestions/…)" />
-          <type:TextEntity value="L4 memberSubContainerBody: PascalCase composition instances — entity.name.type.instance.bml" />
-          <type:TextEntity value="Nested &lt;block&gt; in subBlocks re-enters blockBody (same L1 rules)" />
-          <type:TextEntity value="Block-level PascalCase type refs — entity.name.type.bml" />
-          <type:TextEntity value="Attribute names — entity.other.attribute-name.bml (V1: no framework attribute whitelist)" />
-        </patternNotes>
-        <topLevelIncludes>
-          <type:TextEntity value="comment" />
-          <type:TextEntity value="expression" />
-          <type:TextEntity value="embed" />
-          <type:TextEntity value="block" />
-          <type:TextEntity value="tagRoot" />
-          <type:TextEntity value="tagBlockDeclaration" />
-          <type:TextEntity value="tagBlockFacet" />
-          <type:TextEntity value="tagBlockContainer" />
-          <type:TextEntity value="tagMemberContainer" />
-          <type:TextEntity value="tagDomainType" />
-          <type:TextEntity value="tag" />
-        </topLevelIncludes>
-        <patterns>
-          <contrib:GrammarPattern bml:id="patternComment">
-            <patternKey><value>comment</value></patternKey>
-            <scopeName><value>comment.block.bml</value></scopeName>
-            <begin><value>&lt;!--</value></begin>
-            <end><value>--&gt;</value></end>
-            <beginCapturesJson><value>{"0":{"name":"punctuation.definition.comment.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"0":{"name":"punctuation.definition.comment.bml"}}</value></endCapturesJson>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternExpression">
+              <patternKey>expression</patternKey>
+              <scopeName>keyword.other.interpolation.bml</scopeName>
+              <begin>\$\{</begin>
+              <end>\}</end>
+              <beginCapturesJson>{"0":{"name":"punctuation.definition.interpolation.begin.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"0":{"name":"punctuation.definition.interpolation.end.bml"}}</endCapturesJson>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternExpression">
-            <patternKey><value>expression</value></patternKey>
-            <scopeName><value>keyword.other.interpolation.bml</value></scopeName>
-            <begin><value>\$\{</value></begin>
-            <end><value>\}</value></end>
-            <beginCapturesJson><value>{"0":{"name":"punctuation.definition.interpolation.begin.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"0":{"name":"punctuation.definition.interpolation.end.bml"}}</value></endCapturesJson>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternEmbed">
+              <patternKey>embed</patternKey>
+              <scopeName>keyword.control.embed.bml</scopeName>
+              <begin>&lt;\$</begin>
+              <end>\$&gt;</end>
+              <beginCapturesJson>{"0":{"name":"punctuation.definition.embed.begin.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"0":{"name":"punctuation.definition.embed.end.bml"}}</endCapturesJson>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternEmbed">
-            <patternKey><value>embed</value></patternKey>
-            <scopeName><value>keyword.control.embed.bml</value></scopeName>
-            <begin><value>&lt;\$</value></begin>
-            <end><value>\$&gt;</value></end>
-            <beginCapturesJson><value>{"0":{"name":"punctuation.definition.embed.begin.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"0":{"name":"punctuation.definition.embed.end.bml"}}</value></endCapturesJson>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternDoubleQuoted">
+              <patternKey>stringDouble</patternKey>
+              <scopeName>string.quoted.double.bml</scopeName>
+              <begin>"</begin>
+              <end>"</end>
+              <nestedIncludes>
+                <type:TextEntity value="#expression" />
+                <type:TextEntity value="#embed" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternDoubleQuoted">
-            <patternKey><value>stringDouble</value></patternKey>
-            <scopeName><value>string.quoted.double.bml</value></scopeName>
-            <begin><value>"</value></begin>
-            <end><value>"</value></end>
-            <nestedIncludes>
-              <type:TextEntity value="#expression" />
-              <type:TextEntity value="#embed" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternSingleQuoted">
+              <patternKey>stringSingle</patternKey>
+              <scopeName>string.quoted.single.bml</scopeName>
+              <begin>'</begin>
+              <end>'</end>
+              <nestedIncludes>
+                <type:TextEntity value="#expression" />
+                <type:TextEntity value="#embed" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternSingleQuoted">
-            <patternKey><value>stringSingle</value></patternKey>
-            <scopeName><value>string.quoted.single.bml</value></scopeName>
-            <begin><value>'</value></begin>
-            <end><value>'</value></end>
-            <nestedIncludes>
-              <type:TextEntity value="#expression" />
-              <type:TextEntity value="#embed" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternAttribute">
+              <patternKey>attribute</patternKey>
+              <match>\s+([A-Za-z_:][\w:.-]*)(\s*=\s*)(?:(")([^"]*)(")|(')([^']*)('))?</match>
+              <capturesJson>{"1":{"name":"entity.other.attribute-name.bml"},"2":{"name":"punctuation.separator.key-value.bml"},"3":{"name":"punctuation.definition.string.begin.bml"},"4":{"name":"string.quoted.double.bml"},"5":{"name":"punctuation.definition.string.end.bml"},"6":{"name":"punctuation.definition.string.begin.bml"},"7":{"name":"string.quoted.single.bml"},"8":{"name":"punctuation.definition.string.end.bml"}}</capturesJson>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternAttribute">
-            <patternKey><value>attribute</value></patternKey>
-            <match><value>\s+([A-Za-z_:][\w:.-]*)(\s*=\s*)(?:(")([^"]*)(")|(')([^']*)('))?</value></match>
-            <capturesJson><value>{"1":{"name":"entity.other.attribute-name.bml"},"2":{"name":"punctuation.separator.key-value.bml"},"3":{"name":"punctuation.definition.string.begin.bml"},"4":{"name":"string.quoted.double.bml"},"5":{"name":"punctuation.definition.string.end.bml"},"6":{"name":"punctuation.definition.string.begin.bml"},"7":{"name":"string.quoted.single.bml"},"8":{"name":"punctuation.definition.string.end.bml"}}</value></capturesJson>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternBlock">
+              <patternKey>block</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;)(block)(?=[\s/>])</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.framework.root.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+                <type:TextEntity value="#blockBody" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternBlock">
-            <patternKey><value>block</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;)(block)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.framework.root.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-              <type:TextEntity value="#blockBody" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternBlockBody">
+              <patternKey>blockBody</patternKey>
+              <includeRef>#tagBlockDeclarationElement</includeRef>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternBlockBody">
-            <patternKey><value>blockBody</value></patternKey>
-            <includeRef><value>#tagBlockDeclarationElement</value></includeRef>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternMemberTypeElement">
+              <patternKey>memberTypeElement</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\s/>])</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.member.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+                <type:TextEntity value="#memberBody" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternMemberTypeElement">
-            <patternKey><value>memberTypeElement</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.member.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-              <type:TextEntity value="#memberBody" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternDomainTypeElement">
+              <patternKey>domainTypeElement</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\s/>])</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternDomainTypeElement">
-            <patternKey><value>domainTypeElement</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternCloseTagDomainType">
+              <patternKey>closeTagDomainType</patternKey>
+              <match>(&lt;/)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(\s*(>))</match>
+              <capturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.bml"},"3":{"name":"punctuation.definition.tag.bml"}}</capturesJson>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternCloseTagDomainType">
-            <patternKey><value>closeTagDomainType</value></patternKey>
-            <match><value>(&lt;/)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(\s*(>))</value></match>
-            <capturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.bml"},"3":{"name":"punctuation.definition.tag.bml"}}</value></capturesJson>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternMemberElement">
+              <patternKey>memberElement</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;)((?:[A-Za-z_][\w.-]*:)?[a-z_][\w.-]*)(?=[\s/>])</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.member.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+                <type:TextEntity value="#memberBody" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternMemberElement">
-            <patternKey><value>memberElement</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;)((?:[A-Za-z_][\w.-]*:)?[a-z_][\w.-]*)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.member.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-              <type:TextEntity value="#memberBody" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTagMemberContainerElement">
+              <patternKey>tagMemberContainerElement</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;)(properties|aggregations|associations|capabilities|constraints)(?=[\s/>])</begin>
+              <end>(/&gt;)|(&lt;/)(\2)\s*(&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.member-container.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"punctuation.definition.tag.bml"},"3":{"name":"keyword.other.member-container.bml"},"4":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+                <type:TextEntity value="#memberContainerBody" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternTagMemberContainerElement">
-            <patternKey><value>tagMemberContainerElement</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;)(properties|aggregations|associations|capabilities|constraints)(?=[\s/>])</value></begin>
-            <end><value>(/&gt;)|(&lt;/)(\2)\s*(&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.member-container.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"punctuation.definition.tag.bml"},"3":{"name":"keyword.other.member-container.bml"},"4":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-              <type:TextEntity value="#memberContainerBody" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTagBlockContainerElement">
+              <patternKey>tagBlockContainerElement</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;)(contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references)(?=[\s/>])</begin>
+              <end>(/&gt;)|(&lt;/)(\2)\s*(&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-container.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"punctuation.definition.tag.bml"},"3":{"name":"keyword.other.block-container.bml"},"4":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+                <type:TextEntity value="#blockContainerBody" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternTagBlockContainerElement">
-            <patternKey><value>tagBlockContainerElement</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;)(contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references)(?=[\s/>])</value></begin>
-            <end><value>(/&gt;)|(&lt;/)(\2)\s*(&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-container.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"punctuation.definition.tag.bml"},"3":{"name":"keyword.other.block-container.bml"},"4":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-              <type:TextEntity value="#blockContainerBody" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTagBlockDeclarationElement">
+              <patternKey>tagBlockDeclarationElement</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;)(name|type|baseType|is|isnot|version|abstract|final|definition|language)(?=[\s/>])</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-declaration.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternTagBlockDeclarationElement">
-            <patternKey><value>tagBlockDeclarationElement</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;)(name|type|baseType|is|isnot|version|abstract|final|definition|language)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-declaration.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTagBlockFacetElement">
+              <patternKey>tagBlockFacetElement</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;)(documentation|summary|status|since|changelog|examples|relation|see|content|description|title|bml:xml|bml:container|implementation)(?=[\s/>])</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"support.type.block-facet.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternTagBlockFacetElement">
-            <patternKey><value>tagBlockFacetElement</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;)(documentation|summary|status|since|changelog|examples|relation|see|content|description|title|bml:xml|bml:container|implementation)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"support.type.block-facet.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTagMemberFieldIdentityElement">
+              <patternKey>tagMemberFieldIdentityElement</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;)(type|abstract|final|override|readOnly|visibility|default)(?=[\s/>])</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.member-field.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternTagMemberFieldIdentityElement">
-            <patternKey><value>tagMemberFieldIdentityElement</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;)(type|abstract|final|override|readOnly|visibility|default)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.member-field.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTagMemberFieldFacetElement">
+              <patternKey>tagMemberFieldFacetElement</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;)(value|documentation|summary|implementation|inputType|outputType|status|since|changelog|examples|relation|see|content|description|title|bml:xml|bml:container)(?=[\s/>])</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"support.type.member-facet.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternTagMemberFieldFacetElement">
-            <patternKey><value>tagMemberFieldFacetElement</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;)(value|documentation|summary|implementation|inputType|outputType|status|since|changelog|examples|relation|see|content|description|title|bml:xml|bml:container)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"support.type.member-facet.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTagRoot">
+              <patternKey>tagRoot</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;/?)(block)(?=[\s/>])</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.framework.root.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternTagRoot">
-            <patternKey><value>tagRoot</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;/?)(block)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.framework.root.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTagBlockDeclaration">
+              <patternKey>tagBlockDeclaration</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;/?)(name|type|baseType|is|isnot|version|abstract|final|definition|language)(?=[\s/>])</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-declaration.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternTagBlockDeclaration">
-            <patternKey><value>tagBlockDeclaration</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;/?)(name|type|baseType|is|isnot|version|abstract|final|definition|language)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-declaration.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTagBlockContainer">
+              <patternKey>tagBlockContainer</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;/?)(contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references)(?=[\s/>])</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-container.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternTagBlockContainer">
-            <patternKey><value>tagBlockContainer</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;/?)(contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-container.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTagMemberContainer">
+              <patternKey>tagMemberContainer</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;/?)(properties|aggregations|associations|capabilities|constraints)(?=[\s/>])</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.member-container.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternTagMemberContainer">
-            <patternKey><value>tagMemberContainer</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;/?)(properties|aggregations|associations|capabilities|constraints)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.member-container.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTagBlockFacet">
+              <patternKey>tagBlockFacet</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;/?)(documentation|summary|status|since|changelog|examples|relation|see|content|description|title|bml:xml|bml:container|implementation)(?=[\s/>])</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"support.type.block-facet.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternTagBlockFacet">
-            <patternKey><value>tagBlockFacet</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;/?)(documentation|summary|status|since|changelog|examples|relation|see|content|description|title|bml:xml|bml:container|implementation)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"support.type.block-facet.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTagDomainType">
+              <patternKey>tagDomainType</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;/?)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\s/>])</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
 
-          <contrib:GrammarPattern bml:id="patternTagDomainType">
-            <patternKey><value>tagDomainType</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;/?)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTag">
+              <patternKey>tag</patternKey>
+              <scopeName>meta.tag.bml</scopeName>
+              <begin>(&lt;/?)((?:[A-Za-z_][\w.-]*:)?[a-z_][\w.-]*)</begin>
+              <end>(/?&gt;)</end>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.tag.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
+          </patterns>
+        </contrib:GrammarContribution>
 
-          <contrib:GrammarPattern bml:id="patternTag">
-            <patternKey><value>tag</value></patternKey>
-            <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;/?)((?:[A-Za-z_][\w.-]*:)?[a-z_][\w.-]*)</value></begin>
-            <end><value>(/?&gt;)</value></end>
-            <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.tag.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
-            <nestedIncludes>
-              <type:TextEntity value="#attribute" />
-            </nestedIncludes>
-          </contrib:GrammarPattern>
-        </patterns>
-      </contrib:GrammarContribution>
+        <contrib:IconContribution bml:id="bmlFileIcon">
+          <milestone>V1</milestone>
+          <enabled>true</enabled>
+          <languageId>bml</languageId>
+          <iconPath>./icons/blockml.svg</iconPath>
+          <fileExtension>.bml</fileExtension>
+          <themeId>blockml-icons</themeId>
+          <themeLabel>BlockML Icons</themeLabel>
+          <themePath>./icons/blockml-icon-theme.json</themePath>
+          <iconDefinitionId>bml_file</iconDefinitionId>
+        </contrib:IconContribution>
 
-      <contrib:IconContribution bml:id="bmlFileIcon">
-        <milestone>
-          <value>V1</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <languageId>
-          <value>bml</value>
-        </languageId>
-        <iconPath>
-          <value>./icons/blockml.svg</value>
-        </iconPath>
-        <fileExtension>
-          <value>.bml</value>
-        </fileExtension>
-        <themeId>
-          <value>blockml-icons</value>
-        </themeId>
-        <themeLabel>
-          <value>BlockML Icons</value>
-        </themeLabel>
-        <themePath>
-          <value>./icons/blockml-icon-theme.json</value>
-        </themePath>
-        <iconDefinitionId>
-          <value>bml_file</value>
-        </iconDefinitionId>
-      </contrib:IconContribution>
+        <contrib:ColorThemeContribution bml:id="bmlDevColorTheme">
+          <milestone>V1</milestone>
+          <enabled>true</enabled>
+          <marketplace>true</marketplace>
+          <colorTheme>theme:BlockMlDevColorTheme</colorTheme>
+        </contrib:ColorThemeContribution>
 
-      <contrib:ColorThemeContribution bml:id="bmlDevColorTheme">
-        <milestone>
-          <value>V1</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <marketplace>
-          <value>true</value>
-        </marketplace>
-        <colorTheme>
-          <value>theme:BlockMlDevColorTheme</value>
-        </colorTheme>
-      </contrib:ColorThemeContribution>
+        <contrib:ConfigurationContribution bml:id="blockmlConfiguration">
+          <milestone>V1</milestone>
+          <enabled>true</enabled>
+          <title>BlockML</title>
+          <settings>
 
-      <contrib:ConfigurationContribution bml:id="blockmlConfiguration">
-        <milestone>
-          <value>V1</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <title>
-          <value>BlockML</value>
-        </title>
-        <settings>
+            <contrib:Setting bml:id="traceServer">
+              <key>blockml.bml.trace.server</key>
+              <valueKind>String</valueKind>
+              <defaultValue>off</defaultValue>
+              <description>Traces the communication between VS Code and the BlockML language server (V2).</description>
+              <scope>Window</scope>
+              <enumValues>
+                <type:TextEntity value="off" />
+                <type:TextEntity value="messages" />
+                <type:TextEntity value="verbose" />
+              </enumValues>
+            </contrib:Setting>
 
-          <contrib:Setting bml:id="traceServer">
-            <key>
-              <value>blockml.bml.trace.server</value>
-            </key>
-            <valueKind>
-              <value>String</value>
-            </valueKind>
-            <defaultValue>
-              <value>off</value>
-            </defaultValue>
-            <description>
-              <value>Traces the communication between VS Code and the BlockML language server (V2).</value>
-            </description>
-            <scope>
-              <value>Window</value>
-            </scope>
-            <enumValues>
-              <type:TextEntity value="off" />
-              <type:TextEntity value="messages" />
-              <type:TextEntity value="verbose" />
-            </enumValues>
-          </contrib:Setting>
+            <contrib:Setting bml:id="enableLanguageServer">
+              <key>blockml.bml.enableLanguageServer</key>
+              <valueKind>Boolean</valueKind>
+              <defaultValue>true</defaultValue>
+              <description>Enable the BlockML language server client (V2). Ignored until the V2 milestone is shipped.</description>
+              <scope>Window</scope>
+            </contrib:Setting>
 
-          <contrib:Setting bml:id="enableLanguageServer">
-            <key>
-              <value>blockml.bml.enableLanguageServer</value>
-            </key>
-            <valueKind>
-              <value>Boolean</value>
-            </valueKind>
-            <defaultValue>
-              <value>true</value>
-            </defaultValue>
-            <description>
-              <value>Enable the BlockML language server client (V2). Ignored until the V2 milestone is shipped.</value>
-            </description>
-            <scope>
-              <value>Window</value>
-            </scope>
-          </contrib:Setting>
+            <contrib:Setting bml:id="enableSemanticHighlighting">
+              <key>blockml.bml.enableSemanticHighlighting</key>
+              <valueKind>Boolean</valueKind>
+              <defaultValue>true</defaultValue>
+              <description>Enable LSP semantic highlighting on top of the TextMate grammar (V2).</description>
+              <scope>Window</scope>
+            </contrib:Setting>
 
-          <contrib:Setting bml:id="enableSemanticHighlighting">
-            <key>
-              <value>blockml.bml.enableSemanticHighlighting</value>
-            </key>
-            <valueKind>
-              <value>Boolean</value>
-            </valueKind>
-            <defaultValue>
-              <value>true</value>
-            </defaultValue>
-            <description>
-              <value>Enable LSP semantic highlighting on top of the TextMate grammar (V2).</value>
-            </description>
-            <scope>
-              <value>Window</value>
-            </scope>
-          </contrib:Setting>
+          </settings>
+        </contrib:ConfigurationContribution>
 
-        </settings>
-      </contrib:ConfigurationContribution>
+        <!-- ========== V2 ========== -->
 
-      <!-- ========== V2 ========== -->
+        <contrib:LanguageServerContribution bml:id="bmlLanguageServer">
+          <milestone>V2</milestone>
+          <enabled>true</enabled>
+          <serverModulePath>./server/out/server.js</serverModulePath>
+          <transport>ipc</transport>
+          <traceSettingKey>blockml.bml.trace.server</traceSettingKey>
+          <documentSelectors>
+            <type:TextEntity value="language:bml" />
+            <type:TextEntity value="scheme:file" />
+          </documentSelectors>
+          <clientFeatures>
+            <type:TextEntity value="diagnostics" />
+            <type:TextEntity value="hover" />
+            <type:TextEntity value="completion" />
+            <type:TextEntity value="definition" />
+            <type:TextEntity value="references" />
+            <type:TextEntity value="documentSymbol" />
+            <type:TextEntity value="semanticTokens" />
+          </clientFeatures>
+        </contrib:LanguageServerContribution>
 
-      <contrib:LanguageServerContribution bml:id="bmlLanguageServer">
-        <milestone>
-          <value>V2</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <serverModulePath>
-          <value>./server/out/server.js</value>
-        </serverModulePath>
-        <transport>
-          <value>ipc</value>
-        </transport>
-        <traceSettingKey>
-          <value>blockml.bml.trace.server</value>
-        </traceSettingKey>
-        <documentSelectors>
-          <type:TextEntity value="language:bml" />
-          <type:TextEntity value="scheme:file" />
-        </documentSelectors>
-        <clientFeatures>
-          <type:TextEntity value="diagnostics" />
-          <type:TextEntity value="hover" />
-          <type:TextEntity value="completion" />
-          <type:TextEntity value="definition" />
-          <type:TextEntity value="references" />
-          <type:TextEntity value="documentSymbol" />
-          <type:TextEntity value="semanticTokens" />
-        </clientFeatures>
-      </contrib:LanguageServerContribution>
+        <contrib:GrammarContribution bml:id="bmlAdvancedGrammar">
+          <milestone>V2</milestone>
+          <enabled>true</enabled>
+          <languageId>bml</languageId>
+          <scopeName>source.bml</scopeName>
+          <path>./syntaxes/bml.tmLanguage.json</path>
+          <embeddedLanguagesNote>V2 extends V1 patterns with type-reference-looking QNames, bml:* directives, and clearer member/property name scopes; semantic tokens refine further.</embeddedLanguagesNote>
+          <scopes>
+            <type:TextEntity value="entity.name.type.bml" />
+            <type:TextEntity value="entity.name.namespace.bml" />
+            <type:TextEntity value="keyword.control.directive.bml" />
+            <type:TextEntity value="variable.other.member.bml" />
+            <type:TextEntity value="support.type.property-name.bml" />
+          </scopes>
+          <patternNotes>
+            <type:TextEntity value="Prefixed type references (core:Block, type:Text, …)" />
+            <type:TextEntity value="bml:id / bml:version / bml:each / bml:if / bml:xml directive attributes" />
+            <type:TextEntity value="Member element names under properties/aggregations/associations/capabilities" />
+          </patternNotes>
+        </contrib:GrammarContribution>
 
-      <contrib:GrammarContribution bml:id="bmlAdvancedGrammar">
-        <milestone>
-          <value>V2</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <languageId>
-          <value>bml</value>
-        </languageId>
-        <scopeName>
-          <value>source.bml</value>
-        </scopeName>
-        <path>
-          <value>./syntaxes/bml.tmLanguage.json</value>
-        </path>
-        <embeddedLanguagesNote>
-          <value>V2 extends V1 patterns with type-reference-looking QNames, bml:* directives, and clearer member/property name scopes; semantic tokens refine further.</value>
-        </embeddedLanguagesNote>
-        <scopes>
-          <type:TextEntity value="entity.name.type.bml" />
-          <type:TextEntity value="entity.name.namespace.bml" />
-          <type:TextEntity value="keyword.control.directive.bml" />
-          <type:TextEntity value="variable.other.member.bml" />
-          <type:TextEntity value="support.type.property-name.bml" />
-        </scopes>
-        <patternNotes>
-          <type:TextEntity value="Prefixed type references (core:Block, type:Text, …)" />
-          <type:TextEntity value="bml:id / bml:version / bml:each / bml:if / bml:xml directive attributes" />
-          <type:TextEntity value="Member element names under properties/aggregations/associations/capabilities" />
-        </patternNotes>
-      </contrib:GrammarContribution>
+        <contrib:SemanticHighlightingContribution bml:id="bmlSemanticHighlighting">
+          <milestone>V2</milestone>
+          <enabled>true</enabled>
+          <viaLanguageServer>true</viaLanguageServer>
+          <tokenTypes>
+            <type:TextEntity value="namespace" />
+            <type:TextEntity value="type" />
+            <type:TextEntity value="class" />
+            <type:TextEntity value="property" />
+            <type:TextEntity value="variable" />
+            <type:TextEntity value="keyword" />
+            <type:TextEntity value="modifier" />
+          </tokenTypes>
+          <tokenModifiers>
+            <type:TextEntity value="declaration" />
+            <type:TextEntity value="definition" />
+            <type:TextEntity value="readonly" />
+            <type:TextEntity value="deprecated" />
+            <type:TextEntity value="abstract" />
+            <type:TextEntity value="defaultLibrary" />
+          </tokenModifiers>
+        </contrib:SemanticHighlightingContribution>
 
-      <contrib:SemanticHighlightingContribution bml:id="bmlSemanticHighlighting">
-        <milestone>
-          <value>V2</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <viaLanguageServer>
-          <value>true</value>
-        </viaLanguageServer>
-        <tokenTypes>
-          <type:TextEntity value="namespace" />
-          <type:TextEntity value="type" />
-          <type:TextEntity value="class" />
-          <type:TextEntity value="property" />
-          <type:TextEntity value="variable" />
-          <type:TextEntity value="keyword" />
-          <type:TextEntity value="modifier" />
-        </tokenTypes>
-        <tokenModifiers>
-          <type:TextEntity value="declaration" />
-          <type:TextEntity value="definition" />
-          <type:TextEntity value="readonly" />
-          <type:TextEntity value="deprecated" />
-          <type:TextEntity value="abstract" />
-          <type:TextEntity value="defaultLibrary" />
-        </tokenModifiers>
-      </contrib:SemanticHighlightingContribution>
+        <contrib:NavigationContribution bml:id="bmlNavigation">
+          <milestone>V2</milestone>
+          <enabled>true</enabled>
+          <preferLanguageServer>true</preferLanguageServer>
+          <ctrlClickEnabled>true</ctrlClickEnabled>
+          <kinds>
+            <type:TextEntity value="BlockType" />
+            <type:TextEntity value="BaseType" />
+            <type:TextEntity value="Property" />
+            <type:TextEntity value="Aggregation" />
+            <type:TextEntity value="Association" />
+            <type:TextEntity value="Capability" />
+            <type:TextEntity value="ReferenceSee" />
+            <type:TextEntity value="InstanceId" />
+            <type:TextEntity value="NamespacePrefix" />
+          </kinds>
+          <gestures>
+            <type:TextEntity value="goToDefinition" />
+            <type:TextEntity value="peekDefinition" />
+            <type:TextEntity value="findReferences" />
+            <type:TextEntity value="goToTypeDefinition" />
+          </gestures>
+        </contrib:NavigationContribution>
 
-      <contrib:NavigationContribution bml:id="bmlNavigation">
-        <milestone>
-          <value>V2</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <preferLanguageServer>
-          <value>true</value>
-        </preferLanguageServer>
-        <ctrlClickEnabled>
-          <value>true</value>
-        </ctrlClickEnabled>
-        <kinds>
-          <type:TextEntity value="BlockType" />
-          <type:TextEntity value="BaseType" />
-          <type:TextEntity value="Property" />
-          <type:TextEntity value="Aggregation" />
-          <type:TextEntity value="Association" />
-          <type:TextEntity value="Capability" />
-          <type:TextEntity value="ReferenceSee" />
-          <type:TextEntity value="InstanceId" />
-          <type:TextEntity value="NamespacePrefix" />
-        </kinds>
-        <gestures>
-          <type:TextEntity value="goToDefinition" />
-          <type:TextEntity value="peekDefinition" />
-          <type:TextEntity value="findReferences" />
-          <type:TextEntity value="goToTypeDefinition" />
-        </gestures>
-      </contrib:NavigationContribution>
+        <contrib:CommandContribution bml:id="goToDefinitionCommand">
+          <milestone>V2</milestone>
+          <enabled>true</enabled>
+          <commandId>blockml.bml.goToDefinition</commandId>
+          <title>Go to Definition</title>
+          <category>BlockML</category>
+        </contrib:CommandContribution>
 
-      <contrib:CommandContribution bml:id="goToDefinitionCommand">
-        <milestone>
-          <value>V2</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <commandId>
-          <value>blockml.bml.goToDefinition</value>
-        </commandId>
-        <title>
-          <value>Go to Definition</value>
-        </title>
-        <category>
-          <value>BlockML</value>
-        </category>
-      </contrib:CommandContribution>
+        <contrib:CommandContribution bml:id="peekDefinitionCommand">
+          <milestone>V2</milestone>
+          <enabled>true</enabled>
+          <commandId>blockml.bml.peekDefinition</commandId>
+          <title>Peek Definition</title>
+          <category>BlockML</category>
+        </contrib:CommandContribution>
 
-      <contrib:CommandContribution bml:id="peekDefinitionCommand">
-        <milestone>
-          <value>V2</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <commandId>
-          <value>blockml.bml.peekDefinition</value>
-        </commandId>
-        <title>
-          <value>Peek Definition</value>
-        </title>
-        <category>
-          <value>BlockML</value>
-        </category>
-      </contrib:CommandContribution>
+        <contrib:CommandContribution bml:id="findReferencesCommand">
+          <milestone>V2</milestone>
+          <enabled>true</enabled>
+          <commandId>blockml.bml.findReferences</commandId>
+          <title>Find All References</title>
+          <category>BlockML</category>
+        </contrib:CommandContribution>
 
-      <contrib:CommandContribution bml:id="findReferencesCommand">
-        <milestone>
-          <value>V2</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <commandId>
-          <value>blockml.bml.findReferences</value>
-        </commandId>
-        <title>
-          <value>Find All References</value>
-        </title>
-        <category>
-          <value>BlockML</value>
-        </category>
-      </contrib:CommandContribution>
+        <contrib:KeybindingContribution bml:id="goToDefinitionKey">
+          <milestone>V2</milestone>
+          <enabled>true</enabled>
+          <commandId>blockml.bml.goToDefinition</commandId>
+          <key>f12</key>
+          <when>editorLangId == 'bml'</when>
+        </contrib:KeybindingContribution>
 
-      <contrib:KeybindingContribution bml:id="goToDefinitionKey">
-        <milestone>
-          <value>V2</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <commandId>
-          <value>blockml.bml.goToDefinition</value>
-        </commandId>
-        <key>
-          <value>f12</value>
-        </key>
-        <when>
-          <value>editorLangId == 'bml'</value>
-        </when>
-      </contrib:KeybindingContribution>
+        <contrib:KeybindingContribution bml:id="peekDefinitionKey">
+          <milestone>V2</milestone>
+          <enabled>true</enabled>
+          <commandId>blockml.bml.peekDefinition</commandId>
+          <key>alt+f12</key>
+          <when>editorLangId == 'bml'</when>
+        </contrib:KeybindingContribution>
 
-      <contrib:KeybindingContribution bml:id="peekDefinitionKey">
-        <milestone>
-          <value>V2</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <commandId>
-          <value>blockml.bml.peekDefinition</value>
-        </commandId>
-        <key>
-          <value>alt+f12</value>
-        </key>
-        <when>
-          <value>editorLangId == 'bml'</value>
-        </when>
-      </contrib:KeybindingContribution>
-
-      <contrib:KeybindingContribution bml:id="findReferencesKey">
-        <milestone>
-          <value>V2</value>
-        </milestone>
-        <enabled>
-          <value>true</value>
-        </enabled>
-        <commandId>
-          <value>blockml.bml.findReferences</value>
-        </commandId>
-        <key>
-          <value>shift+f12</value>
-        </key>
-        <when>
-          <value>editorLangId == 'bml'</value>
-        </when>
-      </contrib:KeybindingContribution>
-
+        <contrib:KeybindingContribution bml:id="findReferencesKey">
+          <milestone>V2</milestone>
+          <enabled>true</enabled>
+          <commandId>blockml.bml.findReferences</commandId>
+          <key>shift+f12</key>
+          <when>editorLangId == 'bml'</when>
+        </contrib:KeybindingContribution>
+      </composition>
     </contributions>
   </aggregations>
 

@@ -48,157 +48,157 @@
 
   <aggregations>
     <roles>
+      <composition>
+        <theme:HighlightRole bml:id="roleRoot">
+          <roleId>root</roleId>
+          <textMateScope>entity.name.type.framework.root.bml</textMateScope>
+          <hljsClass>title</hljsClass>
+          <tags>
+            <type:TextEntity value="block" />
+          </tags>
+        </theme:HighlightRole>
 
-      <theme:HighlightRole bml:id="roleRoot">
-        <roleId><value>root</value></roleId>
-        <textMateScope><value>entity.name.type.framework.root.bml</value></textMateScope>
-        <hljsClass><value>title</value></hljsClass>
-        <tags>
-          <type:TextEntity value="block" />
-        </tags>
-      </theme:HighlightRole>
+        <theme:HighlightRole bml:id="roleBlockDeclaration">
+          <roleId>blockDeclaration</roleId>
+          <textMateScope>keyword.other.block-declaration.bml</textMateScope>
+          <hljsClass>keyword</hljsClass>
+          <tags>
+            <type:TextEntity value="name" />
+            <type:TextEntity value="type" />
+            <type:TextEntity value="baseType" />
+            <type:TextEntity value="is" />
+            <type:TextEntity value="isnot" />
+            <type:TextEntity value="version" />
+            <type:TextEntity value="abstract" />
+            <type:TextEntity value="final" />
+            <type:TextEntity value="definition" />
+            <type:TextEntity value="language" />
+          </tags>
+        </theme:HighlightRole>
 
-      <theme:HighlightRole bml:id="roleBlockDeclaration">
-        <roleId><value>blockDeclaration</value></roleId>
-        <textMateScope><value>keyword.other.block-declaration.bml</value></textMateScope>
-        <hljsClass><value>keyword</value></hljsClass>
-        <tags>
-          <type:TextEntity value="name" />
-          <type:TextEntity value="type" />
-          <type:TextEntity value="baseType" />
-          <type:TextEntity value="is" />
-          <type:TextEntity value="isnot" />
-          <type:TextEntity value="version" />
-          <type:TextEntity value="abstract" />
-          <type:TextEntity value="final" />
-          <type:TextEntity value="definition" />
-          <type:TextEntity value="language" />
-        </tags>
-      </theme:HighlightRole>
+        <theme:HighlightRole bml:id="roleBlockFacet">
+          <roleId>blockFacet</roleId>
+          <textMateScope>support.type.block-facet.bml</textMateScope>
+          <hljsClass>built_in</hljsClass>
+          <tags>
+            <type:TextEntity value="documentation" />
+            <type:TextEntity value="summary" />
+            <type:TextEntity value="status" />
+            <type:TextEntity value="since" />
+            <type:TextEntity value="changelog" />
+            <type:TextEntity value="examples" />
+            <type:TextEntity value="relation" />
+            <type:TextEntity value="see" />
+            <type:TextEntity value="content" />
+            <type:TextEntity value="description" />
+            <type:TextEntity value="title" />
+            <type:TextEntity value="bml:xml" />
+            <type:TextEntity value="bml:container" />
+            <type:TextEntity value="implementation" />
+          </tags>
+        </theme:HighlightRole>
 
-      <theme:HighlightRole bml:id="roleBlockFacet">
-        <roleId><value>blockFacet</value></roleId>
-        <textMateScope><value>support.type.block-facet.bml</value></textMateScope>
-        <hljsClass><value>built_in</value></hljsClass>
-        <tags>
-          <type:TextEntity value="documentation" />
-          <type:TextEntity value="summary" />
-          <type:TextEntity value="status" />
-          <type:TextEntity value="since" />
-          <type:TextEntity value="changelog" />
-          <type:TextEntity value="examples" />
-          <type:TextEntity value="relation" />
-          <type:TextEntity value="see" />
-          <type:TextEntity value="content" />
-          <type:TextEntity value="description" />
-          <type:TextEntity value="title" />
-          <type:TextEntity value="bml:xml" />
-          <type:TextEntity value="bml:container" />
-          <type:TextEntity value="implementation" />
-        </tags>
-      </theme:HighlightRole>
+        <theme:HighlightRole bml:id="roleBlockContainer">
+          <roleId>blockContainer</roleId>
+          <textMateScope>keyword.other.block-container.bml</textMateScope>
+          <hljsClass>keyword</hljsClass>
+          <tags>
+            <type:TextEntity value="contracts" />
+            <type:TextEntity value="subBlocks" />
+            <type:TextEntity value="embeddedBlocks" />
+            <type:TextEntity value="composition" />
+            <type:TextEntity value="genericTypes" />
+            <type:TextEntity value="groups" />
+            <type:TextEntity value="aliases" />
+            <type:TextEntity value="keywords" />
+            <type:TextEntity value="references" />
+          </tags>
+        </theme:HighlightRole>
 
-      <theme:HighlightRole bml:id="roleBlockContainer">
-        <roleId><value>blockContainer</value></roleId>
-        <textMateScope><value>keyword.other.block-container.bml</value></textMateScope>
-        <hljsClass><value>keyword</value></hljsClass>
-        <tags>
-          <type:TextEntity value="contracts" />
-          <type:TextEntity value="subBlocks" />
-          <type:TextEntity value="embeddedBlocks" />
-          <type:TextEntity value="composition" />
-          <type:TextEntity value="genericTypes" />
-          <type:TextEntity value="groups" />
-          <type:TextEntity value="aliases" />
-          <type:TextEntity value="keywords" />
-          <type:TextEntity value="references" />
-        </tags>
-      </theme:HighlightRole>
+        <theme:HighlightRole bml:id="roleMemberContainer">
+          <roleId>memberContainer</roleId>
+          <textMateScope>keyword.other.member-container.bml</textMateScope>
+          <hljsClass>keyword</hljsClass>
+          <tags>
+            <type:TextEntity value="properties" />
+            <type:TextEntity value="aggregations" />
+            <type:TextEntity value="associations" />
+            <type:TextEntity value="capabilities" />
+            <type:TextEntity value="constraints" />
+          </tags>
+        </theme:HighlightRole>
 
-      <theme:HighlightRole bml:id="roleMemberContainer">
-        <roleId><value>memberContainer</value></roleId>
-        <textMateScope><value>keyword.other.member-container.bml</value></textMateScope>
-        <hljsClass><value>keyword</value></hljsClass>
-        <tags>
-          <type:TextEntity value="properties" />
-          <type:TextEntity value="aggregations" />
-          <type:TextEntity value="associations" />
-          <type:TextEntity value="capabilities" />
-          <type:TextEntity value="constraints" />
-        </tags>
-      </theme:HighlightRole>
+        <theme:HighlightRole bml:id="roleMemberName">
+          <roleId>memberName</roleId>
+          <textMateScope>entity.name.member.bml</textMateScope>
+          <hljsClass>name</hljsClass>
+        </theme:HighlightRole>
 
-      <theme:HighlightRole bml:id="roleMemberName">
-        <roleId><value>memberName</value></roleId>
-        <textMateScope><value>entity.name.member.bml</value></textMateScope>
-        <hljsClass><value>name</value></hljsClass>
-      </theme:HighlightRole>
+        <theme:HighlightRole bml:id="roleMemberField">
+          <roleId>memberField</roleId>
+          <textMateScope>keyword.other.member-field.bml</textMateScope>
+          <hljsClass>keyword</hljsClass>
+          <tags>
+            <type:TextEntity value="type" />
+            <type:TextEntity value="abstract" />
+            <type:TextEntity value="final" />
+            <type:TextEntity value="override" />
+            <type:TextEntity value="readOnly" />
+            <type:TextEntity value="visibility" />
+            <type:TextEntity value="default" />
+          </tags>
+        </theme:HighlightRole>
 
-      <theme:HighlightRole bml:id="roleMemberField">
-        <roleId><value>memberField</value></roleId>
-        <textMateScope><value>keyword.other.member-field.bml</value></textMateScope>
-        <hljsClass><value>keyword</value></hljsClass>
-        <tags>
-          <type:TextEntity value="type" />
-          <type:TextEntity value="abstract" />
-          <type:TextEntity value="final" />
-          <type:TextEntity value="override" />
-          <type:TextEntity value="readOnly" />
-          <type:TextEntity value="visibility" />
-          <type:TextEntity value="default" />
-        </tags>
-      </theme:HighlightRole>
+        <theme:HighlightRole bml:id="roleMemberFacet">
+          <roleId>memberFacet</roleId>
+          <textMateScope>support.type.member-facet.bml</textMateScope>
+          <hljsClass>built_in</hljsClass>
+          <tags>
+            <type:TextEntity value="value" />
+            <type:TextEntity value="documentation" />
+            <type:TextEntity value="summary" />
+            <type:TextEntity value="implementation" />
+            <type:TextEntity value="inputType" />
+            <type:TextEntity value="outputType" />
+            <type:TextEntity value="status" />
+            <type:TextEntity value="since" />
+            <type:TextEntity value="changelog" />
+            <type:TextEntity value="examples" />
+            <type:TextEntity value="relation" />
+            <type:TextEntity value="see" />
+            <type:TextEntity value="content" />
+            <type:TextEntity value="description" />
+            <type:TextEntity value="title" />
+            <type:TextEntity value="bml:xml" />
+            <type:TextEntity value="bml:container" />
+          </tags>
+        </theme:HighlightRole>
 
-      <theme:HighlightRole bml:id="roleMemberFacet">
-        <roleId><value>memberFacet</value></roleId>
-        <textMateScope><value>support.type.member-facet.bml</value></textMateScope>
-        <hljsClass><value>built_in</value></hljsClass>
-        <tags>
-          <type:TextEntity value="value" />
-          <type:TextEntity value="documentation" />
-          <type:TextEntity value="summary" />
-          <type:TextEntity value="implementation" />
-          <type:TextEntity value="inputType" />
-          <type:TextEntity value="outputType" />
-          <type:TextEntity value="status" />
-          <type:TextEntity value="since" />
-          <type:TextEntity value="changelog" />
-          <type:TextEntity value="examples" />
-          <type:TextEntity value="relation" />
-          <type:TextEntity value="see" />
-          <type:TextEntity value="content" />
-          <type:TextEntity value="description" />
-          <type:TextEntity value="title" />
-          <type:TextEntity value="bml:xml" />
-          <type:TextEntity value="bml:container" />
-        </tags>
-      </theme:HighlightRole>
+        <theme:HighlightRole bml:id="roleMemberSubContainer">
+          <roleId>memberSubContainer</roleId>
+          <textMateScope>keyword.other.member-subcontainer.bml</textMateScope>
+          <hljsClass>keyword</hljsClass>
+          <tags>
+            <type:TextEntity value="suggestions" />
+            <type:TextEntity value="composition" />
+            <type:TextEntity value="constraints" />
+            <type:TextEntity value="groups" />
+            <type:TextEntity value="implementation" />
+          </tags>
+        </theme:HighlightRole>
 
-      <theme:HighlightRole bml:id="roleMemberSubContainer">
-        <roleId><value>memberSubContainer</value></roleId>
-        <textMateScope><value>keyword.other.member-subcontainer.bml</value></textMateScope>
-        <hljsClass><value>keyword</value></hljsClass>
-        <tags>
-          <type:TextEntity value="suggestions" />
-          <type:TextEntity value="composition" />
-          <type:TextEntity value="constraints" />
-          <type:TextEntity value="groups" />
-          <type:TextEntity value="implementation" />
-        </tags>
-      </theme:HighlightRole>
+        <theme:HighlightRole bml:id="roleDomainType">
+          <roleId>domainType</roleId>
+          <textMateScope>entity.name.type.bml</textMateScope>
+          <hljsClass>title</hljsClass>
+        </theme:HighlightRole>
 
-      <theme:HighlightRole bml:id="roleDomainType">
-        <roleId><value>domainType</value></roleId>
-        <textMateScope><value>entity.name.type.bml</value></textMateScope>
-        <hljsClass><value>title</value></hljsClass>
-      </theme:HighlightRole>
-
-      <theme:HighlightRole bml:id="roleCompositionInstance">
-        <roleId><value>compositionInstance</value></roleId>
-        <textMateScope><value>entity.name.type.instance.bml</value></textMateScope>
-        <hljsClass><value>title</value></hljsClass>
-      </theme:HighlightRole>
-
+        <theme:HighlightRole bml:id="roleCompositionInstance">
+          <roleId>compositionInstance</roleId>
+          <textMateScope>entity.name.type.instance.bml</textMateScope>
+          <hljsClass>title</hljsClass>
+        </theme:HighlightRole>
+      </composition>
     </roles>
   </aggregations>
 

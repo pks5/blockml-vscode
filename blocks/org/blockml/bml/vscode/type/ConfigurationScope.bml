@@ -22,11 +22,13 @@
 
   <aggregations>
     <values>
-      <ConfigurationScope bml:id="Application" />
-      <ConfigurationScope bml:id="Machine" />
-      <ConfigurationScope bml:id="Window" />
-      <ConfigurationScope bml:id="Resource" />
-      <ConfigurationScope bml:id="LanguageOverridable" />
+      <composition>
+        <ConfigurationScope bml:id="Application" />
+        <ConfigurationScope bml:id="Machine" />
+        <ConfigurationScope bml:id="Window" />
+        <ConfigurationScope bml:id="Resource" />
+        <ConfigurationScope bml:id="LanguageOverridable" />
+      </composition>
     </values>
   </aggregations>
 

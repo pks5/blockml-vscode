@@ -6,43 +6,34 @@
   "publisher": "blockml",
   "license": "Apache-2.0",
   "icon": "icons/blockml.png",
-
   "repository": {
     "type": "git",
     "url": "https://github.com/pks5/blockml-vscode.git"
   },
-
   "engines": {
     "vscode": "^1.85.0"
   },
-
   "categories": [
     "Programming Languages",
     "Themes"
   ],
-
   "keywords": [
     "blockml",
     "bml",
     "syntax highlighting",
     "language"
   ],
-
   "galleryBanner": {
     "color": "#1E1E1E",
     "theme": "dark"
   },
-
   "homepage": "https://github.com/pks5/blockml-vscode",
-
   "bugs": {
     "url": "https://github.com/pks5/blockml-vscode/issues"
   },
-
   "blockml": {
     "library": "./blocks/org/blockml/bml/vscode/Library.bml"
   },
-
   "contributes": {
     "languages": [
       {
@@ -108,16 +99,13 @@
       }
     }
   },
-
   "publishConfig": {
     "access": "public"
   },
-
   "scripts": {
     "package": "npx --yes @vscode/vsce package --no-dependencies"
   },
-
   "devDependencies": {
-    "@blockml/core": "^1.0.2"
+    "@blockml/core": "^1.0.3"
   }
 }

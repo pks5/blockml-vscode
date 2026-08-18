@@ -23,15 +23,17 @@
 
   <aggregations>
     <values>
-      <NavigationKind bml:id="BlockType" />
-      <NavigationKind bml:id="BaseType" />
-      <NavigationKind bml:id="Property" />
-      <NavigationKind bml:id="Aggregation" />
-      <NavigationKind bml:id="Association" />
-      <NavigationKind bml:id="Capability" />
-      <NavigationKind bml:id="ReferenceSee" />
-      <NavigationKind bml:id="InstanceId" />
-      <NavigationKind bml:id="NamespacePrefix" />
+      <composition>
+        <NavigationKind bml:id="BlockType" />
+        <NavigationKind bml:id="BaseType" />
+        <NavigationKind bml:id="Property" />
+        <NavigationKind bml:id="Aggregation" />
+        <NavigationKind bml:id="Association" />
+        <NavigationKind bml:id="Capability" />
+        <NavigationKind bml:id="ReferenceSee" />
+        <NavigationKind bml:id="InstanceId" />
+        <NavigationKind bml:id="NamespacePrefix" />
+      </composition>
     </values>
   </aggregations>
 

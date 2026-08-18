@@ -22,8 +22,10 @@
 
   <aggregations>
     <values>
-      <ReleaseMilestone bml:id="V1" />
-      <ReleaseMilestone bml:id="V2" />
+      <composition>
+        <ReleaseMilestone bml:id="V1" />
+        <ReleaseMilestone bml:id="V2" />
+      </composition>
     </values>
   </aggregations>
 

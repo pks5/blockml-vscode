@@ -22,12 +22,14 @@
 
   <aggregations>
     <values>
-      <SettingValueKind bml:id="Boolean" />
-      <SettingValueKind bml:id="String" />
-      <SettingValueKind bml:id="Number" />
-      <SettingValueKind bml:id="Integer" />
-      <SettingValueKind bml:id="Array" />
-      <SettingValueKind bml:id="Object" />
+      <composition>
+        <SettingValueKind bml:id="Boolean" />
+        <SettingValueKind bml:id="String" />
+        <SettingValueKind bml:id="Number" />
+        <SettingValueKind bml:id="Integer" />
+        <SettingValueKind bml:id="Array" />
+        <SettingValueKind bml:id="Object" />
+      </composition>
     </values>
   </aggregations>
 
