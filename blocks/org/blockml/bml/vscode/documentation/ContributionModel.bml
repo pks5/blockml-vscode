@@ -39,6 +39,8 @@
     • LanguageServerContribution → vscode-languageclient bootstrap (not a package.json key alone)
     • NavigationContribution → LSP definition/references expectations + optional client providers
     • SemanticHighlightingContribution → semantic token legend / LSP semanticTokens
+    • MarketplaceListing → README.md (Marketplace / Open VSX page body). CHANGELOG.md is the
+      changelog tab. Distinct from vscode:README (library reading entry).
 
     Settings must not be invented only in TypeScript — add a Setting under ConfigurationContribution
     first, then generate accessors from BML. Language-config and grammar regexes must not be
@@ -72,6 +74,9 @@
     </see>
     <see type="contrib:ColorThemeContribution" relation="SeeAlso">
       contributes.themes registration.
+    </see>
+    <see type="doc:MarketplaceListing" relation="SeeAlso">
+      Marketplace README.md listing copy.
     </see>
     <see type="doc:PluginArchitecture" relation="SeeAlso">
       Package and type overview.

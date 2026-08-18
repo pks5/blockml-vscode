@@ -68,7 +68,7 @@
       <value>BlockML</value>
     </displayName>
     <description>
-      <value>Language support for BlockML (BML) — syntax highlighting with the BlockML color theme, file icons, and IDE features.</value>
+      <value>V1 language support for BlockML (BML) — limited syntax highlighting (no language server yet), BlockML color theme, and file icons. A language server is planned for V2.</value>
     </description>
     <icon>
       <value>./icons/blockml.png</value>

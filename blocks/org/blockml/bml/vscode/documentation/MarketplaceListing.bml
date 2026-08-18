@@ -1,0 +1,74 @@
+<!--
+  BlockML VS Code — Marketplace listing copy
+
+  FQN: org.blockml.bml.vscode.documentation.MarketplaceListing
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.vscode.documentation"
+  xmlns:theme="org.blockml.bml.vscode.theme"
+  xmlns:vscode="org.blockml.bml.vscode">
+
+  <name>MarketplaceListing</name>
+  <type>doc:MarketplaceListing</type>
+  <baseType>core:Documentation</baseType>
+  <is>A VS Code Marketplace / Open VSX listing description</is>
+
+  <documentation>
+    SSOT for the published extension listing. Generators emit README.md at the repository root from
+    this Block. CHANGELOG.md is maintained beside it as the Marketplace changelog tab. Do not treat
+    vscode:README as the Marketplace page — that Block is the library reading entry for LLMs.
+
+    Listing intent (V1):
+
+    Headline: Language support for BlockML (BML) in Visual Studio Code and Cursor.
+
+    V1 limitation (must appear near the top): This is a V1 release with limited syntax support.
+    There is no language server yet, so the editor does not provide diagnostics, completions,
+    hover, rename, or go-to-definition. Highlighting is TextMate-only (structure and position-based
+    tag roles). A BlockML language server and richer IDE features are planned for V2.
+
+    V1 features to list:
+    • .bml file type (language id bml)
+    • Position-based syntax highlighting for framework vs domain tags
+    • BlockML color theme (id blockml) — required for visible coloring; generic Dark+/Light+
+      themes do not paint the *.bml TextMate scopes
+    • BlockML file icons (icon theme blockml-icons)
+
+    How to enable the theme: Command Palette → Preferences: Color Theme → BlockML.
+
+    V2 (upcoming, not in this package): language server, semantic highlighting, and Java-like
+    navigation between BML files.
+
+    License: Apache-2.0. Gallery icon: icons/blockml.png (PNG, not SVG).
+  </documentation>
+
+  <references>
+    <see type="doc:V1Scope" relation="Requires">
+      V1 feature set described on the listing.
+    </see>
+    <see type="doc:V2Scope" relation="SeeAlso">
+      Upcoming language server and IDE features.
+    </see>
+    <see type="theme:BlockMlDevColorTheme" relation="SeeAlso">
+      Shipped color theme users must select.
+    </see>
+    <see type="vscode:BlockMlExtension" relation="SeeAlso">
+      Extension identity (publisher, displayName, description).
+    </see>
+    <see file="README.md" relation="Generates">
+      Marketplace page body rendered from this Block.
+    </see>
+    <see file="CHANGELOG.md" relation="SeeAlso">
+      Marketplace changelog tab.
+    </see>
+    <see file="icons/blockml.png" relation="Requires">
+      Marketplace gallery icon (package.json icon).
+    </see>
+  </references>
+
+</block>

@@ -104,6 +104,7 @@
         <doc:PluginArchitecture />
         <doc:ContributionModel />
         <doc:GenerationWorkflow />
+        <doc:MarketplaceListing />
         <doc:V1Scope />
         <doc:V2Scope />
       </composition>

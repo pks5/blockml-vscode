@@ -63,6 +63,9 @@
     <see type="theme:BlockMlDevColorTheme" relation="Defines">
       Shipped Marketplace color theme required for visible BML syntax highlighting.
     </see>
+    <see type="doc:MarketplaceListing" relation="SeeAlso">
+      Marketplace README.md listing copy (V1 limitation + V2 language server).
+    </see>
     <see type="contrib:IconContribution" relation="Defines">
       BML file icon contribution.
     </see>

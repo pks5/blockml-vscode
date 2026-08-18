@@ -45,6 +45,10 @@
       BML → generated VS Code extension workflow.
     </see>
 
+    <see type="doc:MarketplaceListing" relation="ReadFirst">
+      Marketplace / Open VSX listing copy (README.md).
+    </see>
+
     <see type="doc:V1Scope" relation="ReadFirst">
       V1 — simple highlighting, file type, icon.
     </see>

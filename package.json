@@ -1,7 +1,7 @@
 {
   "name": "blockml",
   "version": "0.1.0",
-  "description": "Language support for BlockML (BML) — syntax highlighting with the BlockML color theme, file icons, and IDE features.",
+  "description": "V1 language support for BlockML (BML) — limited syntax highlighting (no language server yet), BlockML color theme, and file icons. A language server is planned for V2.",
   "displayName": "BlockML",
   "publisher": "blockml",
   "license": "Apache-2.0",
@@ -20,6 +20,24 @@
     "Programming Languages",
     "Themes"
   ],
+
+  "keywords": [
+    "blockml",
+    "bml",
+    "syntax highlighting",
+    "language"
+  ],
+
+  "galleryBanner": {
+    "color": "#1E1E1E",
+    "theme": "dark"
+  },
+
+  "homepage": "https://github.com/pks5/blockml-vscode",
+
+  "bugs": {
+    "url": "https://github.com/pks5/blockml-vscode/issues"
+  },
 
   "blockml": {
     "library": "./blocks/org/blockml/bml/vscode/Library.bml"
@@ -92,12 +110,12 @@
   },
 
   "files": [
-    "blocks",
     "icons",
     "syntaxes",
     "themes",
     "language-configuration.json",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE"
   ],
 
@@ -105,7 +123,11 @@
     "access": "public"
   },
 
-  "dependencies": {
+  "scripts": {
+    "package": "npx --yes @vscode/vsce package --no-dependencies"
+  },
+
+  "devDependencies": {
     "@blockml/core": "^1.0.2"
   }
 }
