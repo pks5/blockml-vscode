@@ -31,7 +31,8 @@
     • IconContribution → contributes.iconThemes + icon theme JSON (themeId / themeLabel /
       themePath) mapping fileExtension / languageId to iconPath
     • ColorThemeContribution → contributes.themes + themes/*.json from theme:ColorTheme
-      tokenColors and editor colors (grammar dev — theme:BlockMlDevColorTheme)
+      tokenColors and editor colors (theme:BlockMlDevColorTheme). marketplace=true adds the
+      Themes category and emits contributes.themes[].id from ColorTheme.themeId
     • ConfigurationContribution / Setting → contributes.configuration (SSOT for all settings)
     • CommandContribution → contributes.commands
     • KeybindingContribution → contributes.keybindings

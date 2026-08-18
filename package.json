@@ -1,7 +1,7 @@
 {
   "name": "blockml",
   "version": "0.1.0",
-  "description": "Language support for BlockML (BML) — syntax highlighting, file icons, and IDE features.",
+  "description": "Language support for BlockML (BML) — syntax highlighting with the BlockML color theme, file icons, and IDE features.",
   "displayName": "BlockML",
   "publisher": "blockml",
   "license": "Apache-2.0",
@@ -17,7 +17,8 @@
   },
 
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Themes"
   ],
 
   "blockml": {
@@ -54,9 +55,10 @@
     ],
     "themes": [
       {
-        "label": "BlockML Dev",
+        "id": "blockml",
+        "label": "BlockML",
         "uiTheme": "vs-dark",
-        "path": "./themes/blockml-dev-color-theme.json"
+        "path": "./themes/blockml-color-theme.json"
       }
     ],
     "configuration": {

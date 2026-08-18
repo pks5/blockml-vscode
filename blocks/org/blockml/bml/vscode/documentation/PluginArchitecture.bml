@@ -26,7 +26,8 @@
       Command, Keybinding, LanguageServer, Navigation, SemanticHighlighting) plus supporting
       entities CharacterPair and GrammarPattern
     • vscode.theme.* — semantic highlight schemes (HighlightScheme, HighlightRole, FrameworkRoles)
-      that drive framework vs domain tag TextMate scopes when rendering the grammar
+      that drive framework vs domain tag TextMate scopes, plus ColorTheme / TokenColorRule /
+      BlockMlDevColorTheme for the shipped Marketplace color theme
     • vscode.type.* — closed enums (ReleaseMilestone, SettingValueKind, ConfigurationScope,
       NavigationKind)
     • vscode.documentation.* — curated reading material for this library

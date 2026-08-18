@@ -1,6 +1,6 @@
 {
   "$schema": "vscode://schemas/color-theme",
-  "name": "BlockML Dev",
+  "name": "BlockML",
   "type": "dark",
   "colors": {
     "editor.foreground": "#D4D4D4",

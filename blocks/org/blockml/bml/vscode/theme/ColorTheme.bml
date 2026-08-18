@@ -23,9 +23,10 @@
     scope. Generators emit themes/*.json; ColorThemeContribution registers it in package.json.</summary>
 
   <documentation>
-    SSOT for a VS Code color theme used while developing or validating the BML TextMate grammar.
-    tokenColors should cover every scope listed on GrammarContribution.scopes plus
-    HighlightScheme.roles[].textMateScope and domainScope.
+    SSOT for a VS Code color theme that paints every BML TextMate scope. tokenColors should cover
+    every scope listed on GrammarContribution.scopes plus HighlightScheme.roles[].textMateScope
+    and domainScope. Generic editor themes do not color the position-based *.bml scopes, so a
+    shipped ColorTheme is required for visible syntax highlighting in the Marketplace build.
 
     Workflow: edit tokenColors here (or in a concrete subtype such as theme:BlockMlDevColorTheme),
     then re-render themes/*.json and package.json contributes.themes via an explicit generator /
@@ -33,6 +34,8 @@
 
     highlightScheme links this theme to the active HighlightScheme for documentation and generator
     cross-checks — generators may verify that every role scope has a TokenColorRule.
+    ColorThemeContribution.marketplace=true marks the theme as a published Marketplace theme
+    (Themes category + contributes.themes[].id).
   </documentation>
 
   <references>
@@ -52,11 +55,12 @@
 
   <properties>
     <themeId type="Text">
-      <documentation>Stable theme id (for example blockml-dev). Used in docs and generator logs.</documentation>
+      <documentation>Stable theme id (for example blockml). Maps to contributes.themes[].id and
+        workbench.colorTheme when the contribution is marketplace-shipped.</documentation>
     </themeId>
     <label type="Text">
       <documentation>User-visible theme name in the VS Code color theme picker
-        (for example BlockML Dev).</documentation>
+        (for example BlockML).</documentation>
     </label>
     <uiTheme type="Text">
       <documentation>VS Code base uiTheme: vs-dark, vs-light, or hc-black. Maps to
@@ -64,7 +68,7 @@
     </uiTheme>
     <themePath type="FilePath">
       <documentation>Generated theme JSON path relative to extension root
-        (for example ./themes/blockml-dev-color-theme.json).</documentation>
+        (for example ./themes/blockml-color-theme.json).</documentation>
     </themePath>
     <highlightScheme type="TypeReference(theme:HighlightScheme)">
       <documentation>Active HighlightScheme this theme aligns with (for example

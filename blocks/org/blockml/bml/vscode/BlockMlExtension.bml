@@ -49,7 +49,8 @@
       Active V1 semantic highlight scheme for framework tag colors.
     </see>
     <see type="theme:BlockMlDevColorTheme" relation="SeeAlso">
-      Dev color theme — one color per BML TextMate scope for grammar authoring.
+      Shipped Marketplace color theme — one color per BML TextMate scope; required for syntax
+      highlighting.
     </see>
     <see type="vscode:Extension" relation="Extends">
       Abstract extension descriptor.
@@ -67,7 +68,7 @@
       <value>BlockML</value>
     </displayName>
     <description>
-      <value>Language support for BlockML (BML) — syntax highlighting, file icons, and IDE features.</value>
+      <value>Language support for BlockML (BML) — syntax highlighting with the BlockML color theme, file icons, and IDE features.</value>
     </description>
     <icon>
       <value>./icons/blockml.png</value>
@@ -89,6 +90,7 @@
   <aggregations>
     <categories>
       <type:TextEntity value="Programming Languages" />
+      <type:TextEntity value="Themes" />
     </categories>
 
     <activationEvents>
@@ -586,6 +588,9 @@
         <enabled>
           <value>true</value>
         </enabled>
+        <marketplace>
+          <value>true</value>
+        </marketplace>
         <colorTheme>
           <value>theme:BlockMlDevColorTheme</value>
         </colorTheme>

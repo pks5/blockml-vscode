@@ -1,5 +1,5 @@
 <!--
-  BlockML VS Code — development color theme (position-based scope colors)
+  BlockML VS Code — shipped color theme (position-based scope colors)
 
   FQN: org.blockml.bml.vscode.theme.BlockMlDevColorTheme
 -->
@@ -14,15 +14,17 @@
   <name>BlockMlDevColorTheme</name>
   <type>theme:BlockMlDevColorTheme</type>
   <baseType>theme:ColorTheme</baseType>
-  <is>The BlockML grammar development color theme</is>
+  <is>The BlockML color theme</is>
 
-  <summary>Dev theme: one distinct color per position-based BML scope (block / container / member / field).</summary>
+  <summary>Shipped Marketplace theme: one distinct color per position-based BML scope (block /
+    container / member / field). Required for visible syntax highlighting — generic themes do not
+    paint the *.bml scopes.</summary>
 
   <properties>
-    <themeId><value>blockml-dev</value></themeId>
-    <label><value>BlockML Dev</value></label>
+    <themeId><value>blockml</value></themeId>
+    <label><value>BlockML</value></label>
     <uiTheme><value>vs-dark</value></uiTheme>
-    <themePath><value>./themes/blockml-dev-color-theme.json</value></themePath>
+    <themePath><value>./themes/blockml-color-theme.json</value></themePath>
     <highlightScheme><value>theme:FrameworkRoles</value></highlightScheme>
     <editorForeground><value>#D4D4D4</value></editorForeground>
     <editorBackground><value>#1E1E1E</value></editorBackground>

@@ -2,5 +2,5 @@
   "files.associations": {
     "*.bml": "bml"
   },
-  "workbench.colorTheme": "BlockML Dev"
+  "workbench.colorTheme": "blockml"
 }

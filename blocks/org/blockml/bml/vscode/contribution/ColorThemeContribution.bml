@@ -19,13 +19,15 @@
   <is>An editor color theme contribution</is>
 
   <documentation>
-    Registers a generated VS Code color theme for BML grammar development and validation.
-    Maps to package.json contributes.themes plus a generated theme JSON file from the referenced
-    theme:ColorTheme block (tokenColors, editor colors, label, uiTheme, themePath).
+    Registers a generated VS Code color theme. Maps to package.json contributes.themes plus a
+    generated theme JSON file from the referenced theme:ColorTheme block (tokenColors, editor
+    colors, label, uiTheme, themePath). When marketplace is true, also add the Themes category
+    and emit contributes.themes[].id from ColorTheme.themeId so the theme is a first-class
+    Marketplace / Open VSX listing — not only a local .vscode/settings.json default.
 
-    Primary use: BlockML Dev theme with one distinct color per *.bml TextMate scope so grammar
-    authors can see whether scopes match intent. End users may select the theme manually; workspace
-    settings in .vscode/settings.json can default to it during extension development.
+    Primary use: BlockML theme with one distinct color per *.bml TextMate scope. Position-based
+    BML scopes are not colored by generic Dark+/Light+ families, so end-user syntax highlighting
+    requires this custom theme. Grammar authors use the same theme to verify scopes.
 
     Do not invent tokenColors only in JSON — amend theme:ColorTheme / TokenColorRule in BML first,
     then re-render.
@@ -47,6 +49,12 @@
     <colorTheme type="TypeReference(theme:ColorTheme)">
       <documentation>Concrete ColorTheme block (for example theme:BlockMlDevColorTheme).</documentation>
     </colorTheme>
+    <marketplace type="Boolean">
+      <documentation>When true, ship this theme as a Marketplace feature: include it in the
+        published package contributes.themes, emit themes[].id, and add the Themes category.
+        When false, keep it as a local grammar-development theme (workspace settings only).</documentation>
+      <value>false</value>
+    </marketplace>
   </properties>
 
 </block>
