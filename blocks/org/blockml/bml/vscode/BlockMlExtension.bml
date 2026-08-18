@@ -251,7 +251,7 @@
           <type:TextEntity value="Position-based scopes (theme:FrameworkRoles) — same tag name, different color by nesting" />
           <type:TextEntity value="L0 block root — entity.name.type.framework.root.bml" />
           <type:TextEntity value="L1 blockBody: block-declaration (name/type/abstract/…) + block-facet (documentation/summary/…) + block-container (subBlocks/…) + member-container (properties/aggregations/associations/…)" />
-          <type:TextEntity value="L2 memberContainerBody: direct children = user member names — entity.name.member.bml (incl. property named documentation or abstract)" />
+          <type:TextEntity value="L2 memberContainerBody: every direct child is a user member name (entity.name.member.bml) — including names that collide with containers (properties/aggregations) or Library aggregations (dependencies, blocks, readMe). Containers wrap until the matching &lt;/same-name&gt;." />
           <type:TextEntity value="L3 memberBody: member-field (type/override/abstract/…) + member-facet (documentation/value/…) + member-subcontainer (composition/suggestions/…)" />
           <type:TextEntity value="L4 memberSubContainerBody: PascalCase composition instances — entity.name.type.instance.bml" />
           <type:TextEntity value="Nested &lt;block&gt; in subBlocks re-enters blockBody (same L1 rules)" />
@@ -393,9 +393,9 @@
             <patternKey><value>tagMemberContainerElement</value></patternKey>
             <scopeName><value>meta.tag.bml</value></scopeName>
             <begin><value>(&lt;)(properties|aggregations|associations|capabilities|constraints)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
+            <end><value>(/&gt;)|(&lt;/)(\2)\s*(&gt;)</value></end>
             <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.member-container.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
+            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"punctuation.definition.tag.bml"},"3":{"name":"keyword.other.member-container.bml"},"4":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
             <nestedIncludes>
               <type:TextEntity value="#attribute" />
               <type:TextEntity value="#memberContainerBody" />
@@ -405,10 +405,10 @@
           <contrib:GrammarPattern bml:id="patternTagBlockContainerElement">
             <patternKey><value>tagBlockContainerElement</value></patternKey>
             <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;)(contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references|blocks|readMe|library)(?=[\s/>])</value></begin>
-            <end><value>(/?&gt;)</value></end>
+            <begin><value>(&lt;)(contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references)(?=[\s/>])</value></begin>
+            <end><value>(/&gt;)|(&lt;/)(\2)\s*(&gt;)</value></end>
             <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-container.bml"}}</value></beginCapturesJson>
-            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
+            <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"punctuation.definition.tag.bml"},"3":{"name":"keyword.other.block-container.bml"},"4":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>
             <nestedIncludes>
               <type:TextEntity value="#attribute" />
               <type:TextEntity value="#blockContainerBody" />
@@ -490,7 +490,7 @@
           <contrib:GrammarPattern bml:id="patternTagBlockContainer">
             <patternKey><value>tagBlockContainer</value></patternKey>
             <scopeName><value>meta.tag.bml</value></scopeName>
-            <begin><value>(&lt;/?)(contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references|blocks|readMe|library)(?=[\s/>])</value></begin>
+            <begin><value>(&lt;/?)(contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references)(?=[\s/>])</value></begin>
             <end><value>(/?&gt;)</value></end>
             <beginCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-container.bml"}}</value></beginCapturesJson>
             <endCapturesJson><value>{"1":{"name":"punctuation.definition.tag.bml"}}</value></endCapturesJson>

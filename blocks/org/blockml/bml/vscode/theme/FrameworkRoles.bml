@@ -112,9 +112,6 @@
           <type:TextEntity value="aliases" />
           <type:TextEntity value="keywords" />
           <type:TextEntity value="references" />
-          <type:TextEntity value="blocks" />
-          <type:TextEntity value="readMe" />
-          <type:TextEntity value="library" />
         </tags>
       </theme:HighlightRole>
 
