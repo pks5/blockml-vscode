@@ -1,11 +1,10 @@
 <!--
-  BlockML VS Code — framework highlight scheme (highlight.js roles)
+  BlockML VS Code — framework highlight scheme (position-based roles)
 
   FQN: org.blockml.bml.vscode.theme.FrameworkRoles
 
-  Tag lists derived from the BlockML highlight.js grammar (stage B roles:
-  title / keyword / meta / built_in / name) and org.blockml.bml.definition
-  (BlockDefinition, StructuralDefinition, MemberDefinition, …).
+  Scopes follow XML position relative to the nearest &lt;block&gt; and member containers
+  (org.blockml.bml.definition.BlockDefinition, MemberDefinition, StructuralDefinition).
 -->
 <block
   xmlns="http://blockml.org/bml"
@@ -21,32 +20,29 @@
   <baseType>theme:HighlightScheme</baseType>
   <is>The default BlockML framework highlight scheme</is>
 
-  <summary>Default semantic highlight scheme: root, identity, containers, facets, and PascalCase
-    domain type tags map to distinct TextMate scope families; camelCase domain tags use domainScope.</summary>
+  <summary>Position-based highlight scheme: block declaration, member container, member name, and
+    member field scopes are distinct so the same tag local name (e.g. abstract, documentation) colors
+    differently by XML nesting — not by keyword lists alone.</summary>
 
   <documentation>
-    Concrete HighlightScheme used by bmlSimpleGrammar. Role → TextMate scope families are chosen so
-    common VS Code themes color &lt;block&gt;, identity fields, containers, facets, PascalCase Block
-    type references (&lt;MyBlock&gt;, &lt;ns:MyBlock&gt;), and camelCase domain tags differently
-    without a custom color theme.
+    Concrete HighlightScheme used by bmlSimpleGrammar. Roles map to TextMate scopes by structural
+    position:
 
-    When changing tags or scopes, re-render GrammarContribution patterns and
-    syntaxes/bml.tmLanguage.json via an explicit LLM / generator task — do not hand-edit the JSON
-    as SSOT.
+    • blockBody — direct children of &lt;block&gt; (identity + block facets)
+    • memberContainer — &lt;properties&gt;, &lt;aggregations&gt;, &lt;associations&gt;, …
+    • memberContainerBody — direct children = user member names (domainScope)
+    • memberBody — framework member fields inside a member element
+    • memberSubContainerBody — composition instances (PascalCase) inside &lt;composition&gt;, etc.
+
+    Re-render syntaxes/bml.tmLanguage.json after changing scopes or tag lists.
   </documentation>
-
-  <references>
-    <see type="theme:HighlightScheme" relation="Extends">
-      Scheme shape (schemeId, domainScope, roles).
-    </see>
-  </references>
 
   <properties>
     <schemeId>
       <value>framework-roles</value>
     </schemeId>
     <domainScope>
-      <value>entity.name.tag.bml</value>
+      <value>entity.name.member.bml</value>
     </domainScope>
   </properties>
 
@@ -62,9 +58,9 @@
         </tags>
       </theme:HighlightRole>
 
-      <theme:HighlightRole bml:id="roleIdentity">
-        <roleId><value>identity</value></roleId>
-        <textMateScope><value>keyword.other.definition.bml</value></textMateScope>
+      <theme:HighlightRole bml:id="roleBlockDeclaration">
+        <roleId><value>blockDeclaration</value></roleId>
+        <textMateScope><value>keyword.other.block-declaration.bml</value></textMateScope>
         <hljsClass><value>keyword</value></hljsClass>
         <tags>
           <type:TextEntity value="name" />
@@ -80,16 +76,33 @@
         </tags>
       </theme:HighlightRole>
 
-      <theme:HighlightRole bml:id="roleContainer">
-        <roleId><value>container</value></roleId>
-        <textMateScope><value>keyword.other.container.bml</value></textMateScope>
+      <theme:HighlightRole bml:id="roleBlockFacet">
+        <roleId><value>blockFacet</value></roleId>
+        <textMateScope><value>support.type.block-facet.bml</value></textMateScope>
+        <hljsClass><value>built_in</value></hljsClass>
+        <tags>
+          <type:TextEntity value="documentation" />
+          <type:TextEntity value="summary" />
+          <type:TextEntity value="status" />
+          <type:TextEntity value="since" />
+          <type:TextEntity value="changelog" />
+          <type:TextEntity value="examples" />
+          <type:TextEntity value="relation" />
+          <type:TextEntity value="see" />
+          <type:TextEntity value="content" />
+          <type:TextEntity value="description" />
+          <type:TextEntity value="title" />
+          <type:TextEntity value="bml:xml" />
+          <type:TextEntity value="bml:container" />
+          <type:TextEntity value="implementation" />
+        </tags>
+      </theme:HighlightRole>
+
+      <theme:HighlightRole bml:id="roleBlockContainer">
+        <roleId><value>blockContainer</value></roleId>
+        <textMateScope><value>keyword.other.block-container.bml</value></textMateScope>
         <hljsClass><value>keyword</value></hljsClass>
         <tags>
-          <type:TextEntity value="properties" />
-          <type:TextEntity value="aggregations" />
-          <type:TextEntity value="associations" />
-          <type:TextEntity value="capabilities" />
-          <type:TextEntity value="constraints" />
           <type:TextEntity value="contracts" />
           <type:TextEntity value="subBlocks" />
           <type:TextEntity value="embeddedBlocks" />
@@ -105,9 +118,43 @@
         </tags>
       </theme:HighlightRole>
 
-      <theme:HighlightRole bml:id="roleFacet">
-        <roleId><value>facet</value></roleId>
-        <textMateScope><value>support.type.framework.facet.bml</value></textMateScope>
+      <theme:HighlightRole bml:id="roleMemberContainer">
+        <roleId><value>memberContainer</value></roleId>
+        <textMateScope><value>keyword.other.member-container.bml</value></textMateScope>
+        <hljsClass><value>keyword</value></hljsClass>
+        <tags>
+          <type:TextEntity value="properties" />
+          <type:TextEntity value="aggregations" />
+          <type:TextEntity value="associations" />
+          <type:TextEntity value="capabilities" />
+          <type:TextEntity value="constraints" />
+        </tags>
+      </theme:HighlightRole>
+
+      <theme:HighlightRole bml:id="roleMemberName">
+        <roleId><value>memberName</value></roleId>
+        <textMateScope><value>entity.name.member.bml</value></textMateScope>
+        <hljsClass><value>name</value></hljsClass>
+      </theme:HighlightRole>
+
+      <theme:HighlightRole bml:id="roleMemberField">
+        <roleId><value>memberField</value></roleId>
+        <textMateScope><value>keyword.other.member-field.bml</value></textMateScope>
+        <hljsClass><value>keyword</value></hljsClass>
+        <tags>
+          <type:TextEntity value="type" />
+          <type:TextEntity value="abstract" />
+          <type:TextEntity value="final" />
+          <type:TextEntity value="override" />
+          <type:TextEntity value="readOnly" />
+          <type:TextEntity value="visibility" />
+          <type:TextEntity value="default" />
+        </tags>
+      </theme:HighlightRole>
+
+      <theme:HighlightRole bml:id="roleMemberFacet">
+        <roleId><value>memberFacet</value></roleId>
+        <textMateScope><value>support.type.member-facet.bml</value></textMateScope>
         <hljsClass><value>built_in</value></hljsClass>
         <tags>
           <type:TextEntity value="value" />
@@ -116,9 +163,6 @@
           <type:TextEntity value="implementation" />
           <type:TextEntity value="inputType" />
           <type:TextEntity value="outputType" />
-          <type:TextEntity value="override" />
-          <type:TextEntity value="readOnly" />
-          <type:TextEntity value="visibility" />
           <type:TextEntity value="status" />
           <type:TextEntity value="since" />
           <type:TextEntity value="changelog" />
@@ -126,7 +170,6 @@
           <type:TextEntity value="relation" />
           <type:TextEntity value="see" />
           <type:TextEntity value="content" />
-          <type:TextEntity value="default" />
           <type:TextEntity value="description" />
           <type:TextEntity value="title" />
           <type:TextEntity value="bml:xml" />
@@ -134,9 +177,28 @@
         </tags>
       </theme:HighlightRole>
 
+      <theme:HighlightRole bml:id="roleMemberSubContainer">
+        <roleId><value>memberSubContainer</value></roleId>
+        <textMateScope><value>keyword.other.member-subcontainer.bml</value></textMateScope>
+        <hljsClass><value>keyword</value></hljsClass>
+        <tags>
+          <type:TextEntity value="suggestions" />
+          <type:TextEntity value="composition" />
+          <type:TextEntity value="constraints" />
+          <type:TextEntity value="groups" />
+          <type:TextEntity value="implementation" />
+        </tags>
+      </theme:HighlightRole>
+
       <theme:HighlightRole bml:id="roleDomainType">
         <roleId><value>domainType</value></roleId>
         <textMateScope><value>entity.name.type.bml</value></textMateScope>
+        <hljsClass><value>title</value></hljsClass>
+      </theme:HighlightRole>
+
+      <theme:HighlightRole bml:id="roleCompositionInstance">
+        <roleId><value>compositionInstance</value></roleId>
+        <textMateScope><value>entity.name.type.instance.bml</value></textMateScope>
         <hljsClass><value>title</value></hljsClass>
       </theme:HighlightRole>
 
