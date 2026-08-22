@@ -55,6 +55,11 @@
         "path": "./syntaxes/bml.tmLanguage.json"
       }
     ],
+    "xmlLanguageParticipants": [
+      {
+        "languageId": "bml"
+      }
+    ],
     "iconThemes": [
       {
         "id": "blockml-icons",

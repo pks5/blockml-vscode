@@ -22,6 +22,10 @@
     contents of language-configuration.json (comments, brackets, autoClosingPairs,
     surroundingPairs). Maps to package.json contributes.languages plus the generated configuration
     file. V1 of the BlockML extension registers language id bml for .bml files.
+
+    When xmlLanguageParticipant is true, also emit contributes.xmlLanguageParticipants
+    so Red Hat vscode-xml (LemMinX) still treats the language as XML. Otherwise claiming
+    .bml as language bml drops xsi:schemaLocation / XSD validation, completion, and hover.
   </documentation>
 
   <references>
@@ -57,6 +61,14 @@
     <blockCommentClose type="Text">
       <documentation>Block comment close delimiter (BML: --&gt;).</documentation>
     </blockCommentClose>
+    <xmlLanguageParticipant type="Boolean">
+      <documentation>When true, emit contributes.xmlLanguageParticipants[{ languageId }] so
+        vscode-xml applies XSD/DTD features (schemaLocation, catalogs, completion, validation)
+        to this language. Required for BML because files declare xsi:schemaLocation pointing at
+        https://blockml.org/schemas/bml.xsd but are no longer language xml once this extension
+        claims .bml.</documentation>
+      <value>false</value>
+    </xmlLanguageParticipant>
   </properties>
 
   <aggregations>

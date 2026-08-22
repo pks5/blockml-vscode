@@ -21,7 +21,9 @@
   <documentation>
     Contribution → generator mapping:
     • LanguageContribution → contributes.languages + language-configuration.json (comments,
-      brackets, autoClosingPairs, surroundingPairs from CharacterPair aggregations)
+      brackets, autoClosingPairs, surroundingPairs from CharacterPair aggregations). When
+      xmlLanguageParticipant is true, also contributes.xmlLanguageParticipants[{ languageId }]
+      so vscode-xml keeps applying XSD (xsi:schemaLocation) after .bml is claimed as language bml
     • GrammarContribution → contributes.grammars + syntaxes/*.tmLanguage.json (from structured
       GrammarPattern children, topLevelIncludes, and scopes). When highlightScheme is set,
       framework tag patterns must follow that HighlightScheme's roles/tags/scopes.

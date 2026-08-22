@@ -34,6 +34,9 @@
     • Honour milestone and enabled when filtering V1 vs V2 output
     • Prefer updating BML over hand-editing generated files for durable changes
     • Emit language-configuration.json only from LanguageContribution comment/pair fields
+    • When LanguageContribution.xmlLanguageParticipant is true, emit
+      contributes.xmlLanguageParticipants[{ languageId }] so vscode-xml still honours XSD /
+      xsi:schemaLocation for that language (BML files are XML with language id bml)
     • Emit tmLanguage only from GrammarContribution patterns / topLevelIncludes / scopes
     • When GrammarContribution.highlightScheme is set, derive framework tag patterns (tagRoot,
       tagIdentity, tagContainer, tagFacet, plus domain fallback tag) from that scheme's

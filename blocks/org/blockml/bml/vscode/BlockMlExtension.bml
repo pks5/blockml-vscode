@@ -109,6 +109,7 @@
           <milestone>V1</milestone>
           <enabled>true</enabled>
           <languageId>bml</languageId>
+          <xmlLanguageParticipant>true</xmlLanguageParticipant>
           <configurationPath>./language-configuration.json</configurationPath>
           <blockCommentOpen>&lt;!--</blockCommentOpen>
           <blockCommentClose>--&gt;</blockCommentClose>

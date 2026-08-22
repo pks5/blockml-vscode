@@ -27,6 +27,8 @@
     every scope listed on GrammarContribution.scopes plus HighlightScheme.roles[].textMateScope
     and domainScope. Generic editor themes do not color the position-based *.bml scopes, so a
     shipped ColorTheme is required for visible syntax highlighting in the Marketplace build.
+    Also include XML/XSD tokenColors (entity.name.tag.xml, …) so .xsd / .xml stay readable while
+    the BlockML theme is active — otherwise only *.bml scopes are painted.
 
     Workflow: edit tokenColors here (or in a concrete subtype such as theme:BlockMlDevColorTheme),
     then re-render themes/*.json and package.json contributes.themes via an explicit generator /

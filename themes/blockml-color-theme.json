@@ -111,6 +111,31 @@
       "name": "BML: attribute separator",
       "scope": "punctuation.separator.key-value.bml",
       "settings": { "foreground": "#D4D4D4" }
+    },
+    {
+      "name": "XML/XSD: tag name",
+      "scope": "entity.name.tag.xml",
+      "settings": { "foreground": "#569CD6" }
+    },
+    {
+      "name": "XML/XSD: attribute name",
+      "scope": "entity.other.attribute-name.xml",
+      "settings": { "foreground": "#9CDCFE" }
+    },
+    {
+      "name": "XML/XSD: string",
+      "scope": "string.quoted.double.xml",
+      "settings": { "foreground": "#CE9178" }
+    },
+    {
+      "name": "XML/XSD: comment",
+      "scope": "comment.block.xml",
+      "settings": { "foreground": "#6A9955" }
+    },
+    {
+      "name": "XML/XSD: tag punctuation",
+      "scope": "punctuation.definition.tag.xml",
+      "settings": { "foreground": "#808080" }
     }
   ]
 }

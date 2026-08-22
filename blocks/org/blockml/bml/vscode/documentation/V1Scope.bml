@@ -32,6 +32,8 @@
     2. BML file type — language id bml, alias BlockML / BML, extension .bml. Language-configuration
        (block comments, brackets, autoClosingPairs) lives on LanguageContribution; the JSON file
        is a render artefact. Declarative V1 needs no extension main / activationEvents.
+       xmlLanguageParticipant=true so vscode-xml still validates against bml.xsd via
+       xsi:schemaLocation (files are language bml, not xml).
     3. File icon — icon theme blockml-icons (icons/blockml-icon-theme.json) maps .bml / language
        bml to icons/blockml.svg for explorer, tabs, and language association.
     4. Marketplace icon — use icons/blockml.png as the large VS Code Marketplace / Open VSX gallery

@@ -160,6 +160,36 @@
           <scope>punctuation.separator.key-value.bml</scope>
           <foreground>#D4D4D4</foreground>
         </theme:TokenColorRule>
+
+        <theme:TokenColorRule bml:id="colorXmlTag">
+          <ruleName>XML/XSD: tag name</ruleName>
+          <scope>entity.name.tag.xml</scope>
+          <foreground>#569CD6</foreground>
+        </theme:TokenColorRule>
+
+        <theme:TokenColorRule bml:id="colorXmlAttribute">
+          <ruleName>XML/XSD: attribute name</ruleName>
+          <scope>entity.other.attribute-name.xml</scope>
+          <foreground>#9CDCFE</foreground>
+        </theme:TokenColorRule>
+
+        <theme:TokenColorRule bml:id="colorXmlString">
+          <ruleName>XML/XSD: string</ruleName>
+          <scope>string.quoted.double.xml</scope>
+          <foreground>#CE9178</foreground>
+        </theme:TokenColorRule>
+
+        <theme:TokenColorRule bml:id="colorXmlComment">
+          <ruleName>XML/XSD: comment</ruleName>
+          <scope>comment.block.xml</scope>
+          <foreground>#6A9955</foreground>
+        </theme:TokenColorRule>
+
+        <theme:TokenColorRule bml:id="colorXmlPunctTag">
+          <ruleName>XML/XSD: tag punctuation</ruleName>
+          <scope>punctuation.definition.tag.xml</scope>
+          <foreground>#808080</foreground>
+        </theme:TokenColorRule>
       </composition>
     </tokenColors>
   </aggregations>

@@ -38,6 +38,10 @@
     • BlockML color theme (id blockml) — required for visible coloring; generic Dark+/Light+
       themes do not paint the *.bml TextMate scopes
     • BlockML file icons (icon theme blockml-icons)
+    • XSD: language bml is an xmlLanguageParticipant so vscode-xml still honours
+      xsi:schemaLocation (https://blockml.org/schemas/bml.xsd). Install XML by Red Hat
+      for schema validation / completion. The BlockML color theme also paints XML/XSD
+      TextMate scopes so .xsd files stay readable.
 
     How to enable the theme: Command Palette → Preferences: Color Theme → BlockML.
 

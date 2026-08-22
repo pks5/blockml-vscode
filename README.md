@@ -16,6 +16,7 @@ A **language server** and richer IDE features are planned for **V2**.
 - **Position-based syntax highlighting** — framework tags (block, properties, documentation, …) vs domain member names vs PascalCase type references
 - **BlockML color theme** — required for visible coloring (see below)
 - **File icons** — `.bml` icon in the explorer and editor tabs
+- **XSD** — `.bml` stays an XML language participant, so `xsi:schemaLocation` / `bml.xsd` still work if [XML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml) (Red Hat) is installed. The BlockML color theme also colors XML/XSD files.
 
 ## Color theme (required)
 
