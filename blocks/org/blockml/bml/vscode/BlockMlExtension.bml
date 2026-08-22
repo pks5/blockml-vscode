@@ -68,13 +68,13 @@
       <value>BlockML</value>
     </displayName>
     <description>
-      <value>V1 language support for BlockML (BML) — limited syntax highlighting (no language server yet), BlockML color theme, and file icons. A language server is planned for V2.</value>
+      <value>Language support for BlockML (BML) — syntax highlighting, diagnostics via language server, BlockML color theme, and file icons.</value>
     </description>
     <icon>
       <value>./icons/blockml.png</value>
     </icon>
     <version>
-      <value>0.1.0</value>
+      <value>0.2.0</value>
     </version>
     <enginesVscode>
       <value>^1.85.0</value>
@@ -98,6 +98,7 @@
     <activationEvents>
       <composition>
         <type:TextEntity value="onLanguage:bml" />
+        <type:TextEntity value="workspaceContains:**/*.bml" />
       </composition>
     </activationEvents>
 
@@ -559,7 +560,7 @@
               <key>blockml.bml.trace.server</key>
               <valueKind>String</valueKind>
               <defaultValue>off</defaultValue>
-              <description>Traces the communication between VS Code and the BlockML language server (V2).</description>
+              <description>Traces the communication between VS Code and the BlockML language server.</description>
               <scope>Window</scope>
               <enumValues>
                 <type:TextEntity value="off" />
@@ -572,7 +573,7 @@
               <key>blockml.bml.enableLanguageServer</key>
               <valueKind>Boolean</valueKind>
               <defaultValue>true</defaultValue>
-              <description>Enable the BlockML language server client (V2). Ignored until the V2 milestone is shipped.</description>
+              <description>Enable the BlockML language server client for diagnostics.</description>
               <scope>Window</scope>
             </contrib:Setting>
 
@@ -592,21 +593,17 @@
         <contrib:LanguageServerContribution bml:id="bmlLanguageServer">
           <milestone>V2</milestone>
           <enabled>true</enabled>
-          <serverModulePath>./server/out/server.js</serverModulePath>
-          <transport>ipc</transport>
+          <serverModulePath>node_modules/@blockml/lsp/dist/server.js</serverModulePath>
+          <transport>stdio</transport>
+          <debugPort>6009</debugPort>
           <traceSettingKey>blockml.bml.trace.server</traceSettingKey>
           <documentSelectors>
             <type:TextEntity value="language:bml" />
             <type:TextEntity value="scheme:file" />
+            <type:TextEntity value="pattern:**/*.bml" />
           </documentSelectors>
           <clientFeatures>
             <type:TextEntity value="diagnostics" />
-            <type:TextEntity value="hover" />
-            <type:TextEntity value="completion" />
-            <type:TextEntity value="definition" />
-            <type:TextEntity value="references" />
-            <type:TextEntity value="documentSymbol" />
-            <type:TextEntity value="semanticTokens" />
           </clientFeatures>
         </contrib:LanguageServerContribution>
 

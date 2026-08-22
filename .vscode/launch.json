@@ -1,11 +1,19 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "name": "Extension",
-        "type": "extensionHost",
-        "request": "launch",
-        "args": ["--extensionDevelopmentPath=${workspaceFolder}"]
-      }
-    ]
-  }
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
+      "preLaunchTask": "npm: compile"
+    },
+    {
+      "name": "Attach to Language Server",
+      "type": "node",
+      "request": "attach",
+      "port": 6009,
+      "restart": true
+    }
+  ]
+}
