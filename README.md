@@ -7,13 +7,12 @@ The extension is built entirely on the BlockML language server (`@blockml/lsp`).
 ## Features
 
 - **`.bml` language** — file type, comments, and bracket matching
-- **Syntax highlighting** — TextMate grammar: framework tags (block, properties, documentation, …) vs domain member names vs PascalCase type references
+- **Syntax highlighting** — TextMate grammar plus token colors on top of your current color theme (framework tags vs domain members vs type references)
 - **Hover** — type and documentation information from the language server
 - **Syntax check** — parse and validation errors via the language server (`source: blockml`)
 - **Navigation** — go to definition, peek definition, and find references (including Ctrl/Cmd-click)
 - **Outline** — document symbols in the Outline view
 - **Format** — format document via the language server
-- **BlockML color theme** — required for visible coloring (see below)
 - **File icons** — `.bml` icon in the explorer and editor tabs (language icon; works with your current file icon theme)
 
 Autocomplete is not implemented yet. Coloring is lexical (TextMate); LSP semantic tokens are not used yet.
@@ -28,17 +27,6 @@ The extension starts `@blockml/lsp` as a separate Node process (stdio). It curre
 - Optionally configure the project via `bom.config.json` (`srcDir`, `libraries`).
 
 Disable the server with the setting `blockml.bml.enableLanguageServer`. Trace LSP traffic with `blockml.bml.trace.server`.
-
-## Color theme (required)
-
-BlockML uses custom TextMate scopes. Generic themes such as Dark+ / Light+ do **not** color them correctly.
-
-After installing the extension, select the **BlockML** color theme:
-
-1. Command Palette (`Ctrl+K Ctrl+T` / `⌘K ⌘T`)
-2. Choose **BlockML**
-
-The `.bml` file icon is a language icon and works with your current file icon theme.
 
 ## Coming next
 

@@ -41,11 +41,10 @@
     4. Marketplace icon — use icons/blockml.png as the large VS Code Marketplace / Open VSX gallery
        icon (package.json icon field on Extension). Distinct from the filetype SVG.
 
-    5. Color theme — BlockML (theme:BlockMlDevColorTheme, ColorThemeContribution.marketplace=true)
-       ships as a Marketplace Themes listing. Position-based *.bml TextMate scopes are not painted
-       by generic Dark+/Light+ families, so this custom theme is required for visible syntax
-       highlighting. package.json contributes.themes[].id is ColorTheme.themeId (blockml);
-       workbench.colorTheme in .vscode/settings.json defaults to it during extension development.
+    5. Scope colors — ColorThemeContribution.overlayTokenColors emits
+       editor.tokenColorCustomizations textMateRules for *.bml scopes on top of the user's
+       color theme. contributeTheme is false so F5 does not auto-apply a full BlockML theme
+       (which would un-color every other language).
 
     Out of scope for V1: language server, semantic tokens, cross-file navigation, and rich settings
     beyond the ConfigurationContribution already declared for forward-compatible V2 keys.
@@ -65,7 +64,7 @@
       Default semantic highlight scheme for framework tag roles.
     </see>
     <see type="theme:BlockMlDevColorTheme" relation="Defines">
-      Shipped Marketplace color theme required for visible BML syntax highlighting.
+      Token color overlay source for *.bml TextMate scopes (not a registered color theme).
     </see>
     <see type="doc:MarketplaceListing" relation="SeeAlso">
       Marketplace README.md listing copy (V1 limitation + V2 language server).

@@ -1,7 +1,7 @@
 {
   "name": "blockml",
   "version": "0.7.1",
-  "description": "Language support for BlockML (BML) — syntax highlighting, diagnostics via language server, BlockML color theme, and file icons.",
+  "description": "Language support for BlockML (BML) — syntax highlighting, diagnostics via language server, and file icons.",
   "displayName": "BlockML",
   "publisher": "blockml",
   "license": "Apache-2.0",
@@ -19,8 +19,7 @@
     "vscode": "^1.85.0"
   },
   "categories": [
-    "Programming Languages",
-    "Themes"
+    "Programming Languages"
   ],
   "keywords": [
     "blockml",
@@ -71,14 +70,96 @@
         "languageId": "bml"
       }
     ],
-    "themes": [
-      {
-        "id": "blockml",
-        "label": "BlockML",
-        "uiTheme": "vs-dark",
-        "path": "./themes/blockml-color-theme.json"
+    "configurationDefaults": {
+      "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "scope": "entity.name.type.framework.root.bml",
+            "settings": { "foreground": "#FF79C6", "fontStyle": "bold" }
+          },
+          {
+            "scope": "keyword.other.block-declaration.bml",
+            "settings": { "foreground": "#C586C0" }
+          },
+          {
+            "scope": "support.type.block-facet.bml",
+            "settings": { "foreground": "#6A9955" }
+          },
+          {
+            "scope": "keyword.other.block-container.bml",
+            "settings": { "foreground": "#3794FF" }
+          },
+          {
+            "scope": "keyword.other.member-container.bml",
+            "settings": { "foreground": "#4EC9B0", "fontStyle": "bold" }
+          },
+          {
+            "scope": "entity.name.member.bml",
+            "settings": { "foreground": "#CE9178" }
+          },
+          {
+            "scope": "keyword.other.member-field.bml",
+            "settings": { "foreground": "#BB86FC" }
+          },
+          {
+            "scope": "support.type.member-facet.bml",
+            "settings": { "foreground": "#98C379" }
+          },
+          {
+            "scope": "keyword.other.member-subcontainer.bml",
+            "settings": { "foreground": "#56B6C2" }
+          },
+          {
+            "scope": "entity.name.type.bml",
+            "settings": { "foreground": "#DCDCAA" }
+          },
+          {
+            "scope": "entity.name.type.instance.bml",
+            "settings": { "foreground": "#E5C07B" }
+          },
+          {
+            "scope": "entity.name.tag.bml",
+            "settings": { "foreground": "#ABB2BF" }
+          },
+          {
+            "scope": "entity.other.attribute-name.bml",
+            "settings": { "foreground": "#9CDCFE" }
+          },
+          {
+            "scope": "string.quoted.double.bml",
+            "settings": { "foreground": "#CE9178" }
+          },
+          {
+            "scope": "string.quoted.single.bml",
+            "settings": { "foreground": "#D7BA7D" }
+          },
+          {
+            "scope": "comment.block.bml",
+            "settings": { "foreground": "#608B4E" }
+          },
+          {
+            "scope": "keyword.other.interpolation.bml",
+            "settings": { "foreground": "#D7BA7D" }
+          },
+          {
+            "scope": "keyword.control.embed.bml",
+            "settings": { "foreground": "#D16969" }
+          },
+          {
+            "scope": "punctuation.definition.tag.bml",
+            "settings": { "foreground": "#808080" }
+          },
+          {
+            "scope": "punctuation.definition.comment.bml",
+            "settings": { "foreground": "#608B4E" }
+          },
+          {
+            "scope": "punctuation.separator.key-value.bml",
+            "settings": { "foreground": "#D4D4D4" }
+          }
+        ]
       }
-    ],
+    },
     "configuration": {
       "title": "BlockML",
       "properties": {

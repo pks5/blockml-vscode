@@ -52,9 +52,13 @@
     • Emit color theme JSON only from ColorTheme (tokenColors, editorForeground/Background,
       label, uiTheme, themePath) referenced by ColorThemeContribution — do not invent colors only
       in themes/*.json
-    • When ColorThemeContribution.marketplace is true, add Themes to package.json categories and
-      emit contributes.themes[].id from ColorTheme.themeId so the theme is a Marketplace listing,
-      not only a local .vscode/settings.json default
+    • Emit contributes.themes only when ColorThemeContribution.contributeTheme is true. The
+      Extension Development Host auto-applies the first registered color theme on F5.
+    • When ColorThemeContribution.overlayTokenColors is true, emit
+      contributes.configurationDefaults editor.tokenColorCustomizations.textMateRules from
+      ColorTheme.tokenColors whose scope ends in .bml — omit xml / other languages
+    • When ColorThemeContribution.marketplace is true and contributeTheme is true, add Themes
+      to package.json categories and emit contributes.themes[].id from ColorTheme.themeId
     • When ColorTheme.highlightScheme is set, verify tokenColors cover every
       HighlightRole.textMateScope, domainScope, and GrammarContribution.scopes entry
     • For V1 (no LanguageServerContribution in the filtered set): omit package.json main and

@@ -68,7 +68,7 @@
       <value>BlockML</value>
     </displayName>
     <description>
-      <value>Language support for BlockML (BML) — syntax highlighting, diagnostics via language server, BlockML color theme, and file icons.</value>
+      <value>Language support for BlockML (BML) — syntax highlighting, diagnostics via language server, and file icons.</value>
     </description>
     <icon>
       <value>./icons/blockml.png</value>
@@ -91,7 +91,6 @@
     <categories>
       <composition>
         <type:TextEntity value="Programming Languages" />
-        <type:TextEntity value="Themes" />
       </composition>
     </categories>
 
@@ -548,7 +547,9 @@
         <contrib:ColorThemeContribution bml:id="bmlDevColorTheme">
           <milestone>V1</milestone>
           <enabled>true</enabled>
-          <marketplace>true</marketplace>
+          <marketplace>false</marketplace>
+          <contributeTheme>false</contributeTheme>
+          <overlayTokenColors>true</overlayTokenColors>
           <colorTheme>theme:BlockMlDevColorTheme</colorTheme>
         </contrib:ColorThemeContribution>
 

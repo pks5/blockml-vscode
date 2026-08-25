@@ -35,9 +35,11 @@
       contributes.iconThemes + icon theme JSON (themeId / themeLabel / themePath). Do not
       register an icon theme while F5-testing a language extension: the Development Host
       auto-applies the first contributed file icon theme.
-    • ColorThemeContribution → contributes.themes + themes/*.json from theme:ColorTheme
-      tokenColors and editor colors (theme:BlockMlDevColorTheme). marketplace=true adds the
-      Themes category and emits contributes.themes[].id from ColorTheme.themeId
+    • ColorThemeContribution → when contributeTheme is true, contributes.themes + themes/*.json
+      (marketplace=true adds the Themes category). When overlayTokenColors is true, also
+      configurationDefaults editor.tokenColorCustomizations.textMateRules for *.bml scopes so
+      colors sit on the user's theme. Do not register a color theme while F5-testing: the
+      Development Host auto-applies the first contributed color theme.
     • ConfigurationContribution / Setting → contributes.configuration (SSOT for all settings)
     • CommandContribution → contributes.commands
     • KeybindingContribution → contributes.keybindings
