@@ -2,18 +2,25 @@
 
 Language support for **BlockML** (`.bml`) in Visual Studio Code and Cursor.
 
+The extension is built entirely on the BlockML language server (`@blockml/lsp`). There is no XSD / XML schema integration.
+
 ## Features
 
 - **`.bml` language** — file type, comments, and bracket matching
-- **Position-based syntax highlighting** — framework tags (block, properties, documentation, …) vs domain member names vs PascalCase type references
-- **Diagnostics** — parse and validation errors via the BlockML language server (`source: blockml`)
+- **Syntax highlighting** — TextMate grammar: framework tags (block, properties, documentation, …) vs domain member names vs PascalCase type references
+- **Hover** — type and documentation information from the language server
+- **Syntax check** — parse and validation errors via the language server (`source: blockml`)
+- **Navigation** — go to definition, peek definition, and find references (including Ctrl/Cmd-click)
+- **Outline** — document symbols in the Outline view
+- **Format** — format document via the language server
 - **BlockML color theme** — required for visible coloring (see below)
 - **File icons** — `.bml` icon in the explorer and editor tabs
-- **XSD** — `.bml` stays an XML language participant, so `xsi:schemaLocation` / `bml.xsd` still work if [XML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml) (Red Hat) is installed. The BlockML color theme also colors XML/XSD files.
+
+Autocomplete is not implemented yet. Coloring is lexical (TextMate); LSP semantic tokens are not used yet.
 
 ## Language server
 
-The extension starts `@blockml/lsp` as a separate Node process (stdio). Currently it provides **diagnostics only** — no hover, completion, or format yet.
+The extension starts `@blockml/lsp` as a separate Node process (stdio). It currently provides **hover**, **diagnostics**, **navigation**, **outline**, and **format**. Completion and semantic highlighting are not available yet.
 
 **Requirements:**
 
@@ -33,11 +40,10 @@ After installing the extension, select the **BlockML** color theme:
 
 Also enable the **BlockML Icons** file icon theme if you want `.bml` file icons: Command Palette → **Preferences: File Icon Theme** → **BlockML Icons**.
 
-## Coming in V2
+## Coming next
 
-- Hover, completion, and format
+- Autocomplete (completion)
 - Semantic highlighting on top of the TextMate grammar
-- Navigation between BML files (go to definition, find references)
 
 ## License
 
