@@ -36,7 +36,7 @@
       TextMate grammar bound to the same language id.
     </see>
     <see type="contrib:IconContribution" relation="SeeAlso">
-      File icon for the language / extension.
+      File icon for the language / extension (icon theme and/or languages[].icon).
     </see>
     <see type="contrib:CharacterPair" relation="SeeAlso">
       Open/close pairs for brackets and auto-closing.

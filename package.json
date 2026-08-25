@@ -52,6 +52,10 @@
         "extensions": [
           ".bml"
         ],
+        "icon": {
+          "light": "./icons/blockml.svg",
+          "dark": "./icons/blockml.svg"
+        },
         "configuration": "./language-configuration.json"
       }
     ],
@@ -65,13 +69,6 @@
     "xmlLanguageParticipants": [
       {
         "languageId": "bml"
-      }
-    ],
-    "iconThemes": [
-      {
-        "id": "blockml-icons",
-        "label": "BlockML Icons",
-        "path": "./icons/blockml-icon-theme.json"
       }
     ],
     "themes": [

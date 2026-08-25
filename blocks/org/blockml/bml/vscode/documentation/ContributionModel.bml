@@ -30,8 +30,11 @@
     • HighlightScheme / HighlightRole (org.blockml.bml.vscode.theme.*) → SSOT for semantic
       framework-tag coloring; not a package.json contribution by itself — consumed when rendering
       GrammarContribution / tmLanguage
-    • IconContribution → contributes.iconThemes + icon theme JSON (themeId / themeLabel /
-      themePath) mapping fileExtension / languageId to iconPath
+    • IconContribution → when contributeLanguageIcon is true, contributes.languages[].icon
+      { light, dark } from iconPath / iconPathDark. When contributeIconTheme is true, also
+      contributes.iconThemes + icon theme JSON (themeId / themeLabel / themePath). Do not
+      register an icon theme while F5-testing a language extension: the Development Host
+      auto-applies the first contributed file icon theme.
     • ColorThemeContribution → contributes.themes + themes/*.json from theme:ColorTheme
       tokenColors and editor colors (theme:BlockMlDevColorTheme). marketplace=true adds the
       Themes category and emits contributes.themes[].id from ColorTheme.themeId

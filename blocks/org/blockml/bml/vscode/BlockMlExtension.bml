@@ -536,6 +536,8 @@
           <enabled>true</enabled>
           <languageId>bml</languageId>
           <iconPath>./icons/blockml.svg</iconPath>
+          <contributeLanguageIcon>true</contributeLanguageIcon>
+          <contributeIconTheme>false</contributeIconTheme>
           <fileExtension>.bml</fileExtension>
           <themeId>blockml-icons</themeId>
           <themeLabel>BlockML Icons</themeLabel>

@@ -17,10 +17,19 @@
   <is>A language or file icon contribution</is>
 
   <documentation>
-    Describes the BML file icon for the explorer and editor tabs, including icon theme identity
-    (themeId, themeLabel, themePath) for contributes.iconThemes. Generators emit the icon theme
-    JSON that maps fileExtension / languageId to iconPath. For the BlockML extension, the filetype
-    icon asset is icons/blockml.svg at the repository root — use it for .bml / language bml.
+    Describes the BML file icon for the explorer and editor tabs. Two independent VS Code
+    contributions may be emitted from the same iconPath:
+
+    • Language mode icon — contributes.languages[].icon (light/dark). Works with whatever file
+      icon theme the user has selected (Seti, Material, …); other file types keep their icons.
+    • File icon theme — contributes.iconThemes (themeId, themeLabel, themePath). A full theme
+      that only maps .bml and replaces other themes. Do not emit this while developing a
+      language extension: the Extension Development Host (F5) auto-applies the first file
+      icon theme from the extension under development (ConfigurationTarget.MEMORY), even if
+      the user never selected it. Language mode icons do not trigger that.
+
+    Generators emit the icon theme JSON that maps fileExtension / languageId to iconPath. For
+    the BlockML extension, the filetype icon asset is icons/blockml.svg at the repository root.
 
     Do not confuse with Extension.icon (icons/blockml.png) — that large PNG is the Marketplace
     gallery image in package.json, not the editor filetype glyph.
@@ -50,8 +59,20 @@
         (for BlockML: ./icons/blockml.svg).</documentation>
     </iconPath>
     <iconPathDark type="FilePath">
-      <documentation>Optional dark-theme variant of the icon.</documentation>
+      <documentation>Optional dark-theme variant of the icon. When omitted, iconPath is used for
+        both light and dark language-mode icons.</documentation>
     </iconPathDark>
+    <contributeLanguageIcon type="Boolean">
+      <documentation>When true, also emit contributes.languages[].icon { light, dark } from
+        iconPath / iconPathDark so the .bml glyph appears without switching file icon theme.</documentation>
+      <value>false</value>
+    </contributeLanguageIcon>
+    <contributeIconTheme type="Boolean">
+      <documentation>When true, emit contributes.iconThemes from themeId / themeLabel / themePath.
+        When false, the theme JSON may still exist on disk but is not registered — required to
+        stop F5 from auto-applying a .bml-only icon theme in the Extension Development Host.</documentation>
+      <value>true</value>
+    </contributeIconTheme>
     <fileExtension type="Text">
       <documentation>File extension the icon applies to (for example .bml).</documentation>
       <value>.bml</value>

@@ -44,6 +44,11 @@
     • Changing a HighlightScheme (tags or scopes) requires an explicit LLM / generator re-render
       of GrammarContribution patterns and syntaxes/*.tmLanguage.json — never auto-build on save
     • Emit icon theme JSON only from IconContribution theme* / iconPath / fileExtension fields
+    • When IconContribution.contributeLanguageIcon is true, emit
+      contributes.languages[].icon { light, dark } from iconPath / iconPathDark on the matching
+      LanguageContribution
+    • Emit contributes.iconThemes only when IconContribution.contributeIconTheme is true. The
+      Extension Development Host auto-applies the first registered file icon theme on F5.
     • Emit color theme JSON only from ColorTheme (tokenColors, editorForeground/Background,
       label, uiTheme, themePath) referenced by ColorThemeContribution — do not invent colors only
       in themes/*.json

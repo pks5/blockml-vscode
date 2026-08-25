@@ -14,7 +14,7 @@ The extension is built entirely on the BlockML language server (`@blockml/lsp`).
 - **Outline** — document symbols in the Outline view
 - **Format** — format document via the language server
 - **BlockML color theme** — required for visible coloring (see below)
-- **File icons** — `.bml` icon in the explorer and editor tabs
+- **File icons** — `.bml` icon in the explorer and editor tabs (language icon; works with your current file icon theme)
 
 Autocomplete is not implemented yet. Coloring is lexical (TextMate); LSP semantic tokens are not used yet.
 
@@ -38,7 +38,7 @@ After installing the extension, select the **BlockML** color theme:
 1. Command Palette (`Ctrl+K Ctrl+T` / `⌘K ⌘T`)
 2. Choose **BlockML**
 
-Also enable the **BlockML Icons** file icon theme if you want `.bml` file icons: Command Palette → **Preferences: File Icon Theme** → **BlockML Icons**.
+The `.bml` file icon is a language icon and works with your current file icon theme.
 
 ## Coming next
 
