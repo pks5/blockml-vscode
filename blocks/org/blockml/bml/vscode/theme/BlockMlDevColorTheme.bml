@@ -21,13 +21,13 @@
     paint the *.bml scopes.</summary>
 
   <properties>
-    <themeId><value>blockml</value></themeId>
-    <label><value>BlockML</value></label>
-    <uiTheme><value>vs-dark</value></uiTheme>
-    <themePath><value>./themes/blockml-color-theme.json</value></themePath>
-    <highlightScheme><value>theme:FrameworkRoles</value></highlightScheme>
-    <editorForeground><value>#D4D4D4</value></editorForeground>
-    <editorBackground><value>#1E1E1E</value></editorBackground>
+    <themeId override="true"><value>blockml</value></themeId>
+    <label override="true"><value>BlockML</value></label>
+    <uiTheme override="true"><value>vs-dark</value></uiTheme>
+    <themePath override="true"><value>./themes/blockml-color-theme.json</value></themePath>
+    <highlightScheme override="true"><value>theme:FrameworkRoles</value></highlightScheme>
+    <editorForeground override="true"><value>#D4D4D4</value></editorForeground>
+    <editorBackground override="true"><value>#1E1E1E</value></editorBackground>
   </properties>
 
   <aggregations>

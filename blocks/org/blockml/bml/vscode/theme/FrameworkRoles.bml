@@ -38,10 +38,10 @@
   </documentation>
 
   <properties>
-    <schemeId>
+    <schemeId override="true">
       <value>framework-roles</value>
     </schemeId>
-    <domainScope>
+    <domainScope override="true">
       <value>entity.name.member.bml</value>
     </domainScope>
   </properties>

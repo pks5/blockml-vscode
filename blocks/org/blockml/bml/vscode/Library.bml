@@ -49,7 +49,7 @@
   </language>
 
   <properties>
-    <description>
+    <description override="true">
       <value>BlockML VS Code extension library</value>
     </description>
   </properties>

@@ -58,31 +58,31 @@
   </references>
 
   <properties>
-    <publisher>
+    <publisher override="true">
       <value>blockml</value>
     </publisher>
-    <name>
+    <name override="true">
       <value>bml</value>
     </name>
-    <displayName>
+    <displayName override="true">
       <value>BlockML</value>
     </displayName>
-    <description>
+    <description override="true">
       <value>Language support for BlockML (BML) — syntax highlighting, diagnostics via language server, and file icons.</value>
     </description>
-    <icon>
+    <icon override="true">
       <value>./icons/blockml.png</value>
     </icon>
-    <version>
+    <version override="true">
       <value>0.2.0</value>
     </version>
-    <enginesVscode>
+    <enginesVscode override="true">
       <value>^1.85.0</value>
     </enginesVscode>
-    <main>
+    <main override="true">
       <value>./out/extension.js</value>
     </main>
-    <license>
+    <license override="true">
       <value>Apache-2.0</value>
     </license>
   </properties>

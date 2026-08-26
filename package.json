@@ -196,7 +196,8 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "vscode:prepublish": "npm run compile",
-    "package": "npx --yes @vscode/vsce package"
+    "package": "npx --yes @vscode/vsce package",
+    "validate": "blockml validate --all"
   },
   "dependencies": {
     "@blockml/lsp": "^0.7.1",
@@ -206,6 +207,7 @@
     "@blockml/core": "^1.0.6",
     "@types/node": "^22.0.0",
     "@types/vscode": "^1.85.0",
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "@blockml/cli": "^0.7.1"
   }
 }
