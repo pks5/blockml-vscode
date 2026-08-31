@@ -57,6 +57,12 @@
     • When ColorThemeContribution.overlayTokenColors is true, emit
       contributes.configurationDefaults editor.tokenColorCustomizations.textMateRules from
       ColorTheme.tokenColors whose scope ends in .bml — omit xml / other languages
+    • When ColorThemeContribution.overlaySemanticTokenColors is true, emit
+      contributes.configurationDefaults editor.semanticTokenColorCustomizations.rules from
+      TokenColorRule entries that set semanticTokenType. Key each rule as type:bml (language
+      suffix) with foreground and optional bold/fontStyle. Also emit semanticTokenColors in
+      themes/*.json from the same rules. Do not rely on semanticTokenScopes + tokenColorCustomizations
+      alone — VS Code does not style custom semantic types from TextMate overlay rules.
     • When ColorThemeContribution.marketplace is true and contributeTheme is true, add Themes
       to package.json categories and emit contributes.themes[].id from ColorTheme.themeId
     • When ColorTheme.highlightScheme is set, verify tokenColors cover every

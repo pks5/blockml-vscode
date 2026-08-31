@@ -52,6 +52,9 @@
     <see type="theme:HighlightScheme" relation="SeeAlso">
       Optional active semantic highlight scheme for framework tag roles.
     </see>
+    <see type="theme:FrameworkRoles" relation="SeeAlso">
+      Position-based roles that LSP semantic token types must match.
+    </see>
   </references>
 
   <properties>

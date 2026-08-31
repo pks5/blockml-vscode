@@ -43,6 +43,13 @@
     <scope type="Text">
       <documentation>TextMate scope this rule paints (for example keyword.other.container.bml).</documentation>
     </scope>
+    <semanticTokenType type="Text">
+      <documentation>Optional LSP / VS Code semantic token type this color also paints (for example
+        blockDeclaration). Required for overlaySemanticTokenColors. Omit on xml / non-BML rules.
+        Maps to editor.semanticTokenColorCustomizations.rules["type:bml"] and theme
+        semanticTokenColors. Must match SemanticHighlightingContribution.tokenTypes and
+        FrameworkRoles roleId (or a lexical type such as attribute, stringDouble).</documentation>
+    </semanticTokenType>
     <foreground type="Text">
       <documentation>Hex color (#RRGGBB or #RRGGBBAA) for token foreground.</documentation>
     </foreground>

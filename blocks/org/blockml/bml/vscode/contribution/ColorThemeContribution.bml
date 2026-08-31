@@ -28,6 +28,11 @@
     • overlayTokenColors — contributes.configurationDefaults editor.tokenColorCustomizations
       textMateRules from ColorTheme.tokenColors whose scopes end in .bml. Colors sit on top of
       the user's theme; other languages stay untouched. Skip xml / non-bml scopes.
+    • overlaySemanticTokenColors — contributes.configurationDefaults
+      editor.semanticTokenColorCustomizations.rules from TokenColorRule.semanticTokenType +
+      foreground/fontStyle, keyed as type:bml. Needed because semantic tokens do not pick up
+      tokenColorCustomizations; without this overlay, LSP tokens stay unstyled and TextMate
+      (including rule-stack failures) shows through. Skip rules without semanticTokenType.
 
     Do not invent tokenColors only in JSON — amend theme:ColorTheme / TokenColorRule in BML first,
     then re-render.
@@ -64,6 +69,13 @@
         textMateRules from ColorTheme.tokenColors with scopes ending in .bml (not xml).</documentation>
       <value>false</value>
     </overlayTokenColors>
+    <overlaySemanticTokenColors type="Boolean">
+      <documentation>When true, emit configurationDefaults editor.semanticTokenColorCustomizations
+        rules from TokenColorRule entries that set semanticTokenType. Keys are type:bml so they
+        apply only to language bml. Also emit theme JSON semanticTokenColors when contributing a
+        theme.</documentation>
+      <value>false</value>
+    </overlaySemanticTokenColors>
   </properties>
 
 </block>

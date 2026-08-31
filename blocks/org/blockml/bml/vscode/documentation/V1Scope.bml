@@ -43,8 +43,9 @@
 
     5. Scope colors — ColorThemeContribution.overlayTokenColors emits
        editor.tokenColorCustomizations textMateRules for *.bml scopes on top of the user's
-       color theme. contributeTheme is false so F5 does not auto-apply a full BlockML theme
-       (which would un-color every other language).
+       color theme. V2 overlaySemanticTokenColors adds the matching
+       editor.semanticTokenColorCustomizations rules. contributeTheme is false so F5 does not
+       auto-apply a full BlockML theme (which would un-color every other language).
 
     Out of scope for V1: language server, semantic tokens, cross-file navigation, and rich settings
     beyond the ConfigurationContribution already declared for forward-compatible V2 keys.

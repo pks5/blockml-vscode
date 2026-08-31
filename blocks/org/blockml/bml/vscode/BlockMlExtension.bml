@@ -550,6 +550,7 @@
           <marketplace>false</marketplace>
           <contributeTheme>false</contributeTheme>
           <overlayTokenColors>true</overlayTokenColors>
+          <overlaySemanticTokenColors>true</overlaySemanticTokenColors>
           <colorTheme>theme:BlockMlDevColorTheme</colorTheme>
         </contrib:ColorThemeContribution>
 
@@ -584,7 +585,7 @@
               <key>blockml.bml.enableSemanticHighlighting</key>
               <valueKind>Boolean</valueKind>
               <defaultValue>true</defaultValue>
-              <description>Enable LSP semantic highlighting on top of the TextMate grammar (V2).</description>
+              <description>Enable semantic highlighting on top of the TextMate grammar (V2). Uses the BlockML classifier locally so nested files keep position-based colors.</description>
               <scope>Window</scope>
             </contrib:Setting>
 
@@ -607,6 +608,11 @@
           </documentSelectors>
           <clientFeatures>
             <type:TextEntity value="diagnostics" />
+            <type:TextEntity value="hover" />
+            <type:TextEntity value="documentSymbol" />
+            <type:TextEntity value="definition" />
+            <type:TextEntity value="references" />
+            <type:TextEntity value="semanticTokens" />
           </clientFeatures>
         </contrib:LanguageServerContribution>
 
@@ -636,22 +642,28 @@
           <enabled>true</enabled>
           <viaLanguageServer>true</viaLanguageServer>
           <tokenTypes>
-            <type:TextEntity value="namespace" />
-            <type:TextEntity value="type" />
-            <type:TextEntity value="class" />
-            <type:TextEntity value="property" />
-            <type:TextEntity value="variable" />
-            <type:TextEntity value="keyword" />
-            <type:TextEntity value="modifier" />
+            <type:TextEntity value="root" />
+            <type:TextEntity value="blockDeclaration" />
+            <type:TextEntity value="blockFacet" />
+            <type:TextEntity value="blockContainer" />
+            <type:TextEntity value="memberContainer" />
+            <type:TextEntity value="memberName" />
+            <type:TextEntity value="memberField" />
+            <type:TextEntity value="memberFacet" />
+            <type:TextEntity value="memberSubContainer" />
+            <type:TextEntity value="domainType" />
+            <type:TextEntity value="compositionInstance" />
+            <type:TextEntity value="tag" />
+            <type:TextEntity value="attribute" />
+            <type:TextEntity value="stringDouble" />
+            <type:TextEntity value="stringSingle" />
+            <type:TextEntity value="blockComment" />
+            <type:TextEntity value="interpolation" />
+            <type:TextEntity value="embed" />
+            <type:TextEntity value="tagPunctuation" />
+            <type:TextEntity value="commentPunctuation" />
+            <type:TextEntity value="attributeSeparator" />
           </tokenTypes>
-          <tokenModifiers>
-            <type:TextEntity value="declaration" />
-            <type:TextEntity value="definition" />
-            <type:TextEntity value="readonly" />
-            <type:TextEntity value="deprecated" />
-            <type:TextEntity value="abstract" />
-            <type:TextEntity value="defaultLibrary" />
-          </tokenModifiers>
         </contrib:SemanticHighlightingContribution>
 
         <contrib:NavigationContribution bml:id="bmlNavigation">

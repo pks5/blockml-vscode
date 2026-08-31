@@ -23,9 +23,13 @@
 
     1. Language Server integration — vscode-languageclient wiring to a BlockML LSP for diagnostics,
        hover, completion, and related capabilities declared on LanguageServerContribution.
-    2. Advanced syntax highlighting — richer TextMate scopes and/or LSP semantic tokens for
-       resolved types, members, directives, and invalid symbols
-       (SemanticHighlightingContribution + optional GrammarContribution updates).
+    2. Advanced syntax highlighting — semantic tokens classified by FrameworkRoles position
+       (same tag name, different color by nesting). The client runs the @blockml/lsp classifier
+       locally so nested files keep coloring without the TextMate rule-stack limit; the language
+       server still advertises the legend. TextMate remains a lexical fallback.
+       semanticTokenScopes map legend types onto the existing *.bml scopes; colors are applied
+       via editor.semanticTokenColorCustomizations (overlaySemanticTokenColors), not via
+       tokenColorCustomizations alone (SemanticHighlightingContribution + GrammarContribution).
     3. Navigation between BML files — Ctrl/Cmd-click and shortcuts (go to definition, peek,
        find references) for Block types, baseType, properties, aggregations, associations,
        capabilities, see targets, instance ids, and xmlns prefixes — analogous to Java

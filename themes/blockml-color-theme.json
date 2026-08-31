@@ -137,5 +137,28 @@
       "scope": "punctuation.definition.tag.xml",
       "settings": { "foreground": "#808080" }
     }
-  ]
+  ],
+  "semanticTokenColors": {
+    "root:bml": { "foreground": "#FF79C6", "fontStyle": "bold" },
+    "blockDeclaration:bml": { "foreground": "#C586C0" },
+    "blockFacet:bml": { "foreground": "#6A9955" },
+    "blockContainer:bml": { "foreground": "#3794FF" },
+    "memberContainer:bml": { "foreground": "#4EC9B0", "fontStyle": "bold" },
+    "memberName:bml": { "foreground": "#CE9178" },
+    "memberField:bml": { "foreground": "#BB86FC" },
+    "memberFacet:bml": { "foreground": "#98C379" },
+    "memberSubContainer:bml": { "foreground": "#56B6C2" },
+    "domainType:bml": { "foreground": "#DCDCAA" },
+    "compositionInstance:bml": { "foreground": "#E5C07B" },
+    "tag:bml": { "foreground": "#ABB2BF" },
+    "attribute:bml": { "foreground": "#9CDCFE" },
+    "stringDouble:bml": { "foreground": "#CE9178" },
+    "stringSingle:bml": { "foreground": "#D7BA7D" },
+    "blockComment:bml": { "foreground": "#608B4E" },
+    "interpolation:bml": { "foreground": "#D7BA7D" },
+    "embed:bml": { "foreground": "#D16969" },
+    "tagPunctuation:bml": { "foreground": "#808080" },
+    "commentPunctuation:bml": { "foreground": "#608B4E" },
+    "attributeSeparator:bml": { "foreground": "#D4D4D4" }
+  }
 }

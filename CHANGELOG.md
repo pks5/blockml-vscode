@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+Semantic highlighting via the language server.
+
+- `@blockml/lsp` classifier runs in the extension host (`DocumentSemanticTokensProvider`) so nested files keep FrameworkRoles colors without waiting on LSP document sync
+- `editor.semanticTokenColorCustomizations` paints custom token types (`type:bml`); TextMate `tokenColorCustomizations` is not enough for semantic tokens
+- `contributes.semanticTokenScopes` still maps legend types onto the existing `*.bml` TextMate scopes
+- Setting `blockml.bml.enableSemanticHighlighting` (default true) can turn the overlay off
+- TextMate grammar remains as a lexical fallback before the classifier is ready
+
 ## 0.2.0
 
 Language server integration (diagnostics only).

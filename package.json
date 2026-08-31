@@ -1,6 +1,6 @@
 {
   "name": "blockml",
-  "version": "0.7.1",
+  "version": "0.9.0",
   "description": "Language support for BlockML (BML) — syntax highlighting, diagnostics via language server, and file icons.",
   "displayName": "BlockML",
   "publisher": "blockml",
@@ -70,7 +70,86 @@
         "languageId": "bml"
       }
     ],
+    "semanticTokenTypes": [
+      { "id": "root", "description": "BML L0 block root", "superType": "class" },
+      { "id": "blockDeclaration", "description": "BML L1 block declaration (name, type, abstract, …)", "superType": "keyword" },
+      { "id": "blockFacet", "description": "BML L1 block facet (documentation, summary, …)", "superType": "type" },
+      { "id": "blockContainer", "description": "BML L1 block container (subBlocks, references, …)", "superType": "keyword" },
+      { "id": "memberContainer", "description": "BML L1 member container (properties, aggregations, …)", "superType": "keyword" },
+      { "id": "memberName", "description": "BML L2 member name", "superType": "property" },
+      { "id": "memberField", "description": "BML L3 member field identity (type, override, …)", "superType": "keyword" },
+      { "id": "memberFacet", "description": "BML L3 member field facet (documentation, value, …)", "superType": "type" },
+      { "id": "memberSubContainer", "description": "BML L3 member sub-container (composition, …)", "superType": "keyword" },
+      { "id": "domainType", "description": "BML domain type ref (PascalCase at block level)", "superType": "type" },
+      { "id": "compositionInstance", "description": "BML L4 composition instance", "superType": "class" },
+      { "id": "tag", "description": "BML fallback tag", "superType": "type" },
+      { "id": "attribute", "description": "BML attribute name", "superType": "property" },
+      { "id": "stringDouble", "description": "BML double-quoted string", "superType": "string" },
+      { "id": "stringSingle", "description": "BML single-quoted string", "superType": "string" },
+      { "id": "blockComment", "description": "BML block comment", "superType": "comment" },
+      { "id": "interpolation", "description": "BML ${} interpolation", "superType": "keyword" },
+      { "id": "embed", "description": "BML <$ $> embed marker", "superType": "keyword" },
+      { "id": "tagPunctuation", "description": "BML tag punctuation" },
+      { "id": "commentPunctuation", "description": "BML comment punctuation", "superType": "comment" },
+      { "id": "attributeSeparator", "description": "BML attribute =" }
+    ],
+    "semanticTokenScopes": [
+      {
+        "language": "bml",
+        "scopes": {
+          "root": ["entity.name.type.framework.root.bml"],
+          "blockDeclaration": ["keyword.other.block-declaration.bml"],
+          "blockFacet": ["support.type.block-facet.bml"],
+          "blockContainer": ["keyword.other.block-container.bml"],
+          "memberContainer": ["keyword.other.member-container.bml"],
+          "memberName": ["entity.name.member.bml"],
+          "memberField": ["keyword.other.member-field.bml"],
+          "memberFacet": ["support.type.member-facet.bml"],
+          "memberSubContainer": ["keyword.other.member-subcontainer.bml"],
+          "domainType": ["entity.name.type.bml"],
+          "compositionInstance": ["entity.name.type.instance.bml"],
+          "tag": ["entity.name.tag.bml"],
+          "attribute": ["entity.other.attribute-name.bml"],
+          "stringDouble": ["string.quoted.double.bml"],
+          "stringSingle": ["string.quoted.single.bml"],
+          "blockComment": ["comment.block.bml"],
+          "interpolation": ["keyword.other.interpolation.bml"],
+          "embed": ["keyword.control.embed.bml"],
+          "tagPunctuation": ["punctuation.definition.tag.bml"],
+          "commentPunctuation": ["punctuation.definition.comment.bml"],
+          "attributeSeparator": ["punctuation.separator.key-value.bml"]
+        }
+      }
+    ],
     "configurationDefaults": {
+      "[bml]": {
+        "editor.semanticHighlighting.enabled": true
+      },
+      "editor.semanticTokenColorCustomizations": {
+        "rules": {
+          "root:bml": { "foreground": "#FF79C6", "bold": true },
+          "blockDeclaration:bml": { "foreground": "#C586C0" },
+          "blockFacet:bml": { "foreground": "#6A9955" },
+          "blockContainer:bml": { "foreground": "#3794FF" },
+          "memberContainer:bml": { "foreground": "#4EC9B0", "bold": true },
+          "memberName:bml": { "foreground": "#CE9178" },
+          "memberField:bml": { "foreground": "#BB86FC" },
+          "memberFacet:bml": { "foreground": "#98C379" },
+          "memberSubContainer:bml": { "foreground": "#56B6C2" },
+          "domainType:bml": { "foreground": "#DCDCAA" },
+          "compositionInstance:bml": { "foreground": "#E5C07B" },
+          "tag:bml": { "foreground": "#ABB2BF" },
+          "attribute:bml": { "foreground": "#9CDCFE" },
+          "stringDouble:bml": { "foreground": "#CE9178" },
+          "stringSingle:bml": { "foreground": "#D7BA7D" },
+          "blockComment:bml": { "foreground": "#608B4E" },
+          "interpolation:bml": { "foreground": "#D7BA7D" },
+          "embed:bml": { "foreground": "#D16969" },
+          "tagPunctuation:bml": { "foreground": "#808080" },
+          "commentPunctuation:bml": { "foreground": "#608B4E" },
+          "attributeSeparator:bml": { "foreground": "#D4D4D4" }
+        }
+      },
       "editor.tokenColorCustomizations": {
         "textMateRules": [
           {
@@ -183,7 +262,7 @@
         "blockml.bml.enableSemanticHighlighting": {
           "type": "boolean",
           "default": true,
-          "description": "Enable LSP semantic highlighting on top of the TextMate grammar (V2).",
+          "description": "Enable semantic highlighting on top of the TextMate grammar (V2). Uses the BlockML classifier locally so nested files keep position-based colors.",
           "scope": "window"
         }
       }
@@ -200,14 +279,14 @@
     "validate": "blockml validate --all"
   },
   "dependencies": {
-    "@blockml/lsp": "^0.7.1",
+    "@blockml/lsp": "^0.9.0",
     "vscode-languageclient": "^9.0.1"
   },
   "devDependencies": {
-    "@blockml/core": "^1.0.6",
+    "@blockml/core": "^1.0.9",
     "@types/node": "^22.0.0",
     "@types/vscode": "^1.85.0",
     "typescript": "^5.7.0",
-    "@blockml/cli": "^0.7.1"
+    "@blockml/cli": "^0.9.0"
   }
 }

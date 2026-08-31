@@ -38,14 +38,21 @@
     • ColorThemeContribution → when contributeTheme is true, contributes.themes + themes/*.json
       (marketplace=true adds the Themes category). When overlayTokenColors is true, also
       configurationDefaults editor.tokenColorCustomizations.textMateRules for *.bml scopes so
-      colors sit on the user's theme. Do not register a color theme while F5-testing: the
-      Development Host auto-applies the first contributed color theme.
+      colors sit on the user's theme. When overlaySemanticTokenColors is true, also
+      configurationDefaults editor.semanticTokenColorCustomizations.rules from
+      TokenColorRule.semanticTokenType (keys type:bml) so LSP / client semantic tokens get the
+      same colors — tokenColorCustomizations does not style semantic tokens. Do not register a
+      color theme while F5-testing: the Development Host auto-applies the first contributed
+      color theme.
     • ConfigurationContribution / Setting → contributes.configuration (SSOT for all settings)
     • CommandContribution → contributes.commands
     • KeybindingContribution → contributes.keybindings
     • LanguageServerContribution → vscode-languageclient bootstrap (not a package.json key alone)
     • NavigationContribution → LSP definition/references expectations + optional client providers
-    • SemanticHighlightingContribution → semantic token legend / LSP semanticTokens
+    • SemanticHighlightingContribution → semantic token legend
+      (contributes.semanticTokenTypes / semanticTokenScopes) plus a client
+      DocumentSemanticTokensProvider that runs the @blockml/lsp classifier locally. LSP
+      semanticTokens remain advertised; colors come from overlaySemanticTokenColors.
     • MarketplaceListing → README.md (Marketplace / Open VSX page body). CHANGELOG.md is the
       changelog tab. Distinct from vscode:README (library reading entry).
 
