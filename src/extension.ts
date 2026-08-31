@@ -44,8 +44,53 @@ async function tokensForDocument(
     return undefined;
   }
   const lsp = await loadLspSemantic();
-  const result = lsp.semanticTokensFor(document.getText());
+  const result = dropNonFrameworkFacetNames(
+    document.getText(),
+    lsp,
+    lsp.semanticTokensFor(document.getText()),
+  );
   return new SemanticTokens(new Uint32Array(result.data));
+}
+
+/** @blockml/lsp 0.9.0 still lists these as facets; FrameworkRoles does not. */
+const DOMAIN_MEMBER_NAMES = new Set(["title", "description", "content"]);
+
+function dropNonFrameworkFacetNames(
+  text: string,
+  lsp: LspSemanticTokens,
+  tokens: { data: number[] },
+): { data: number[] } {
+  const types = lsp.SEMANTIC_TOKEN_TYPES;
+  const blockFacet = types.indexOf("blockFacet");
+  const memberFacet = types.indexOf("memberFacet");
+  const tag = types.indexOf("tag");
+  if (blockFacet < 0 || memberFacet < 0 || tag < 0) {
+    return tokens;
+  }
+  const lines = text.split(/\n/);
+  const data = tokens.data.slice();
+  let line = 0;
+  let character = 0;
+  for (let i = 0; i < data.length; i += 5) {
+    const deltaLine = data[i] ?? 0;
+    const deltaStart = data[i + 1] ?? 0;
+    const length = data[i + 2] ?? 0;
+    const type = data[i + 3] ?? 0;
+    if (deltaLine === 0) {
+      character += deltaStart;
+    } else {
+      line += deltaLine;
+      character = deltaStart;
+    }
+    if (type !== blockFacet && type !== memberFacet) {
+      continue;
+    }
+    const name = lines[line]?.slice(character, character + length);
+    if (name && DOMAIN_MEMBER_NAMES.has(name)) {
+      data[i + 3] = tag;
+    }
+  }
+  return { data };
 }
 
 function activateSemanticHighlighting(context: ExtensionContext): void {

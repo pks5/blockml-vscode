@@ -89,9 +89,6 @@
             <type:TextEntity value="examples" />
             <type:TextEntity value="relation" />
             <type:TextEntity value="see" />
-            <type:TextEntity value="content" />
-            <type:TextEntity value="description" />
-            <type:TextEntity value="title" />
             <type:TextEntity value="bml:xml" />
             <type:TextEntity value="bml:container" />
             <type:TextEntity value="implementation" />
@@ -166,9 +163,6 @@
             <type:TextEntity value="examples" />
             <type:TextEntity value="relation" />
             <type:TextEntity value="see" />
-            <type:TextEntity value="content" />
-            <type:TextEntity value="description" />
-            <type:TextEntity value="title" />
             <type:TextEntity value="bml:xml" />
             <type:TextEntity value="bml:container" />
           </tags>

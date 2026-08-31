@@ -8,6 +8,7 @@ Semantic highlighting via the language server.
 - `editor.semanticTokenColorCustomizations` paints custom token types (`type:bml`); TextMate `tokenColorCustomizations` is not enough for semantic tokens
 - `contributes.semanticTokenScopes` still maps legend types onto the existing `*.bml` TextMate scopes
 - Setting `blockml.bml.enableSemanticHighlighting` (default true) can turn the overlay off
+- `title`, `description`, and `content` are domain member names, not framework facets — they no longer use the facet color
 - TextMate grammar remains as a lexical fallback before the classifier is ready
 
 ## 0.2.0

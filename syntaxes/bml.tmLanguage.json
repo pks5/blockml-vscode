@@ -309,7 +309,7 @@
     },
     "tagBlockFacetElement": {
       "name": "meta.tag.bml",
-      "begin": "(<)(documentation|summary|status|since|changelog|examples|relation|see|content|description|title|bml:xml|bml:container|implementation)(?=[\\s/>])",
+      "begin": "(<)(documentation|summary|status|since|changelog|examples|relation|see|bml:xml|bml:container|implementation)(?=[\\s/>])",
       "end": "(\\s*/>)|(?:(</)(\\2)\\s*(>))",
       "beginCaptures": {
         "1": { "name": "punctuation.definition.tag.bml" },
@@ -359,7 +359,7 @@
     },
     "tagMemberFieldFacetElement": {
       "name": "meta.tag.bml",
-      "begin": "(<)(value|documentation|summary|implementation|inputType|outputType|status|since|changelog|examples|relation|see|content|description|title|bml:xml|bml:container)(?=[\\s/>])",
+      "begin": "(<)(value|documentation|summary|implementation|inputType|outputType|status|since|changelog|examples|relation|see|bml:xml|bml:container)(?=[\\s/>])",
       "end": "(\\s*/>)|(?:(</)(\\2)\\s*(>))",
       "beginCaptures": {
         "1": { "name": "punctuation.definition.tag.bml" },
@@ -498,7 +498,7 @@
     },
     "tagBlockFacet": {
       "name": "meta.tag.bml",
-      "begin": "(</?)(documentation|summary|status|since|changelog|examples|relation|see|content|description|title|bml:xml|bml:container|implementation)(?=[\\s/>])",
+      "begin": "(</?)(documentation|summary|status|since|changelog|examples|relation|see|bml:xml|bml:container|implementation)(?=[\\s/>])",
       "end": "(/?>)",
       "beginCaptures": {
         "1": { "name": "punctuation.definition.tag.bml" },

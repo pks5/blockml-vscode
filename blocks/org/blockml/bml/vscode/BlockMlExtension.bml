@@ -411,7 +411,7 @@
             <contrib:GrammarPattern bml:id="patternTagBlockFacetElement">
               <patternKey>tagBlockFacetElement</patternKey>
               <scopeName>meta.tag.bml</scopeName>
-              <begin>(&lt;)(documentation|summary|status|since|changelog|examples|relation|see|content|description|title|bml:xml|bml:container|implementation)(?=[\s/>])</begin>
+              <begin>(&lt;)(documentation|summary|status|since|changelog|examples|relation|see|bml:xml|bml:container|implementation)(?=[\s/>])</begin>
               <end>(/?&gt;)</end>
               <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"support.type.block-facet.bml"}}</beginCapturesJson>
               <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
@@ -435,7 +435,7 @@
             <contrib:GrammarPattern bml:id="patternTagMemberFieldFacetElement">
               <patternKey>tagMemberFieldFacetElement</patternKey>
               <scopeName>meta.tag.bml</scopeName>
-              <begin>(&lt;)(value|documentation|summary|implementation|inputType|outputType|status|since|changelog|examples|relation|see|content|description|title|bml:xml|bml:container)(?=[\s/>])</begin>
+              <begin>(&lt;)(value|documentation|summary|implementation|inputType|outputType|status|since|changelog|examples|relation|see|bml:xml|bml:container)(?=[\s/>])</begin>
               <end>(/?&gt;)</end>
               <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"support.type.member-facet.bml"}}</beginCapturesJson>
               <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
@@ -495,7 +495,7 @@
             <contrib:GrammarPattern bml:id="patternTagBlockFacet">
               <patternKey>tagBlockFacet</patternKey>
               <scopeName>meta.tag.bml</scopeName>
-              <begin>(&lt;/?)(documentation|summary|status|since|changelog|examples|relation|see|content|description|title|bml:xml|bml:container|implementation)(?=[\s/>])</begin>
+              <begin>(&lt;/?)(documentation|summary|status|since|changelog|examples|relation|see|bml:xml|bml:container|implementation)(?=[\s/>])</begin>
               <end>(/?&gt;)</end>
               <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"support.type.block-facet.bml"}}</beginCapturesJson>
               <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
