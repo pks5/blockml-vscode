@@ -1,6 +1,6 @@
 {
   "name": "blockml",
-  "version": "0.9.0",
+  "version": "0.9.4",
   "description": "Language support for BlockML (BML) — syntax highlighting, diagnostics via language server, and file icons.",
   "displayName": "BlockML",
   "publisher": "blockml",
@@ -279,14 +279,14 @@
     "validate": "blockml validate --all"
   },
   "dependencies": {
-    "@blockml/lsp": "^0.9.0",
+    "@blockml/lsp": "^0.9.4",
     "vscode-languageclient": "^9.0.1"
   },
   "devDependencies": {
-    "@blockml/core": "^1.0.9",
+    "@blockml/core": "^1.1.2",
     "@types/node": "^22.0.0",
     "@types/vscode": "^1.85.0",
     "typescript": "^5.7.0",
-    "@blockml/cli": "^0.9.0"
+    "@blockml/cli": "^0.9.4"
   }
 }
