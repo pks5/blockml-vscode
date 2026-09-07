@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+TextMate fallback learns the preferred BlockML document format from core 1.2.1
+(`doc:DocumentFormat`): type/name as the element tag (`<vscode:Extension>`, `<MyBlock>`),
+including Sub-Blocks / embeds under `<subBlocks>` / `<embeddedBlocks>`. Legacy `<block>`
+stays valid. Semantic highlighting via `@blockml/lsp` 0.9.5 already classified both forms.
+
 Semantic highlighting via the language server.
 
 - `@blockml/lsp` classifier runs in the extension host (`DocumentSemanticTokensProvider`) so nested files keep FrameworkRoles colors without waiting on LSP document sync

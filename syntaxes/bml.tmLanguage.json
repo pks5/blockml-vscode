@@ -7,6 +7,7 @@
     { "include": "#expression" },
     { "include": "#embed" },
     { "include": "#block" },
+    { "include": "#typedRoot" },
     { "include": "#tagRoot" },
     { "include": "#tagBlockDeclaration" },
     { "include": "#tagBlockFacet" },
@@ -94,6 +95,34 @@
         }
       ]
     },
+    "typedRoot": {
+      "name": "meta.block.bml",
+      "begin": "(<)((?:[A-Za-z_][\\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(?=[\\s/>])",
+      "end": "(\\s*/>)|(?:(</)(\\2)\\s*(>))",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "entity.name.type.framework.root.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "punctuation.definition.tag.bml" },
+        "3": { "name": "entity.name.type.framework.root.bml" },
+        "4": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" },
+        {
+          "begin": ">",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.tag.bml" }
+          },
+          "end": "(?=\\s*/>|</)",
+          "patterns": [
+            { "include": "#blockBody" }
+          ]
+        }
+      ]
+    },
     "blockBody": {
       "patterns": [
         { "include": "#comment" },
@@ -102,6 +131,7 @@
         { "include": "#tagBlockDeclarationElement" },
         { "include": "#tagBlockFacetElement" },
         { "include": "#tagMemberContainerElement" },
+        { "include": "#tagSubBlockContainerElement" },
         { "include": "#tagBlockContainerElement" },
         { "include": "#block" },
         { "include": "#domainTypeElement" },
@@ -137,6 +167,16 @@
         { "include": "#blockBody" }
       ]
     },
+    "nestedBlockContainerBody": {
+      "patterns": [
+        { "include": "#comment" },
+        { "include": "#expression" },
+        { "include": "#embed" },
+        { "include": "#typedRoot" },
+        { "include": "#block" },
+        { "include": "#blockBody" }
+      ]
+    },
     "memberSubContainerBody": {
       "patterns": [
         { "include": "#comment" },
@@ -149,7 +189,7 @@
     },
     "memberTypeElement": {
       "name": "meta.tag.bml",
-      "begin": "(<)((?:[A-Za-z_][\\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\\s/>])",
+      "begin": "(<)((?:[A-Za-z_][\\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(?=[\\s/>])",
       "end": "(\\s*/>)|(?:(</)(\\2)\\s*(>))",
       "beginCaptures": {
         "1": { "name": "punctuation.definition.tag.bml" },
@@ -205,7 +245,7 @@
     },
     "domainTypeElement": {
       "name": "meta.tag.bml",
-      "begin": "(<)((?:[A-Za-z_][\\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\\s/>])",
+      "begin": "(<)((?:[A-Za-z_][\\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(?=[\\s/>])",
       "end": "(\\s*/>)|(?:(</)(\\2)\\s*(>))",
       "beginCaptures": {
         "1": { "name": "punctuation.definition.tag.bml" },
@@ -233,7 +273,7 @@
     },
     "compositionInstanceElement": {
       "name": "meta.tag.bml",
-      "begin": "(<)((?:[A-Za-z_][\\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\\s/>])",
+      "begin": "(<)((?:[A-Za-z_][\\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(?=[\\s/>])",
       "end": "(\\s*/>)|(?:(</)(\\2)\\s*(>))",
       "beginCaptures": {
         "1": { "name": "punctuation.definition.tag.bml" },
@@ -280,7 +320,7 @@
     },
     "tagBlockDeclarationElement": {
       "name": "meta.tag.bml",
-      "begin": "(<)(name|type|baseType|is|isnot|version|abstract|final|definition|language)(?=[\\s/>])",
+      "begin": "(<)(name|type|baseType|is|isnot|isNot|version|abstract|final|definition|language)(?=[\\s/>])",
       "end": "(\\s*/>)|(?:(</)(\\2)\\s*(>))",
       "beginCaptures": {
         "1": { "name": "punctuation.definition.tag.bml" },
@@ -410,9 +450,37 @@
         }
       ]
     },
+    "tagSubBlockContainerElement": {
+      "name": "meta.block-container.bml",
+      "begin": "(<)(subBlocks|embeddedBlocks)(?=[\\s/>])",
+      "end": "(\\s*/>)|(?:(</)(\\2)\\s*(>))",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "keyword.other.block-container.bml" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.bml" },
+        "2": { "name": "punctuation.definition.tag.bml" },
+        "3": { "name": "keyword.other.block-container.bml" },
+        "4": { "name": "punctuation.definition.tag.bml" }
+      },
+      "patterns": [
+        { "include": "#attribute" },
+        {
+          "begin": ">",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.tag.bml" }
+          },
+          "end": "(?=\\s*/>|</)",
+          "patterns": [
+            { "include": "#nestedBlockContainerBody" }
+          ]
+        }
+      ]
+    },
     "tagBlockContainerElement": {
       "name": "meta.block-container.bml",
-      "begin": "(<)(contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references)(?=[\\s/>])",
+      "begin": "(<)(contracts|composition|genericTypes|groups|aliases|keywords|references)(?=[\\s/>])",
       "end": "(\\s*/>)|(?:(</)(\\2)\\s*(>))",
       "beginCaptures": {
         "1": { "name": "punctuation.definition.tag.bml" },
@@ -468,7 +536,7 @@
     },
     "tagRoot": {
       "name": "meta.tag.bml",
-      "begin": "(</?)(block)(?=[\\s/>])",
+      "begin": "(</?)((?:[A-Za-z_][\\w.-]*:)?(?:block|(?:_+)?[A-Z][A-Za-z0-9_]*))(?=[\\s/>])",
       "end": "(/?>)",
       "beginCaptures": {
         "1": { "name": "punctuation.definition.tag.bml" },
@@ -483,7 +551,7 @@
     },
     "tagBlockDeclaration": {
       "name": "meta.tag.bml",
-      "begin": "(</?)(name|type|baseType|is|isnot|version|abstract|final|definition|language)(?=[\\s/>])",
+      "begin": "(</?)(name|type|baseType|is|isnot|isNot|version|abstract|final|definition|language)(?=[\\s/>])",
       "end": "(/?>)",
       "beginCaptures": {
         "1": { "name": "punctuation.definition.tag.bml" },
@@ -543,7 +611,7 @@
     },
     "tagDomainType": {
       "name": "meta.tag.bml",
-      "begin": "(</?)((?:[A-Za-z_][\\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\\s/>])",
+      "begin": "(</?)((?:[A-Za-z_][\\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(?=[\\s/>])",
       "end": "(/?>)",
       "beginCaptures": {
         "1": { "name": "punctuation.definition.tag.bml" },

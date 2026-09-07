@@ -220,7 +220,8 @@
             <type:TextEntity value="L2 memberContainerBody: every direct child is a user member name (entity.name.member.bml) — including names that collide with containers (properties/aggregations) or Library aggregations (dependencies, blocks, readMe). Containers wrap until the matching &lt;/same-name>." />
             <type:TextEntity value="L3 memberBody: member-field (type/override/abstract/…) + member-facet (documentation/value/…) + member-subcontainer (composition/suggestions/…)" />
             <type:TextEntity value="L4 memberSubContainerBody: PascalCase composition instances — entity.name.type.instance.bml" />
-            <type:TextEntity value="Nested &lt;block> in subBlocks re-enters blockBody (same L1 rules)" />
+            <type:TextEntity value="Nested &lt;block> or type/name tag in subBlocks / embeddedBlocks re-enters blockBody (same L1 rules)" />
+            <type:TextEntity value="Preferred document wrapper is the type/name tag (doc:DocumentFormat) — entity.name.type.framework.root.bml; legacy &lt;block&gt; stays valid" />
             <type:TextEntity value="Block-level PascalCase type refs — entity.name.type.bml" />
             <type:TextEntity value="Attribute names — entity.other.attribute-name.bml (V1: no framework attribute whitelist)" />
           </patternNotes>
@@ -229,6 +230,7 @@
             <type:TextEntity value="expression" />
             <type:TextEntity value="embed" />
             <type:TextEntity value="block" />
+            <type:TextEntity value="typedRoot" />
             <type:TextEntity value="tagRoot" />
             <type:TextEntity value="tagBlockDeclaration" />
             <type:TextEntity value="tagBlockFacet" />
@@ -299,6 +301,18 @@
                 <type:TextEntity value="#blockBody" />
               </nestedIncludes>
             </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTypedRoot">
+              <patternKey>typedRoot</patternKey>
+              <scopeName>meta.block.bml</scopeName>
+              <begin>(&lt;)((?:[A-Za-z_][\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(?=[\s/>])</begin>
+              <end>(\s*/>)|(?:(&lt;/)(\2)\s*(>))</end>
+              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.type.framework.root.bml&quot;}}</beginCapturesJson>
+              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;punctuation.definition.tag.bml&quot;},3:{name:&quot;entity.name.type.framework.root.bml&quot;},4:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+                <type:TextEntity value="#blockBody" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
             <contrib:GrammarPattern bml:id="patternBlockBody">
               <patternKey>blockBody</patternKey>
               <includeRef>#tagBlockDeclarationElement</includeRef>
@@ -306,7 +320,7 @@
             <contrib:GrammarPattern bml:id="patternMemberTypeElement">
               <patternKey>memberTypeElement</patternKey>
               <scopeName>meta.tag.bml</scopeName>
-              <begin>(&lt;)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\s/>])</begin>
+              <begin>(&lt;)((?:[A-Za-z_][\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(?=[\s/>])</begin>
               <end>(/?>)</end>
               <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.member.bml&quot;}}</beginCapturesJson>
               <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
@@ -318,7 +332,7 @@
             <contrib:GrammarPattern bml:id="patternDomainTypeElement">
               <patternKey>domainTypeElement</patternKey>
               <scopeName>meta.tag.bml</scopeName>
-              <begin>(&lt;)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\s/>])</begin>
+              <begin>(&lt;)((?:[A-Za-z_][\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(?=[\s/>])</begin>
               <end>(/?>)</end>
               <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.type.bml&quot;}}</beginCapturesJson>
               <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
@@ -328,7 +342,7 @@
             </contrib:GrammarPattern>
             <contrib:GrammarPattern bml:id="patternCloseTagDomainType">
               <patternKey>closeTagDomainType</patternKey>
-              <match>(&lt;/)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(\s*(>))</match>
+              <match>(&lt;/)((?:[A-Za-z_][\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(\s*(>))</match>
               <capturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.type.bml&quot;},3:{name:&quot;punctuation.definition.tag.bml&quot;}}</capturesJson>
             </contrib:GrammarPattern>
             <contrib:GrammarPattern bml:id="patternMemberElement">
@@ -358,7 +372,7 @@
             <contrib:GrammarPattern bml:id="patternTagBlockContainerElement">
               <patternKey>tagBlockContainerElement</patternKey>
               <scopeName>meta.tag.bml</scopeName>
-              <begin>(&lt;)(contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references)(?=[\s/>])</begin>
+              <begin>(&lt;)(contracts|composition|genericTypes|groups|aliases|keywords|references)(?=[\s/>])</begin>
               <end>(/>)|(&lt;/)(\2)\s*(>)</end>
               <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;keyword.other.block-container.bml&quot;}}</beginCapturesJson>
               <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;punctuation.definition.tag.bml&quot;},3:{name:&quot;keyword.other.block-container.bml&quot;},4:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
@@ -367,10 +381,22 @@
                 <type:TextEntity value="#blockContainerBody" />
               </nestedIncludes>
             </contrib:GrammarPattern>
+            <contrib:GrammarPattern bml:id="patternTagSubBlockContainerElement">
+              <patternKey>tagSubBlockContainerElement</patternKey>
+              <scopeName>meta.block-container.bml</scopeName>
+              <begin>(&lt;)(subBlocks|embeddedBlocks)(?=[\s/>])</begin>
+              <end>(\s*/>)|(?:(&lt;/)(\2)\s*(>))</end>
+              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;keyword.other.block-container.bml&quot;}}</beginCapturesJson>
+              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;punctuation.definition.tag.bml&quot;},3:{name:&quot;keyword.other.block-container.bml&quot;},4:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <nestedIncludes>
+                <type:TextEntity value="#attribute" />
+                <type:TextEntity value="#nestedBlockContainerBody" />
+              </nestedIncludes>
+            </contrib:GrammarPattern>
             <contrib:GrammarPattern bml:id="patternTagBlockDeclarationElement">
               <patternKey>tagBlockDeclarationElement</patternKey>
               <scopeName>meta.tag.bml</scopeName>
-              <begin>(&lt;)(name|type|baseType|is|isnot|version|abstract|final|definition|language)(?=[\s/>])</begin>
+              <begin>(&lt;)(name|type|baseType|is|isnot|isNot|version|abstract|final|definition|language)(?=[\s/>])</begin>
               <end>(/?>)</end>
               <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;keyword.other.block-declaration.bml&quot;}}</beginCapturesJson>
               <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
@@ -414,7 +440,7 @@
             <contrib:GrammarPattern bml:id="patternTagRoot">
               <patternKey>tagRoot</patternKey>
               <scopeName>meta.tag.bml</scopeName>
-              <begin>(&lt;/?)(block)(?=[\s/>])</begin>
+              <begin>(&lt;/?)((?:[A-Za-z_][\w.-]*:)?(?:block|(?:_+)?[A-Z][A-Za-z0-9_]*))(?=[\s/>])</begin>
               <end>(/?>)</end>
               <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.type.framework.root.bml&quot;}}</beginCapturesJson>
               <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
@@ -425,7 +451,7 @@
             <contrib:GrammarPattern bml:id="patternTagBlockDeclaration">
               <patternKey>tagBlockDeclaration</patternKey>
               <scopeName>meta.tag.bml</scopeName>
-              <begin>(&lt;/?)(name|type|baseType|is|isnot|version|abstract|final|definition|language)(?=[\s/>])</begin>
+              <begin>(&lt;/?)(name|type|baseType|is|isnot|isNot|version|abstract|final|definition|language)(?=[\s/>])</begin>
               <end>(/?>)</end>
               <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;keyword.other.block-declaration.bml&quot;}}</beginCapturesJson>
               <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
@@ -469,7 +495,7 @@
             <contrib:GrammarPattern bml:id="patternTagDomainType">
               <patternKey>tagDomainType</patternKey>
               <scopeName>meta.tag.bml</scopeName>
-              <begin>(&lt;/?)((?:[A-Za-z_][\w.-]*:)?[A-Z][a-zA-Z0-9]*)(?=[\s/>])</begin>
+              <begin>(&lt;/?)((?:[A-Za-z_][\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(?=[\s/>])</begin>
               <end>(/?>)</end>
               <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.type.bml&quot;}}</beginCapturesJson>
               <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>

@@ -2,7 +2,8 @@
 
   FQN: org.blockml.bml.vscode.theme.FrameworkRoles
 
-  Scopes follow XML position relative to the nearest &lt;block&gt; and member containers
+  Scopes follow XML position relative to the nearest document wrapper — legacy &lt;block&gt;
+  or the preferred type/name tag (doc:DocumentFormat) — and member containers
   (org.blockml.bml.definition.BlockDefinition, MemberDefinition, StructuralDefinition).-->
 <theme:FrameworkRoles xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
@@ -24,11 +25,18 @@
     Concrete HighlightScheme used by bmlSimpleGrammar. Roles map to TextMate scopes by structural
     position:
     
-    • blockBody — direct children of &lt;block> (identity + block facets)
+    • blockBody — direct children of the document wrapper (identity + block facets). Wrapper is
+      legacy &lt;block&gt; or the preferred type/name tag (&lt;acme:MyBlock&gt;, &lt;MyBlock&gt;,
+      Sub-Block &lt;Inner&gt; under &lt;subBlocks&gt; / embed under &lt;embeddedBlocks&gt;)
     • memberContainer — &lt;properties>, &lt;aggregations>, &lt;associations>, …
     • memberContainerBody — direct children = user member names (domainScope)
     • memberBody — framework member fields inside a member element
     • memberSubContainerBody — composition instances (PascalCase) inside &lt;composition>, etc.
+    
+    The root role tag list keeps the legacy keyword block. Type-as-tag wrappers cannot be a
+    closed keyword list — TextMate matches them with the same PascalCase / visibility-underscore
+    regex as the parser (isDocumentRootLocalName), but only at document top level and inside
+    subBlocks / embeddedBlocks. PascalCase elsewhere stays domainType or compositionInstance.
     
     Re-render syntaxes/bml.tmLanguage.json after changing scopes or tag lists.
   </documentation>
@@ -61,6 +69,7 @@
             <type:TextEntity value="baseType" />
             <type:TextEntity value="is" />
             <type:TextEntity value="isnot" />
+            <type:TextEntity value="isNot" />
             <type:TextEntity value="version" />
             <type:TextEntity value="abstract" />
             <type:TextEntity value="final" />
