@@ -1,31 +1,26 @@
-<!--
-  BlockML VS Code — TextMate token color rule
+<!--BlockML VS Code — TextMate token color rule
 
-  FQN: org.blockml.bml.vscode.theme.TokenColorRule
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.vscode.theme.TokenColorRule-->
+<theme:TokenColorRule xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:theme="org.blockml.bml.vscode.theme">
 
-  <name>TokenColorRule</name>
-  <type>theme:TokenColorRule</type>
-  <baseType>core:Entity</baseType>
-  <is>A TextMate scope to color mapping</is>
-
-  <summary>Maps one TextMate scope (usually a *.bml scope from HighlightScheme or
-    GrammarContribution) to a foreground color for a generated VS Code color theme.</summary>
-
+  <baseType>
+    core:Entity
+  </baseType>
+  <is>
+    A TextMate scope to color mapping
+  </is>
+  <summary>
+    Maps one TextMate scope (usually a *.bml scope from HighlightScheme or
+    GrammarContribution) to a foreground color for a generated VS Code color theme.
+  </summary>
   <documentation>
     One entry inside a ColorTheme.tokenColors aggregation. Generators emit VS Code tokenColors[]
     objects { name, scope, settings: { foreground, fontStyle? } }. Prefer explicit *.bml scopes so
     theme colors stay aligned with grammar scopes — not generic keyword/entity fallbacks. Generic
     editor themes do not paint these scopes.
   </documentation>
-
   <references>
     <see type="theme:ColorTheme" relation="Requires">
       Rules are aggregated under ColorTheme.tokenColors.
@@ -34,29 +29,37 @@
       HighlightRole.textMateScope and domainScope drive which scopes need rules.
     </see>
   </references>
-
   <properties>
-    <ruleName type="Text">
-      <documentation>Human-readable label in the generated theme JSON (for example BML: container).
-        Shown in Inspect Editor Tokens and Scopes.</documentation>
+    <ruleName type="org.blockml.bml.type.Text">
+      <documentation>
+        Human-readable label in the generated theme JSON (for example BML: container).
+        Shown in Inspect Editor Tokens and Scopes.
+      </documentation>
     </ruleName>
-    <scope type="Text">
-      <documentation>TextMate scope this rule paints (for example keyword.other.container.bml).</documentation>
+    <scope type="org.blockml.bml.type.Text">
+      <documentation>
+        TextMate scope this rule paints (for example keyword.other.container.bml).
+      </documentation>
     </scope>
-    <semanticTokenType type="Text">
-      <documentation>Optional LSP / VS Code semantic token type this color also paints (for example
+    <semanticTokenType type="org.blockml.bml.type.Text">
+      <documentation>
+        Optional LSP / VS Code semantic token type this color also paints (for example
         blockDeclaration). Required for overlaySemanticTokenColors. Omit on xml / non-BML rules.
         Maps to editor.semanticTokenColorCustomizations.rules["type:bml"] and theme
         semanticTokenColors. Must match SemanticHighlightingContribution.tokenTypes and
-        FrameworkRoles roleId (or a lexical type such as attribute, stringDouble).</documentation>
+        FrameworkRoles roleId (or a lexical type such as attribute, stringDouble).
+      </documentation>
     </semanticTokenType>
-    <foreground type="Text">
-      <documentation>Hex color (#RRGGBB or #RRGGBBAA) for token foreground.</documentation>
+    <foreground type="org.blockml.bml.type.Text">
+      <documentation>
+        Hex color (#RRGGBB or #RRGGBBAA) for token foreground.
+      </documentation>
     </foreground>
-    <fontStyle type="Text">
-      <documentation>Optional VS Code fontStyle — bold, italic, underline, strikethrough
-        (comma-separated). Omitted when normal weight.</documentation>
+    <fontStyle type="org.blockml.bml.type.Text">
+      <documentation>
+        Optional VS Code fontStyle — bold, italic, underline, strikethrough
+        (comma-separated). Omitted when normal weight.
+      </documentation>
     </fontStyle>
   </properties>
-
-</block>
+</theme:TokenColorRule>

@@ -1,41 +1,36 @@
-<!--
-  BlockML VS Code — TextMate grammar contribution
+<!--BlockML VS Code — TextMate grammar contribution
 
-  FQN: org.blockml.bml.vscode.contribution.GrammarContribution
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.vscode.contribution.GrammarContribution-->
+<contrib:GrammarContribution xmlns="http://blockml.org/bml"
   xmlns:contrib="org.blockml.bml.vscode.contribution"
   xmlns:doc="org.blockml.bml.vscode.documentation"
   xmlns:theme="org.blockml.bml.vscode.theme"
   xmlns:type="org.blockml.bml.type">
 
-  <name>GrammarContribution</name>
-  <type>contrib:GrammarContribution</type>
-  <baseType>contrib:Contribution</baseType>
-  <is>A TextMate grammar contribution</is>
-
-  <summary>Declarative TextMate / tmLanguage description for BML syntax highlighting — simple
-    (V1) or advanced (V2). Generators emit JSON/plist grammars from scopes and patterns.</summary>
-
+  <baseType>
+    contrib:Contribution
+  </baseType>
+  <is>
+    A TextMate grammar contribution
+  </is>
+  <summary>
+    Declarative TextMate / tmLanguage description for BML syntax highlighting — simple
+    (V1) or advanced (V2). Generators emit JSON/plist grammars from scopes and patterns.
+  </summary>
   <documentation>
     Maps to package.json contributes.grammars plus a generated grammar file. V1 uses a simple
     scope set (XML-like tags, attributes, comments, strings, ${ } expressions). V2 adds richer
     scopes for type references, directives, and capability bodies — and may coexist with
     semantic tokens from the language server.
-
+    
     Structured GrammarPattern children are the SSOT for repository patterns; patternNotes remain
     human/LLM teaching hints and must not invent scopes or matches absent from patterns/scopes.
-
+    
     When highlightScheme is set, framework tag patterns (one per HighlightRole, plus domain
     fallback) must be derived from that scheme's roles/tags/textMateScope/domainScope on TextMate
     re-render. Edit the scheme first, then regenerate patterns + tmLanguage via LLM — do not invent
     framework tag lists only in JSON.
   </documentation>
-
   <references>
     <see type="doc:V1Scope" relation="AuthoringGuide">
       V1 simple syntax highlighting.
@@ -56,46 +51,61 @@
       Position-based roles that LSP semantic token types must match.
     </see>
   </references>
-
   <properties>
-    <languageId type="Text">
-      <documentation>Language id this grammar applies to (must match a LanguageContribution).</documentation>
+    <languageId type="type:Text">
+      <documentation>
+        Language id this grammar applies to (must match a LanguageContribution).
+      </documentation>
     </languageId>
-    <scopeName type="Text">
-      <documentation>TextMate root scope name (for example source.bml).</documentation>
+    <scopeName type="type:Text">
+      <documentation>
+        TextMate root scope name (for example source.bml).
+      </documentation>
     </scopeName>
-    <path type="FilePath">
-      <documentation>Generated grammar file path relative to the extension root
-        (for example ./syntaxes/bml.tmLanguage.json).</documentation>
+    <path type="type:FilePath">
+      <documentation>
+        Generated grammar file path relative to the extension root
+        (for example ./syntaxes/bml.tmLanguage.json).
+      </documentation>
     </path>
-    <embeddedLanguagesNote type="Text">
-      <documentation>Optional note for generators about embedded languages (CDATA, PseudoCode,
-        expression embeds).</documentation>
+    <embeddedLanguagesNote type="type:Text">
+      <documentation>
+        Optional note for generators about embedded languages (CDATA, PseudoCode,
+        expression embeds).
+      </documentation>
     </embeddedLanguagesNote>
-    <highlightScheme type="TypeReference(theme:HighlightScheme)">
-      <documentation>Active semantic highlight scheme type (for example theme:FrameworkRoles).
+    <highlightScheme type="type:TypeReference(theme:HighlightScheme)">
+      <documentation>
+        Active semantic highlight scheme type (for example theme:FrameworkRoles).
         Generators read roles/tags/scopes from that scheme when emitting framework tag patterns.
-        Omit only for grammars that do not distinguish framework vs domain tags.</documentation>
+        Omit only for grammars that do not distinguish framework vs domain tags.
+      </documentation>
     </highlightScheme>
   </properties>
-
   <aggregations>
     <scopes type="type:TextEntity[]">
-      <documentation>TextMate scope names the grammar emits (for theme token coloring). Author in
-        priority / teaching order for LLMs.</documentation>
+      <documentation>
+        TextMate scope names the grammar emits (for theme token coloring). Author in
+        priority / teaching order for LLMs.
+      </documentation>
     </scopes>
     <patternNotes type="type:TextEntity[]">
-      <documentation>Human/LLM-oriented pattern descriptions. Not a substitute for structured
-        patterns — durable regex/scope changes belong in patterns.</documentation>
+      <documentation>
+        Human/LLM-oriented pattern descriptions. Not a substitute for structured
+        patterns — durable regex/scope changes belong in patterns.
+      </documentation>
     </patternNotes>
     <patterns type="contrib:GrammarPattern[]">
-      <documentation>Structured TextMate repository patterns. Generators emit repository entries
-        and top-level includes from patternKey order.</documentation>
+      <documentation>
+        Structured TextMate repository patterns. Generators emit repository entries
+        and top-level includes from patternKey order.
+      </documentation>
     </patterns>
     <topLevelIncludes type="type:TextEntity[]">
-      <documentation>Ordered top-level patterns includes (repository keys without #, for example
-        comment, tag). Emitted as { "include": "#key" }.</documentation>
+      <documentation>
+        Ordered top-level patterns includes (repository keys without #, for example
+        comment, tag). Emitted as { "include": "#key" }.
+      </documentation>
     </topLevelIncludes>
   </aggregations>
-
-</block>
+</contrib:GrammarContribution>

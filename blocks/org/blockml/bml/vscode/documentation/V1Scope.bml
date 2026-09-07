@@ -1,29 +1,24 @@
-<!--
-  BlockML VS Code — documentation
+<!--BlockML VS Code — documentation
 
-  FQN: org.blockml.bml.vscode.documentation.V1Scope
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.vscode.documentation.V1Scope-->
+<doc:V1Scope xmlns="http://blockml.org/bml"
   xmlns:contrib="org.blockml.bml.vscode.contribution"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.vscode.documentation"
   xmlns:theme="org.blockml.bml.vscode.theme"
   xmlns:vtype="org.blockml.bml.vscode.type">
 
-  <name>V1Scope</name>
-  <type>doc:V1Scope</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to VS Code plugin V1 features</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to VS Code plugin V1 features
+  </is>
   <documentation>
     V1 (milestone ReleaseMilestone::V1) — minimal usable BML editing support:
-
+    
     1. Simple syntax highlighting — TextMate grammar for XML-like BML structure: tags, attributes,
-       comments, strings, and basic ${ } / &lt;$ $&gt; expression markers. No semantic resolution.
+       comments, strings, and basic ${ } / &lt;$ $> expression markers. No semantic resolution.
        Structured GrammarPattern entries in BlockMlExtension are SSOT; syntaxes/bml.tmLanguage.json
        is a render artefact. Framework vs domain tag coloring comes from the active HighlightScheme
        (theme:FrameworkRoles): root, identity, container, and facet tags use distinct TextMate
@@ -40,17 +35,16 @@
        auto-apply it and hide every other file icon.
     4. Marketplace icon — use icons/blockml.png as the large VS Code Marketplace / Open VSX gallery
        icon (package.json icon field on Extension). Distinct from the filetype SVG.
-
+    
     5. Scope colors — ColorThemeContribution.overlayTokenColors emits
        editor.tokenColorCustomizations textMateRules for *.bml scopes on top of the user's
        color theme. V2 overlaySemanticTokenColors adds the matching
        editor.semanticTokenColorCustomizations rules. contributeTheme is false so F5 does not
        auto-apply a full BlockML theme (which would un-color every other language).
-
+    
     Out of scope for V1: language server, semantic tokens, cross-file navigation, and rich settings
     beyond the ConfigurationContribution already declared for forward-compatible V2 keys.
   </documentation>
-
   <references>
     <see type="doc:V2Scope" relation="ReadNext">
       Next — V2 language server, advanced highlighting, navigation.
@@ -83,5 +77,4 @@
       V1 / V2 milestone enum.
     </see>
   </references>
-
-</block>
+</doc:V1Scope>

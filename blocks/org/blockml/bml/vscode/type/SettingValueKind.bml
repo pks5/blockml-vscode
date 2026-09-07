@@ -1,36 +1,31 @@
-<!--
-  BlockML VS Code — setting value kind enum
+<!--BlockML VS Code — setting value kind enum
 
-  FQN: org.blockml.bml.vscode.type.SettingValueKind
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.vscode.type.SettingValueKind-->
+<vtype:SettingValueKind xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:type="org.blockml.bml.type"
   xmlns:vtype="org.blockml.bml.vscode.type">
 
-  <name>SettingValueKind</name>
-  <type>vtype:SettingValueKind</type>
-  <baseType>type:EnumType</baseType>
-  <is>A VS Code setting JSON schema type</is>
-
-  <documentation>Maps to contributes.configuration property type values used in package.json
-    configuration schemas.</documentation>
-
+  <baseType>
+    type:EnumType
+  </baseType>
+  <is>
+    A VS Code setting JSON schema type
+  </is>
+  <documentation>
+    Maps to contributes.configuration property type values used in package.json
+    configuration schemas.
+  </documentation>
   <aggregations>
     <values override="true">
       <composition>
-        <SettingValueKind bml:id="Boolean" />
-        <SettingValueKind bml:id="String" />
-        <SettingValueKind bml:id="Number" />
-        <SettingValueKind bml:id="Integer" />
-        <SettingValueKind bml:id="Array" />
-        <SettingValueKind bml:id="Object" />
+        <vtype:SettingValueKind bml:id="Boolean" />
+        <vtype:SettingValueKind bml:id="String" />
+        <vtype:SettingValueKind bml:id="Number" />
+        <vtype:SettingValueKind bml:id="Integer" />
+        <vtype:SettingValueKind bml:id="Array" />
+        <vtype:SettingValueKind bml:id="Object" />
       </composition>
     </values>
   </aggregations>
-
-</block>
+</vtype:SettingValueKind>

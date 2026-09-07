@@ -1,27 +1,22 @@
-<!--
-  BlockML VS Code — editor color theme contribution
+<!--BlockML VS Code — editor color theme contribution
 
-  FQN: org.blockml.bml.vscode.contribution.ColorThemeContribution
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.vscode.contribution.ColorThemeContribution-->
+<contrib:ColorThemeContribution xmlns="http://blockml.org/bml"
   xmlns:contrib="org.blockml.bml.vscode.contribution"
   xmlns:doc="org.blockml.bml.vscode.documentation"
   xmlns:theme="org.blockml.bml.vscode.theme"
   xmlns:type="org.blockml.bml.type">
 
-  <name>ColorThemeContribution</name>
-  <type>contrib:ColorThemeContribution</type>
-  <baseType>contrib:Contribution</baseType>
-  <is>An editor color theme contribution</is>
-
+  <baseType>
+    contrib:Contribution
+  </baseType>
+  <is>
+    An editor color theme contribution
+  </is>
   <documentation>
     BML TextMate scope colors. Two emission modes (do not combine with a registered theme while
     F5-testing: the Extension Development Host auto-applies the first contributed color theme):
-
+    
     • contributeTheme — package.json contributes.themes plus themes/*.json (full editor theme).
       marketplace=true also adds the Themes category. Avoid this for a language extension whose
       users should keep their own color theme.
@@ -33,11 +28,10 @@
       foreground/fontStyle, keyed as type:bml. Needed because semantic tokens do not pick up
       tokenColorCustomizations; without this overlay, LSP tokens stay unstyled and TextMate
       (including rule-stack failures) shows through. Skip rules without semanticTokenType.
-
+    
     Do not invent tokenColors only in JSON — amend theme:ColorTheme / TokenColorRule in BML first,
     then re-render.
   </documentation>
-
   <references>
     <see type="doc:GenerationWorkflow" relation="AuthoringGuide">
       ColorTheme → themes/*.json render rules.
@@ -49,33 +43,41 @@
       Scopes the theme should cover.
     </see>
   </references>
-
   <properties>
-    <colorTheme type="TypeReference(theme:ColorTheme)">
-      <documentation>Concrete ColorTheme block (for example theme:BlockMlDevColorTheme).</documentation>
+    <colorTheme type="type:TypeReference(theme:ColorTheme)">
+      <documentation>
+        Concrete ColorTheme block (for example theme:BlockMlDevColorTheme).
+      </documentation>
     </colorTheme>
-    <marketplace type="Boolean">
-      <documentation>When true and contributeTheme is true, ship this theme as a Marketplace
-        feature: include it in contributes.themes, emit themes[].id, and add the Themes category.</documentation>
+    <marketplace type="type:Boolean">
+      <documentation>
+        When true and contributeTheme is true, ship this theme as a Marketplace
+        feature: include it in contributes.themes, emit themes[].id, and add the Themes category.
+      </documentation>
       <value>false</value>
     </marketplace>
-    <contributeTheme type="Boolean">
-      <documentation>When true, emit contributes.themes. When false, do not register a color
-        theme — required to stop F5 from auto-applying it in the Extension Development Host.</documentation>
+    <contributeTheme type="type:Boolean">
+      <documentation>
+        When true, emit contributes.themes. When false, do not register a color
+        theme — required to stop F5 from auto-applying it in the Extension Development Host.
+      </documentation>
       <value>true</value>
     </contributeTheme>
-    <overlayTokenColors type="Boolean">
-      <documentation>When true, emit configurationDefaults editor.tokenColorCustomizations
-        textMateRules from ColorTheme.tokenColors with scopes ending in .bml (not xml).</documentation>
+    <overlayTokenColors type="type:Boolean">
+      <documentation>
+        When true, emit configurationDefaults editor.tokenColorCustomizations
+        textMateRules from ColorTheme.tokenColors with scopes ending in .bml (not xml).
+      </documentation>
       <value>false</value>
     </overlayTokenColors>
-    <overlaySemanticTokenColors type="Boolean">
-      <documentation>When true, emit configurationDefaults editor.semanticTokenColorCustomizations
+    <overlaySemanticTokenColors type="type:Boolean">
+      <documentation>
+        When true, emit configurationDefaults editor.semanticTokenColorCustomizations
         rules from TokenColorRule entries that set semanticTokenType. Keys are type:bml so they
         apply only to language bml. Also emit theme JSON semanticTokenColors when contributing a
-        theme.</documentation>
+        theme.
+      </documentation>
       <value>false</value>
     </overlaySemanticTokenColors>
   </properties>
-
-</block>
+</contrib:ColorThemeContribution>

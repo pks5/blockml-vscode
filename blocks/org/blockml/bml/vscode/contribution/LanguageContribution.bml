@@ -1,33 +1,27 @@
-<!--
-  BlockML VS Code — language contribution
+<!--BlockML VS Code — language contribution
 
-  FQN: org.blockml.bml.vscode.contribution.LanguageContribution
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.vscode.contribution.LanguageContribution-->
+<contrib:LanguageContribution xmlns="http://blockml.org/bml"
   xmlns:contrib="org.blockml.bml.vscode.contribution"
   xmlns:doc="org.blockml.bml.vscode.documentation"
   xmlns:type="org.blockml.bml.type">
 
-  <name>LanguageContribution</name>
-  <type>contrib:LanguageContribution</type>
-  <baseType>contrib:Contribution</baseType>
-  <is>A VS Code languages contribution</is>
-
+  <baseType>
+    contrib:Contribution
+  </baseType>
+  <is>
+    A VS Code languages contribution
+  </is>
   <documentation>
     Declares a language id, aliases, extensions, filenames, configuration path, and the semantic
     contents of language-configuration.json (comments, brackets, autoClosingPairs,
     surroundingPairs). Maps to package.json contributes.languages plus the generated configuration
     file. V1 of the BlockML extension registers language id bml for .bml files.
-
+    
     When xmlLanguageParticipant is true, also emit contributes.xmlLanguageParticipants
     so Red Hat vscode-xml (LemMinX) still treats the language as XML. Otherwise claiming
     .bml as language bml drops xsi:schemaLocation / XSD validation, completion, and hover.
   </documentation>
-
   <references>
     <see type="doc:V1Scope" relation="AuthoringGuide">
       V1 includes BML file type registration.
@@ -42,54 +36,75 @@
       Open/close pairs for brackets and auto-closing.
     </see>
   </references>
-
   <properties>
-    <languageId type="Text">
-      <documentation>VS Code language identifier (for example bml).</documentation>
+    <languageId type="type:Text">
+      <documentation>
+        VS Code language identifier (for example bml).
+      </documentation>
     </languageId>
-    <configurationPath type="FilePath">
-      <documentation>Path to the generated language-configuration.json (brackets, comments,
-        autoClosing). Relative to the extension package root.</documentation>
+    <configurationPath type="type:FilePath">
+      <documentation>
+        Path to the generated language-configuration.json (brackets, comments,
+        autoClosing). Relative to the extension package root.
+      </documentation>
     </configurationPath>
-    <lineComment type="Text">
-      <documentation>Optional line comment token. Omit when the language has none (BML V1 uses
-        only block comments).</documentation>
+    <lineComment type="type:Text">
+      <documentation>
+        Optional line comment token. Omit when the language has none (BML V1 uses
+        only block comments).
+      </documentation>
     </lineComment>
-    <blockCommentOpen type="Text">
-      <documentation>Block comment open delimiter (BML: &lt;!--).</documentation>
+    <blockCommentOpen type="type:Text">
+      <documentation>
+        Block comment open delimiter (BML: &lt;!--).
+      </documentation>
     </blockCommentOpen>
-    <blockCommentClose type="Text">
-      <documentation>Block comment close delimiter (BML: --&gt;).</documentation>
+    <blockCommentClose type="type:Text">
+      <documentation>
+        Block comment close delimiter (BML: -->).
+      </documentation>
     </blockCommentClose>
-    <xmlLanguageParticipant type="Boolean">
-      <documentation>When true, emit contributes.xmlLanguageParticipants[{ languageId }] so
+    <xmlLanguageParticipant type="type:Boolean">
+      <documentation>
+        When true, emit contributes.xmlLanguageParticipants[{ languageId }] so
         vscode-xml applies XSD/DTD features (schemaLocation, catalogs, completion, validation)
         to this language. Required for BML because files declare xsi:schemaLocation pointing at
         https://blockml.org/schemas/bml.xsd but are no longer language xml once this extension
-        claims .bml.</documentation>
+        claims .bml.
+      </documentation>
       <value>false</value>
     </xmlLanguageParticipant>
   </properties>
-
   <aggregations>
     <aliases type="type:TextEntity[]">
-      <documentation>Human-readable language aliases (BlockML, BML, …).</documentation>
+      <documentation>
+        Human-readable language aliases (BlockML, BML, …).
+      </documentation>
     </aliases>
     <extensions type="type:TextEntity[]">
-      <documentation>File extensions including the leading dot (for example .bml).</documentation>
+      <documentation>
+        File extensions including the leading dot (for example .bml).
+      </documentation>
     </extensions>
     <filenames type="type:TextEntity[]">
-      <documentation>Exact filenames associated with this language (rarely used).</documentation>
+      <documentation>
+        Exact filenames associated with this language (rarely used).
+      </documentation>
     </filenames>
     <brackets type="contrib:CharacterPair[]">
-      <documentation>Bracket pairs for matching / rainbow highlighting.</documentation>
+      <documentation>
+        Bracket pairs for matching / rainbow highlighting.
+      </documentation>
     </brackets>
     <autoClosingPairs type="contrib:CharacterPair[]">
-      <documentation>Pairs auto-inserted when typing the open character.</documentation>
+      <documentation>
+        Pairs auto-inserted when typing the open character.
+      </documentation>
     </autoClosingPairs>
     <surroundingPairs type="contrib:CharacterPair[]">
-      <documentation>Pairs used when surrounding a selection.</documentation>
+      <documentation>
+        Pairs used when surrounding a selection.
+      </documentation>
     </surroundingPairs>
   </aggregations>
-
-</block>
+</contrib:LanguageContribution>

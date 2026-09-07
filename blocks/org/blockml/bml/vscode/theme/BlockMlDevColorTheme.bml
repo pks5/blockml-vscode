@@ -1,35 +1,44 @@
-<!--
-  BlockML VS Code — shipped color theme (position-based scope colors)
+<!--BlockML VS Code — shipped color theme (position-based scope colors)
 
-  FQN: org.blockml.bml.vscode.theme.BlockMlDevColorTheme
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.vscode.theme.BlockMlDevColorTheme-->
+<theme:BlockMlDevColorTheme xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:theme="org.blockml.bml.vscode.theme">
 
-  <name>BlockMlDevColorTheme</name>
-  <type>theme:BlockMlDevColorTheme</type>
-  <baseType>theme:ColorTheme</baseType>
-  <is>The BlockML color theme</is>
-
-  <summary>Shipped Marketplace theme: one distinct color per position-based BML scope (block /
+  <baseType>
+    theme:ColorTheme
+  </baseType>
+  <is>
+    The BlockML color theme
+  </is>
+  <summary>
+    Shipped Marketplace theme: one distinct color per position-based BML scope (block /
     container / member / field). Required for visible syntax highlighting — generic themes do not
-    paint the *.bml scopes.</summary>
-
+    paint the *.bml scopes.
+  </summary>
   <properties>
-    <themeId override="true"><value>blockml</value></themeId>
-    <label override="true"><value>BlockML</value></label>
-    <uiTheme override="true"><value>vs-dark</value></uiTheme>
-    <themePath override="true"><value>./themes/blockml-color-theme.json</value></themePath>
-    <highlightScheme override="true"><value>theme:FrameworkRoles</value></highlightScheme>
-    <editorForeground override="true"><value>#D4D4D4</value></editorForeground>
-    <editorBackground override="true"><value>#1E1E1E</value></editorBackground>
+    <themeId override="true">
+      <value>blockml</value>
+    </themeId>
+    <label override="true">
+      <value>BlockML</value>
+    </label>
+    <uiTheme override="true">
+      <value>vs-dark</value>
+    </uiTheme>
+    <themePath override="true">
+      <value>./themes/blockml-color-theme.json</value>
+    </themePath>
+    <highlightScheme override="true">
+      <value>theme:FrameworkRoles</value>
+    </highlightScheme>
+    <editorForeground override="true">
+      <value>#D4D4D4</value>
+    </editorForeground>
+    <editorBackground override="true">
+      <value>#1E1E1E</value>
+    </editorBackground>
   </properties>
-
   <aggregations>
     <tokenColors override="true">
       <composition>
@@ -40,28 +49,24 @@
           <foreground>#FF79C6</foreground>
           <fontStyle>bold</fontStyle>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorBlockDeclaration">
           <ruleName>BML L1: block declaration (name, type, abstract, …)</ruleName>
           <scope>keyword.other.block-declaration.bml</scope>
           <semanticTokenType>blockDeclaration</semanticTokenType>
           <foreground>#C586C0</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorBlockFacet">
           <ruleName>BML L1: block facet (documentation, summary, …)</ruleName>
           <scope>support.type.block-facet.bml</scope>
           <semanticTokenType>blockFacet</semanticTokenType>
           <foreground>#6A9955</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorBlockContainer">
           <ruleName>BML L1: block container (subBlocks, references, …)</ruleName>
           <scope>keyword.other.block-container.bml</scope>
           <semanticTokenType>blockContainer</semanticTokenType>
           <foreground>#3794FF</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorMemberContainer">
           <ruleName>BML L1: member container (properties, aggregations, associations)</ruleName>
           <scope>keyword.other.member-container.bml</scope>
@@ -69,143 +74,122 @@
           <foreground>#4EC9B0</foreground>
           <fontStyle>bold</fontStyle>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorMemberName">
           <ruleName>BML L2: member name (user property / aggregation / association)</ruleName>
           <scope>entity.name.member.bml</scope>
           <semanticTokenType>memberName</semanticTokenType>
           <foreground>#CE9178</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorMemberField">
           <ruleName>BML L3: member field identity (type, override, abstract, …)</ruleName>
           <scope>keyword.other.member-field.bml</scope>
           <semanticTokenType>memberField</semanticTokenType>
           <foreground>#BB86FC</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorMemberFacet">
           <ruleName>BML L3: member field facet (documentation, value, …)</ruleName>
           <scope>support.type.member-facet.bml</scope>
           <semanticTokenType>memberFacet</semanticTokenType>
           <foreground>#98C379</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorMemberSubContainer">
           <ruleName>BML L3: member sub-container (composition, suggestions, …)</ruleName>
           <scope>keyword.other.member-subcontainer.bml</scope>
           <semanticTokenType>memberSubContainer</semanticTokenType>
           <foreground>#56B6C2</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorDomainType">
           <ruleName>BML: domain type ref (PascalCase at block level)</ruleName>
           <scope>entity.name.type.bml</scope>
           <semanticTokenType>domainType</semanticTokenType>
           <foreground>#DCDCAA</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorCompositionInstance">
           <ruleName>BML L4: composition instance (PascalCase in composition)</ruleName>
           <scope>entity.name.type.instance.bml</scope>
           <semanticTokenType>compositionInstance</semanticTokenType>
           <foreground>#E5C07B</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorDomainTag">
           <ruleName>BML: fallback tag</ruleName>
           <scope>entity.name.tag.bml</scope>
           <semanticTokenType>tag</semanticTokenType>
           <foreground>#ABB2BF</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorAttribute">
           <ruleName>BML: attribute name</ruleName>
           <scope>entity.other.attribute-name.bml</scope>
           <semanticTokenType>attribute</semanticTokenType>
           <foreground>#9CDCFE</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorStringDouble">
           <ruleName>BML: double-quoted string</ruleName>
           <scope>string.quoted.double.bml</scope>
           <semanticTokenType>stringDouble</semanticTokenType>
           <foreground>#CE9178</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorStringSingle">
           <ruleName>BML: single-quoted string</ruleName>
           <scope>string.quoted.single.bml</scope>
           <semanticTokenType>stringSingle</semanticTokenType>
           <foreground>#D7BA7D</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorComment">
           <ruleName>BML: comment</ruleName>
           <scope>comment.block.bml</scope>
           <semanticTokenType>blockComment</semanticTokenType>
           <foreground>#608B4E</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorInterpolation">
           <ruleName>BML: interpolation</ruleName>
           <scope>keyword.other.interpolation.bml</scope>
           <semanticTokenType>interpolation</semanticTokenType>
           <foreground>#D7BA7D</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorEmbed">
           <ruleName>BML: embed marker</ruleName>
           <scope>keyword.control.embed.bml</scope>
           <semanticTokenType>embed</semanticTokenType>
           <foreground>#D16969</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorPunctTag">
           <ruleName>BML: tag punctuation</ruleName>
           <scope>punctuation.definition.tag.bml</scope>
           <semanticTokenType>tagPunctuation</semanticTokenType>
           <foreground>#808080</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorPunctComment">
           <ruleName>BML: comment punctuation</ruleName>
           <scope>punctuation.definition.comment.bml</scope>
           <semanticTokenType>commentPunctuation</semanticTokenType>
           <foreground>#608B4E</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorPunctKeyValue">
           <ruleName>BML: attribute separator</ruleName>
           <scope>punctuation.separator.key-value.bml</scope>
           <semanticTokenType>attributeSeparator</semanticTokenType>
           <foreground>#D4D4D4</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorXmlTag">
           <ruleName>XML/XSD: tag name</ruleName>
           <scope>entity.name.tag.xml</scope>
           <foreground>#569CD6</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorXmlAttribute">
           <ruleName>XML/XSD: attribute name</ruleName>
           <scope>entity.other.attribute-name.xml</scope>
           <foreground>#9CDCFE</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorXmlString">
           <ruleName>XML/XSD: string</ruleName>
           <scope>string.quoted.double.xml</scope>
           <foreground>#CE9178</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorXmlComment">
           <ruleName>XML/XSD: comment</ruleName>
           <scope>comment.block.xml</scope>
           <foreground>#6A9955</foreground>
         </theme:TokenColorRule>
-
         <theme:TokenColorRule bml:id="colorXmlPunctTag">
           <ruleName>XML/XSD: tag punctuation</ruleName>
           <scope>punctuation.definition.tag.xml</scope>
@@ -214,5 +198,4 @@
       </composition>
     </tokenColors>
   </aggregations>
-
-</block>
+</theme:BlockMlDevColorTheme>

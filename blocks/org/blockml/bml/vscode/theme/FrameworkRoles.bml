@@ -1,42 +1,37 @@
-<!--
-  BlockML VS Code — framework highlight scheme (position-based roles)
+<!--BlockML VS Code — framework highlight scheme (position-based roles)
 
   FQN: org.blockml.bml.vscode.theme.FrameworkRoles
 
   Scopes follow XML position relative to the nearest &lt;block&gt; and member containers
-  (org.blockml.bml.definition.BlockDefinition, MemberDefinition, StructuralDefinition).
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  (org.blockml.bml.definition.BlockDefinition, MemberDefinition, StructuralDefinition).-->
+<theme:FrameworkRoles xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:theme="org.blockml.bml.vscode.theme"
   xmlns:type="org.blockml.bml.type">
 
-  <name>FrameworkRoles</name>
-  <type>theme:FrameworkRoles</type>
-  <baseType>theme:HighlightScheme</baseType>
-  <is>The default BlockML framework highlight scheme</is>
-
-  <summary>Position-based highlight scheme: block declaration, member container, member name, and
+  <baseType>
+    theme:HighlightScheme
+  </baseType>
+  <is>
+    The default BlockML framework highlight scheme
+  </is>
+  <summary>
+    Position-based highlight scheme: block declaration, member container, member name, and
     member field scopes are distinct so the same tag local name (e.g. abstract, documentation) colors
-    differently by XML nesting — not by keyword lists alone.</summary>
-
+    differently by XML nesting — not by keyword lists alone.
+  </summary>
   <documentation>
     Concrete HighlightScheme used by bmlSimpleGrammar. Roles map to TextMate scopes by structural
     position:
-
-    • blockBody — direct children of &lt;block&gt; (identity + block facets)
-    • memberContainer — &lt;properties&gt;, &lt;aggregations&gt;, &lt;associations&gt;, …
+    
+    • blockBody — direct children of &lt;block> (identity + block facets)
+    • memberContainer — &lt;properties>, &lt;aggregations>, &lt;associations>, …
     • memberContainerBody — direct children = user member names (domainScope)
     • memberBody — framework member fields inside a member element
-    • memberSubContainerBody — composition instances (PascalCase) inside &lt;composition&gt;, etc.
-
+    • memberSubContainerBody — composition instances (PascalCase) inside &lt;composition>, etc.
+    
     Re-render syntaxes/bml.tmLanguage.json after changing scopes or tag lists.
   </documentation>
-
   <properties>
     <schemeId override="true">
       <value>framework-roles</value>
@@ -45,7 +40,6 @@
       <value>entity.name.member.bml</value>
     </domainScope>
   </properties>
-
   <aggregations>
     <roles override="true">
       <composition>
@@ -57,7 +51,6 @@
             <type:TextEntity value="block" />
           </tags>
         </theme:HighlightRole>
-
         <theme:HighlightRole bml:id="roleBlockDeclaration">
           <roleId>blockDeclaration</roleId>
           <textMateScope>keyword.other.block-declaration.bml</textMateScope>
@@ -75,7 +68,6 @@
             <type:TextEntity value="language" />
           </tags>
         </theme:HighlightRole>
-
         <theme:HighlightRole bml:id="roleBlockFacet">
           <roleId>blockFacet</roleId>
           <textMateScope>support.type.block-facet.bml</textMateScope>
@@ -94,7 +86,6 @@
             <type:TextEntity value="implementation" />
           </tags>
         </theme:HighlightRole>
-
         <theme:HighlightRole bml:id="roleBlockContainer">
           <roleId>blockContainer</roleId>
           <textMateScope>keyword.other.block-container.bml</textMateScope>
@@ -111,7 +102,6 @@
             <type:TextEntity value="references" />
           </tags>
         </theme:HighlightRole>
-
         <theme:HighlightRole bml:id="roleMemberContainer">
           <roleId>memberContainer</roleId>
           <textMateScope>keyword.other.member-container.bml</textMateScope>
@@ -124,13 +114,11 @@
             <type:TextEntity value="constraints" />
           </tags>
         </theme:HighlightRole>
-
         <theme:HighlightRole bml:id="roleMemberName">
           <roleId>memberName</roleId>
           <textMateScope>entity.name.member.bml</textMateScope>
           <hljsClass>name</hljsClass>
         </theme:HighlightRole>
-
         <theme:HighlightRole bml:id="roleMemberField">
           <roleId>memberField</roleId>
           <textMateScope>keyword.other.member-field.bml</textMateScope>
@@ -145,7 +133,6 @@
             <type:TextEntity value="default" />
           </tags>
         </theme:HighlightRole>
-
         <theme:HighlightRole bml:id="roleMemberFacet">
           <roleId>memberFacet</roleId>
           <textMateScope>support.type.member-facet.bml</textMateScope>
@@ -167,7 +154,6 @@
             <type:TextEntity value="bml:container" />
           </tags>
         </theme:HighlightRole>
-
         <theme:HighlightRole bml:id="roleMemberSubContainer">
           <roleId>memberSubContainer</roleId>
           <textMateScope>keyword.other.member-subcontainer.bml</textMateScope>
@@ -180,13 +166,11 @@
             <type:TextEntity value="implementation" />
           </tags>
         </theme:HighlightRole>
-
         <theme:HighlightRole bml:id="roleDomainType">
           <roleId>domainType</roleId>
           <textMateScope>entity.name.type.bml</textMateScope>
           <hljsClass>title</hljsClass>
         </theme:HighlightRole>
-
         <theme:HighlightRole bml:id="roleCompositionInstance">
           <roleId>compositionInstance</roleId>
           <textMateScope>entity.name.type.instance.bml</textMateScope>
@@ -195,5 +179,4 @@
       </composition>
     </roles>
   </aggregations>
-
-</block>
+</theme:FrameworkRoles>

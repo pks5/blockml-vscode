@@ -1,25 +1,20 @@
-<!--
-  BlockML VS Code — file icon contribution
+<!--BlockML VS Code — file icon contribution
 
-  FQN: org.blockml.bml.vscode.contribution.IconContribution
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.vscode.contribution.IconContribution-->
+<contrib:IconContribution xmlns="http://blockml.org/bml"
   xmlns:contrib="org.blockml.bml.vscode.contribution"
   xmlns:doc="org.blockml.bml.vscode.documentation">
 
-  <name>IconContribution</name>
-  <type>contrib:IconContribution</type>
-  <baseType>contrib:Contribution</baseType>
-  <is>A language or file icon contribution</is>
-
+  <baseType>
+    contrib:Contribution
+  </baseType>
+  <is>
+    A language or file icon contribution
+  </is>
   <documentation>
     Describes the BML file icon for the explorer and editor tabs. Two independent VS Code
     contributions may be emitted from the same iconPath:
-
+    
     • Language mode icon — contributes.languages[].icon (light/dark). Works with whatever file
       icon theme the user has selected (Seti, Material, …); other file types keep their icons.
     • File icon theme — contributes.iconThemes (themeId, themeLabel, themePath). A full theme
@@ -27,14 +22,13 @@
       language extension: the Extension Development Host (F5) auto-applies the first file
       icon theme from the extension under development (ConfigurationTarget.MEMORY), even if
       the user never selected it. Language mode icons do not trigger that.
-
+    
     Generators emit the icon theme JSON that maps fileExtension / languageId to iconPath. For
     the BlockML extension, the filetype icon asset is icons/blockml.svg at the repository root.
-
+    
     Do not confuse with Extension.icon (icons/blockml.png) — that large PNG is the Marketplace
     gallery image in package.json, not the editor filetype glyph.
   </documentation>
-
   <references>
     <see type="doc:V1Scope" relation="AuthoringGuide">
       V1 includes BML file type icon.
@@ -49,48 +43,66 @@
       Language id / extension the icon is associated with.
     </see>
   </references>
-
   <properties>
-    <languageId type="Text">
-      <documentation>Language id or file association target for the icon.</documentation>
+    <languageId type="org.blockml.bml.type.Text">
+      <documentation>
+        Language id or file association target for the icon.
+      </documentation>
     </languageId>
-    <iconPath type="FilePath">
-      <documentation>Path to the icon asset relative to the extension root
-        (for BlockML: ./icons/blockml.svg).</documentation>
+    <iconPath type="org.blockml.bml.type.FilePath">
+      <documentation>
+        Path to the icon asset relative to the extension root
+        (for BlockML: ./icons/blockml.svg).
+      </documentation>
     </iconPath>
-    <iconPathDark type="FilePath">
-      <documentation>Optional dark-theme variant of the icon. When omitted, iconPath is used for
-        both light and dark language-mode icons.</documentation>
+    <iconPathDark type="org.blockml.bml.type.FilePath">
+      <documentation>
+        Optional dark-theme variant of the icon. When omitted, iconPath is used for
+        both light and dark language-mode icons.
+      </documentation>
     </iconPathDark>
-    <contributeLanguageIcon type="Boolean">
-      <documentation>When true, also emit contributes.languages[].icon { light, dark } from
-        iconPath / iconPathDark so the .bml glyph appears without switching file icon theme.</documentation>
+    <contributeLanguageIcon type="org.blockml.bml.type.Boolean">
+      <documentation>
+        When true, also emit contributes.languages[].icon { light, dark } from
+        iconPath / iconPathDark so the .bml glyph appears without switching file icon theme.
+      </documentation>
       <value>false</value>
     </contributeLanguageIcon>
-    <contributeIconTheme type="Boolean">
-      <documentation>When true, emit contributes.iconThemes from themeId / themeLabel / themePath.
+    <contributeIconTheme type="org.blockml.bml.type.Boolean">
+      <documentation>
+        When true, emit contributes.iconThemes from themeId / themeLabel / themePath.
         When false, the theme JSON may still exist on disk but is not registered — required to
-        stop F5 from auto-applying a .bml-only icon theme in the Extension Development Host.</documentation>
+        stop F5 from auto-applying a .bml-only icon theme in the Extension Development Host.
+      </documentation>
       <value>true</value>
     </contributeIconTheme>
-    <fileExtension type="Text">
-      <documentation>File extension the icon applies to (for example .bml).</documentation>
+    <fileExtension type="org.blockml.bml.type.Text">
+      <documentation>
+        File extension the icon applies to (for example .bml).
+      </documentation>
       <value>.bml</value>
     </fileExtension>
-    <themeId type="Text">
-      <documentation>contributes.iconThemes id (for example blockml-icons).</documentation>
+    <themeId type="org.blockml.bml.type.Text">
+      <documentation>
+        contributes.iconThemes id (for example blockml-icons).
+      </documentation>
     </themeId>
-    <themeLabel type="Text">
-      <documentation>User-visible icon theme label (for example BlockML Icons).</documentation>
+    <themeLabel type="org.blockml.bml.type.Text">
+      <documentation>
+        User-visible icon theme label (for example BlockML Icons).
+      </documentation>
     </themeLabel>
-    <themePath type="FilePath">
-      <documentation>Generated icon theme JSON path relative to the extension root
-        (for example ./icons/blockml-icon-theme.json).</documentation>
+    <themePath type="org.blockml.bml.type.FilePath">
+      <documentation>
+        Generated icon theme JSON path relative to the extension root
+        (for example ./icons/blockml-icon-theme.json).
+      </documentation>
     </themePath>
-    <iconDefinitionId type="Text">
-      <documentation>Key under iconDefinitions in the theme JSON (for example bml_file).</documentation>
+    <iconDefinitionId type="org.blockml.bml.type.Text">
+      <documentation>
+        Key under iconDefinitions in the theme JSON (for example bml_file).
+      </documentation>
       <value>bml_file</value>
     </iconDefinitionId>
   </properties>
-
-</block>
+</contrib:IconContribution>

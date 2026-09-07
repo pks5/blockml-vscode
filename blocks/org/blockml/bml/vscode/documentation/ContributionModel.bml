@@ -1,23 +1,18 @@
-<!--
-  BlockML VS Code — documentation
+<!--BlockML VS Code — documentation
 
-  FQN: org.blockml.bml.vscode.documentation.ContributionModel
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.vscode.documentation.ContributionModel-->
+<doc:ContributionModel xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:contrib="org.blockml.bml.vscode.contribution"
   xmlns:doc="org.blockml.bml.vscode.documentation"
   xmlns:theme="org.blockml.bml.vscode.theme">
 
-  <name>ContributionModel</name>
-  <type>doc:ContributionModel</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to VS Code contributions in BML</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to VS Code contributions in BML
+  </is>
   <documentation>
     Contribution → generator mapping:
     • LanguageContribution → contributes.languages + language-configuration.json (comments,
@@ -55,7 +50,7 @@
       semanticTokens remain advertised; colors come from overlaySemanticTokenColors.
     • MarketplaceListing → README.md (Marketplace / Open VSX page body). CHANGELOG.md is the
       changelog tab. Distinct from vscode:README (library reading entry).
-
+    
     Settings must not be invented only in TypeScript — add a Setting under ConfigurationContribution
     first, then generate accessors from BML. Language-config and grammar regexes must not be
     invented only in JSON — amend LanguageContribution / GrammarPattern in BML first. Framework
@@ -63,7 +58,6 @@
     re-render GrammarPatterns + tmLanguage via LLM. Token colors must not be invented only in
     themes/*.json — amend theme:ColorTheme / TokenColorRule in BML first, then re-render.
   </documentation>
-
   <references>
     <see type="doc:GenerationWorkflow" relation="ReadNext">
       Next — BML to generated extension workflow.
@@ -96,5 +90,4 @@
       Package and type overview.
     </see>
   </references>
-
-</block>
+</doc:ContributionModel>

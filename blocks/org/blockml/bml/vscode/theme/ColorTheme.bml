@@ -1,27 +1,23 @@
-<!--
-  BlockML VS Code — color theme descriptor
+<!--BlockML VS Code — color theme descriptor
 
-  FQN: org.blockml.bml.vscode.theme.ColorTheme
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.vscode.theme.ColorTheme-->
+<theme:ColorTheme xmlns="http://blockml.org/bml"
   xmlns:contrib="org.blockml.bml.vscode.contribution"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.vscode.documentation"
   xmlns:theme="org.blockml.bml.vscode.theme"
   xmlns:type="org.blockml.bml.type">
 
-  <name>ColorTheme</name>
-  <type>theme:ColorTheme</type>
-  <baseType>core:Entity</baseType>
-  <is>A VS Code editor color theme for BML</is>
-
-  <summary>Declarative color theme: editor chrome colors plus tokenColors for every BML TextMate
-    scope. Generators emit themes/*.json; ColorThemeContribution registers it in package.json.</summary>
-
+  <baseType>
+    core:Entity
+  </baseType>
+  <is>
+    A VS Code editor color theme for BML
+  </is>
+  <summary>
+    Declarative color theme: editor chrome colors plus tokenColors for every BML TextMate
+    scope. Generators emit themes/*.json; ColorThemeContribution registers it in package.json.
+  </summary>
   <documentation>
     SSOT for a VS Code color theme that paints every BML TextMate scope. tokenColors should cover
     every scope listed on GrammarContribution.scopes plus HighlightScheme.roles[].textMateScope
@@ -29,17 +25,16 @@
     shipped ColorTheme is required for visible syntax highlighting in the Marketplace build.
     Also include XML/XSD tokenColors (entity.name.tag.xml, …) so .xsd / .xml stay readable while
     the BlockML theme is active — otherwise only *.bml scopes are painted.
-
+    
     Workflow: edit tokenColors here (or in a concrete subtype such as theme:BlockMlDevColorTheme),
     then re-render themes/*.json and package.json contributes.themes via an explicit generator /
     LLM task (see GenerationWorkflow). Do not hand-edit the JSON as SSOT.
-
+    
     highlightScheme links this theme to the active HighlightScheme for documentation and generator
     cross-checks — generators may verify that every role scope has a TokenColorRule.
     ColorThemeContribution.marketplace=true marks the theme as a published Marketplace theme
     (Themes category + contributes.themes[].id).
   </documentation>
-
   <references>
     <see type="theme:TokenColorRule" relation="Defines">
       Scope → color rules aggregated under tokenColors.
@@ -54,41 +49,54 @@
       BML → theme JSON render rules.
     </see>
   </references>
-
   <properties>
-    <themeId type="Text">
-      <documentation>Stable theme id (for example blockml). Maps to contributes.themes[].id and
-        workbench.colorTheme when the contribution is marketplace-shipped.</documentation>
+    <themeId type="type:Text">
+      <documentation>
+        Stable theme id (for example blockml). Maps to contributes.themes[].id and
+        workbench.colorTheme when the contribution is marketplace-shipped.
+      </documentation>
     </themeId>
-    <label type="Text">
-      <documentation>User-visible theme name in the VS Code color theme picker
-        (for example BlockML).</documentation>
+    <label type="type:Text">
+      <documentation>
+        User-visible theme name in the VS Code color theme picker
+        (for example BlockML).
+      </documentation>
     </label>
-    <uiTheme type="Text">
-      <documentation>VS Code base uiTheme: vs-dark, vs-light, or hc-black. Maps to
-        contributes.themes[].uiTheme.</documentation>
+    <uiTheme type="type:Text">
+      <documentation>
+        VS Code base uiTheme: vs-dark, vs-light, or hc-black. Maps to
+        contributes.themes[].uiTheme.
+      </documentation>
     </uiTheme>
-    <themePath type="FilePath">
-      <documentation>Generated theme JSON path relative to extension root
-        (for example ./themes/blockml-color-theme.json).</documentation>
+    <themePath type="type:FilePath">
+      <documentation>
+        Generated theme JSON path relative to extension root
+        (for example ./themes/blockml-color-theme.json).
+      </documentation>
     </themePath>
-    <highlightScheme type="TypeReference(theme:HighlightScheme)">
-      <documentation>Active HighlightScheme this theme aligns with (for example
-        theme:FrameworkRoles). Generators cross-check role scopes against tokenColors.</documentation>
+    <highlightScheme type="type:TypeReference(theme:HighlightScheme)">
+      <documentation>
+        Active HighlightScheme this theme aligns with (for example
+        theme:FrameworkRoles). Generators cross-check role scopes against tokenColors.
+      </documentation>
     </highlightScheme>
-    <editorForeground type="Text">
-      <documentation>editor.foreground in the theme colors map.</documentation>
+    <editorForeground type="type:Text">
+      <documentation>
+        editor.foreground in the theme colors map.
+      </documentation>
     </editorForeground>
-    <editorBackground type="Text">
-      <documentation>editor.background in the theme colors map.</documentation>
+    <editorBackground type="type:Text">
+      <documentation>
+        editor.background in the theme colors map.
+      </documentation>
     </editorBackground>
   </properties>
-
   <aggregations>
     <tokenColors type="theme:TokenColorRule[]">
-      <documentation>Ordered TextMate token color rules. One rule per BML scope (or small scope
-        group). Generators emit tokenColors[] in the VS Code theme JSON.</documentation>
+      <documentation>
+        Ordered TextMate token color rules. One rule per BML scope (or small scope
+        group). Generators emit tokenColors[] in the VS Code theme JSON.
+      </documentation>
     </tokenColors>
   </aggregations>
-
-</block>
+</theme:ColorTheme>

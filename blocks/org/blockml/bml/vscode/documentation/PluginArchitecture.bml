@@ -1,24 +1,19 @@
-<!--
-  BlockML VS Code — documentation
+<!--BlockML VS Code — documentation
 
-  FQN: org.blockml.bml.vscode.documentation.PluginArchitecture
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.vscode.documentation.PluginArchitecture-->
+<doc:PluginArchitecture xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:contrib="org.blockml.bml.vscode.contribution"
   xmlns:doc="org.blockml.bml.vscode.documentation"
   xmlns:theme="org.blockml.bml.vscode.theme"
   xmlns:vscode="org.blockml.bml.vscode">
 
-  <name>PluginArchitecture</name>
-  <type>doc:PluginArchitecture</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to the VS Code plugin BML model</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to the VS Code plugin BML model
+  </is>
   <documentation>
     Package layout under org.blockml.bml.vscode:
     • vscode.Extension — abstract extension descriptor (publisher, engines, activation, contributions)
@@ -32,14 +27,13 @@
       NavigationKind)
     • vscode.documentation.* — curated reading material for this library
     • vscode.BlockMlExtension — concrete BlockML plugin filled with V1 and V2 contributions
-
+    
     Every contribution carries milestone V1 or V2 and enabled. Generators filter by milestone
     when producing a V1-only build or a full V2 build.
-
+    
     Membership of published types is exclusive to Library.bml blocks — directory layout is
     authoring convenience only.
   </documentation>
-
   <references>
     <see type="doc:ContributionModel" relation="ReadNext">
       Next — contribution taxonomy and package.json mapping.
@@ -57,5 +51,4 @@
       Library goals and generation workflow overview.
     </see>
   </references>
-
-</block>
+</doc:PluginArchitecture>
