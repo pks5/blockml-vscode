@@ -55,19 +55,19 @@
   </properties>
 
   <aggregations>
-    <readMe>
+    <readMe override="true">
       <composition>
         <vscode:README />
       </composition>
     </readMe>
 
-    <dependencies>
+    <dependencies override="true">
       <composition>
         <blockml:Library />
       </composition>
     </dependencies>
 
-    <blocks>
+    <blocks override="true">
       <composition>
         <vscode:README />
         <vscode:Extension />

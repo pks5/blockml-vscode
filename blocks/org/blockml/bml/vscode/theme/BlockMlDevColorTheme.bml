@@ -31,7 +31,7 @@
   </properties>
 
   <aggregations>
-    <tokenColors>
+    <tokenColors override="true">
       <composition>
         <theme:TokenColorRule bml:id="colorRoot">
           <ruleName>BML L0: block root</ruleName>

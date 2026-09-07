@@ -22,7 +22,7 @@
     providers.</documentation>
 
   <aggregations>
-    <values>
+    <values override="true">
       <composition>
         <NavigationKind bml:id="BlockType" />
         <NavigationKind bml:id="BaseType" />

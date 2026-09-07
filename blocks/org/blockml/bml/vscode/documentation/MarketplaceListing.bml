@@ -62,7 +62,7 @@
     <see type="vscode:BlockMlExtension" relation="SeeAlso">
       Extension identity (publisher, displayName, description).
     </see>
-    <see file="README.md" relation="Generates">
+    <see file="README.md" relation="SeeAlso">
       Marketplace page body rendered from this Block.
     </see>
     <see file="CHANGELOG.md" relation="SeeAlso">

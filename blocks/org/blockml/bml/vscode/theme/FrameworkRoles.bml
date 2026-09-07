@@ -47,7 +47,7 @@
   </properties>
 
   <aggregations>
-    <roles>
+    <roles override="true">
       <composition>
         <theme:HighlightRole bml:id="roleRoot">
           <roleId>root</roleId>

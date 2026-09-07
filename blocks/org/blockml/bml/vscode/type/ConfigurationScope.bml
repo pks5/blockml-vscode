@@ -21,7 +21,7 @@
     (application, machine, window, resource, language-overridable).</documentation>
 
   <aggregations>
-    <values>
+    <values override="true">
       <composition>
         <ConfigurationScope bml:id="Application" />
         <ConfigurationScope bml:id="Machine" />

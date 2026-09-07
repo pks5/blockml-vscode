@@ -21,7 +21,7 @@
     milestone V1 or V2 so documentation and generators stay aligned.</documentation>
 
   <aggregations>
-    <values>
+    <values override="true">
       <composition>
         <ReleaseMilestone bml:id="V1" />
         <ReleaseMilestone bml:id="V2" />

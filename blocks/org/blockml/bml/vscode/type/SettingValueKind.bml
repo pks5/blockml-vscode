@@ -21,7 +21,7 @@
     configuration schemas.</documentation>
 
   <aggregations>
-    <values>
+    <values override="true">
       <composition>
         <SettingValueKind bml:id="Boolean" />
         <SettingValueKind bml:id="String" />

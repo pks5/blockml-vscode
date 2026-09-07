@@ -88,20 +88,20 @@
   </properties>
 
   <aggregations>
-    <categories>
+    <categories override="true">
       <composition>
         <type:TextEntity value="Programming Languages" />
       </composition>
     </categories>
 
-    <activationEvents>
+    <activationEvents override="true">
       <composition>
         <type:TextEntity value="onLanguage:bml" />
         <type:TextEntity value="workspaceContains:**/*.bml" />
       </composition>
     </activationEvents>
 
-    <contributions>
+    <contributions override="true">
       <composition>
         <!-- ========== V1 ========== -->
 
