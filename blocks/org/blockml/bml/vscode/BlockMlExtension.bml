@@ -640,6 +640,9 @@
             <type:TextEntity value="commentPunctuation" />
             <type:TextEntity value="attributeSeparator" />
           </tokenTypes>
+          <tokenModifiers>
+            <type:TextEntity value="unnecessary" />
+          </tokenModifiers>
         </contrib:SemanticHighlightingContribution>
         <contrib:NavigationContribution bml:id="bmlNavigation">
           <milestone>V2</milestone>

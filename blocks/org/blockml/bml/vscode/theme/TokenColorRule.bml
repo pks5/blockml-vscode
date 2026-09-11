@@ -43,11 +43,13 @@
     </scope>
     <semanticTokenType type="org.blockml.bml.type.Text">
       <documentation>
-        Optional LSP / VS Code semantic token type this color also paints (for example
-        blockDeclaration). Required for overlaySemanticTokenColors. Omit on xml / non-BML rules.
+        Optional LSP / VS Code semantic token selector this color also paints (for example
+        blockDeclaration, or *.unnecessary for unused root xmlns). Required for
+        overlaySemanticTokenColors. Omit on xml / non-BML rules.
         Maps to editor.semanticTokenColorCustomizations.rules["type:bml"] and theme
-        semanticTokenColors. Must match SemanticHighlightingContribution.tokenTypes and
-        FrameworkRoles roleId (or a lexical type such as attribute, stringDouble).
+        semanticTokenColors. Must match SemanticHighlightingContribution.tokenTypes /
+        tokenModifiers and FrameworkRoles roleId (or a lexical type such as attribute,
+        stringDouble). Modifier selectors use the VS Code form type.modifier or *.modifier.
       </documentation>
     </semanticTokenType>
     <foreground type="org.blockml.bml.type.Text">

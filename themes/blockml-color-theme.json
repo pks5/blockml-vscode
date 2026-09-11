@@ -136,6 +136,11 @@
       "name": "XML/XSD: tag punctuation",
       "scope": "punctuation.definition.tag.xml",
       "settings": { "foreground": "#808080" }
+    },
+    {
+      "name": "BML: unused root xmlns",
+      "scope": "meta.unused-namespace.bml",
+      "settings": { "foreground": "#6E7681" }
     }
   ],
   "semanticTokenColors": {
@@ -159,6 +164,7 @@
     "embed:bml": { "foreground": "#D16969" },
     "tagPunctuation:bml": { "foreground": "#808080" },
     "commentPunctuation:bml": { "foreground": "#608B4E" },
-    "attributeSeparator:bml": { "foreground": "#D4D4D4" }
+    "attributeSeparator:bml": { "foreground": "#D4D4D4" },
+    "*.unnecessary:bml": { "foreground": "#6E7681" }
   }
 }

@@ -21,6 +21,7 @@ let client: LanguageClient | undefined;
 
 type LspSemanticTokens = {
   SEMANTIC_TOKEN_TYPES: readonly string[];
+  SEMANTIC_TOKEN_MODIFIERS?: readonly string[];
   semanticTokensFor: (text: string) => { data: number[] };
 };
 
@@ -107,7 +108,10 @@ function activateSemanticHighlighting(context: ExtensionContext): void {
 
   void loadLspSemantic()
     .then((lsp) => {
-      const legend = new SemanticTokensLegend([...lsp.SEMANTIC_TOKEN_TYPES], []);
+      const legend = new SemanticTokensLegend(
+        [...lsp.SEMANTIC_TOKEN_TYPES],
+        [...(lsp.SEMANTIC_TOKEN_MODIFIERS?.length ? lsp.SEMANTIC_TOKEN_MODIFIERS : ["unnecessary"])],
+      );
       const provider: DocumentSemanticTokensProvider = {
         onDidChangeSemanticTokens: changeEmitter.event,
         provideDocumentSemanticTokens: (

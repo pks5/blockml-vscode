@@ -16,14 +16,17 @@
     V2 advanced highlighting beyond TextMate — semantic tokens that classify tags by XML
     position (org.blockml.bml.vscode.theme.FrameworkRoles) so nested &lt;block> and
     composition keep the same colors as the TextMate grammar, without a rule-stack depth
-    limit. Token types are the FrameworkRoles roleIds plus lexical types.
+    limit. Token types are the FrameworkRoles roleIds plus lexical types. The unnecessary
+    modifier marks unused root xmlns:&lt;prefix&gt; declarations (prefix never used as a QName
+    in the document) so the theme can fade / desaturate them.
     contributes.semanticTokenScopes maps them onto the existing *.bml TextMate scopes (Inspect
     / theme fallback). Colors must also be emitted as editor.semanticTokenColorCustomizations
     (ColorThemeContribution.overlaySemanticTokenColors) — tokenColorCustomizations alone does
     not style semantic tokens, so the TextMate overlay including stack failures would show
     through. The client evaluates the @blockml/lsp classifier locally so highlighting does not
-    wait on LSP document sync; viaLanguageServer still advertises the legend on the server.
-    Works together with GrammarContribution (lexical fallback) rather than replacing it.
+    wait on LSP document sync; viaLanguageServer still advertises the legend on the server
+    (types + modifiers). Works together with GrammarContribution (lexical fallback) rather
+    than replacing it.
   </documentation>
   <references>
     <see type="doc:V2Scope" relation="AuthoringGuide">

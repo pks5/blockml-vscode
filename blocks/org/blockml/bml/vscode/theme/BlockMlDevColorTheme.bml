@@ -170,6 +170,12 @@
           <semanticTokenType>attributeSeparator</semanticTokenType>
           <foreground>#D4D4D4</foreground>
         </theme:TokenColorRule>
+        <theme:TokenColorRule bml:id="colorUnnecessary">
+          <ruleName>BML: unused root xmlns</ruleName>
+          <scope>meta.unused-namespace.bml</scope>
+          <semanticTokenType>*.unnecessary</semanticTokenType>
+          <foreground>#6E7681</foreground>
+        </theme:TokenColorRule>
         <theme:TokenColorRule bml:id="colorXmlTag">
           <ruleName>XML/XSD: tag name</ruleName>
           <scope>entity.name.tag.xml</scope>

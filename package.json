@@ -93,6 +93,9 @@
       { "id": "commentPunctuation", "description": "BML comment punctuation", "superType": "comment" },
       { "id": "attributeSeparator", "description": "BML attribute =" }
     ],
+    "semanticTokenModifiers": [
+      { "id": "unnecessary", "description": "Unused xmlns prefix on the document root" }
+    ],
     "semanticTokenScopes": [
       {
         "language": "bml",
@@ -147,7 +150,8 @@
           "embed:bml": { "foreground": "#D16969" },
           "tagPunctuation:bml": { "foreground": "#808080" },
           "commentPunctuation:bml": { "foreground": "#608B4E" },
-          "attributeSeparator:bml": { "foreground": "#D4D4D4" }
+          "attributeSeparator:bml": { "foreground": "#D4D4D4" },
+          "*.unnecessary:bml": { "foreground": "#6E7681" }
         }
       },
       "editor.tokenColorCustomizations": {
@@ -235,6 +239,10 @@
           {
             "scope": "punctuation.separator.key-value.bml",
             "settings": { "foreground": "#D4D4D4" }
+          },
+          {
+            "scope": "meta.unused-namespace.bml",
+            "settings": { "foreground": "#6E7681" }
           }
         ]
       }
@@ -279,14 +287,14 @@
     "validate": "blockml validate"
   },
   "dependencies": {
-    "@blockml/lsp": "^0.9.5",
+    "@blockml/lsp": "^0.9.9",
     "vscode-languageclient": "^9.0.1"
   },
   "devDependencies": {
-    "@blockml/core": "^1.2.1",
+    "@blockml/core": "^1.4.0",
     "@types/node": "^22.0.0",
     "@types/vscode": "^1.85.0",
     "typescript": "^5.7.0",
-    "@blockml/cli": "^0.9.5"
+    "@blockml/cli": "^0.9.9"
   }
 }

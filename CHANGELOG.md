@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+Unused `xmlns:<prefix>` declarations on the document root fade / desaturate when the
+prefix is not used as a QName in the file (standard LSP `unnecessary` modifier).
+Requires `@blockml/lsp` that exports `SEMANTIC_TOKEN_MODIFIERS`.
+
 TextMate fallback learns the preferred BlockML document format from core 1.2.1
 (`doc:DocumentFormat`): type/name as the element tag (`<vscode:Extension>`, `<MyBlock>`),
 including Sub-Blocks / embeds under `<subBlocks>` / `<embeddedBlocks>`. Legacy `<block>`
