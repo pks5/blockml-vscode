@@ -9,7 +9,7 @@
   xmlns:contrib="org.blockml.bml.vscode.contribution">
 
   <baseType>
-    core:Entity
+    core:Block
   </baseType>
   <is>
     A VS Code extension descriptor

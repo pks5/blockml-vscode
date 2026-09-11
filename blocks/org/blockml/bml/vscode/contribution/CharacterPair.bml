@@ -6,7 +6,7 @@
   xmlns:core="org.blockml.bml.core">
 
   <baseType>
-    core:Entity
+    core:Block
   </baseType>
   <is>
     A paired open/close character sequence

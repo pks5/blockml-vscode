@@ -8,7 +8,7 @@
   xmlns:vtype="org.blockml.bml.vscode.type">
 
   <baseType>
-    core:Entity
+    core:Block
   </baseType>
   <is>
     A VS Code extension contribution

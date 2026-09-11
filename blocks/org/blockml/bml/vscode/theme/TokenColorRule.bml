@@ -6,7 +6,7 @@
   xmlns:theme="org.blockml.bml.vscode.theme">
 
   <baseType>
-    core:Entity
+    core:Block
   </baseType>
   <is>
     A TextMate scope to color mapping

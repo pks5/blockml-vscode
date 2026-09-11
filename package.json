@@ -1,6 +1,6 @@
 {
   "name": "blockml",
-  "version": "0.9.5",
+  "version": "0.9.9",
   "description": "Language support for BlockML (BML) — syntax highlighting, diagnostics via language server, and file icons.",
   "displayName": "BlockML",
   "publisher": "blockml",

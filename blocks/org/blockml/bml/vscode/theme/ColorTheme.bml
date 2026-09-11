@@ -9,7 +9,7 @@
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
-    core:Entity
+    core:Block
   </baseType>
   <is>
     A VS Code editor color theme for BML

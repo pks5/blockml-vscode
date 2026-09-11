@@ -8,7 +8,7 @@
   xmlns:theme="org.blockml.bml.vscode.theme">
 
   <baseType>
-    core:Entity
+    core:Block
   </baseType>
   <is>
     A semantic highlight scheme for BML
