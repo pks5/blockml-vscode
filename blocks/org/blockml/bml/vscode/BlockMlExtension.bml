@@ -10,8 +10,7 @@
   xmlns:doc="org.blockml.bml.vscode.documentation"
   xmlns:theme="org.blockml.bml.vscode.theme"
   xmlns:type="org.blockml.bml.type"
-  xmlns:vscode="org.blockml.bml.vscode"
-  xmlns:vtype="org.blockml.bml.vscode.type">
+  xmlns:vscode="org.blockml.bml.vscode">
 
   <baseType>
     vscode:Extension
