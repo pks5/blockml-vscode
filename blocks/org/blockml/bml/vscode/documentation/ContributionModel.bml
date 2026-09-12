@@ -15,7 +15,8 @@
   </is>
   <documentation>
     Contribution → generator mapping:
-    • LanguageContribution → contributes.languages + language-configuration.json (comments,
+    • LanguageContribution → contributes.languages (languageAliases → aliases) +
+      language-configuration.json (comments,
       brackets, autoClosingPairs, surroundingPairs from CharacterPair aggregations). When
       xmlLanguageParticipant is true, also contributes.xmlLanguageParticipants[{ languageId }]
       so vscode-xml keeps applying XSD (xsi:schemaLocation) after .bml is claimed as language bml

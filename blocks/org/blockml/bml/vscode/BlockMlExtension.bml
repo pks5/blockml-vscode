@@ -103,6 +103,10 @@
           <configurationPath>./language-configuration.json</configurationPath>
           <blockCommentOpen>&lt;!--</blockCommentOpen>
           <blockCommentClose>--></blockCommentClose>
+          <languageAliases>
+            <type:TextEntity value="BlockML" />
+            <type:TextEntity value="BML" />
+          </languageAliases>
           <extensions>
             <type:TextEntity value=".bml" />
           </extensions>
@@ -245,24 +249,24 @@
               <scopeName>comment.block.bml</scopeName>
               <begin>&lt;!--</begin>
               <end>--></end>
-              <beginCapturesJson>{0:{name:&quot;punctuation.definition.comment.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{0:{name:&quot;punctuation.definition.comment.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"0":{"name":"punctuation.definition.comment.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"0":{"name":"punctuation.definition.comment.bml"}}</endCapturesJson>
             </contrib:GrammarPattern>
             <contrib:GrammarPattern bml:id="patternExpression">
               <patternKey>expression</patternKey>
               <scopeName>keyword.other.interpolation.bml</scopeName>
               <begin>\$\{</begin>
               <end>\}</end>
-              <beginCapturesJson>{0:{name:&quot;punctuation.definition.interpolation.begin.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{0:{name:&quot;punctuation.definition.interpolation.end.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"0":{"name":"punctuation.definition.interpolation.begin.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"0":{"name":"punctuation.definition.interpolation.end.bml"}}</endCapturesJson>
             </contrib:GrammarPattern>
             <contrib:GrammarPattern bml:id="patternEmbed">
               <patternKey>embed</patternKey>
               <scopeName>keyword.control.embed.bml</scopeName>
               <begin>&lt;\$</begin>
               <end>\$></end>
-              <beginCapturesJson>{0:{name:&quot;punctuation.definition.embed.begin.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{0:{name:&quot;punctuation.definition.embed.end.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"0":{"name":"punctuation.definition.embed.begin.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"0":{"name":"punctuation.definition.embed.end.bml"}}</endCapturesJson>
             </contrib:GrammarPattern>
             <contrib:GrammarPattern bml:id="patternDoubleQuoted">
               <patternKey>stringDouble</patternKey>
@@ -287,15 +291,15 @@
             <contrib:GrammarPattern bml:id="patternAttribute">
               <patternKey>attribute</patternKey>
               <match>\s+([A-Za-z_:][\w:.-]*)(\s*=\s*)(?:(&quot;)([^&quot;]*)(&quot;)|(')([^']*)('))?</match>
-              <capturesJson>{1:{name:&quot;entity.other.attribute-name.bml&quot;},2:{name:&quot;punctuation.separator.key-value.bml&quot;},3:{name:&quot;punctuation.definition.string.begin.bml&quot;},4:{name:&quot;string.quoted.double.bml&quot;},5:{name:&quot;punctuation.definition.string.end.bml&quot;},6:{name:&quot;punctuation.definition.string.begin.bml&quot;},7:{name:&quot;string.quoted.single.bml&quot;},8:{name:&quot;punctuation.definition.string.end.bml&quot;}}</capturesJson>
+              <capturesJson>{"1":{"name":"entity.other.attribute-name.bml"},"2":{"name":"punctuation.separator.key-value.bml"},"3":{"name":"punctuation.definition.string.begin.bml"},"4":{"name":"string.quoted.double.bml"},"5":{"name":"punctuation.definition.string.end.bml"},"6":{"name":"punctuation.definition.string.begin.bml"},"7":{"name":"string.quoted.single.bml"},"8":{"name":"punctuation.definition.string.end.bml"}}</capturesJson>
             </contrib:GrammarPattern>
             <contrib:GrammarPattern bml:id="patternBlock">
               <patternKey>block</patternKey>
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;)(block)(?=[\s/>])</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.type.framework.root.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.framework.root.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
                 <type:TextEntity value="#blockBody" />
@@ -306,8 +310,8 @@
               <scopeName>meta.block.bml</scopeName>
               <begin>(&lt;)((?:[A-Za-z_][\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(?=[\s/>])</begin>
               <end>(\s*/>)|(?:(&lt;/)(\2)\s*(>))</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.type.framework.root.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;punctuation.definition.tag.bml&quot;},3:{name:&quot;entity.name.type.framework.root.bml&quot;},4:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.framework.root.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"punctuation.definition.tag.bml"},"3":{"name":"entity.name.type.framework.root.bml"},"4":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
                 <type:TextEntity value="#blockBody" />
@@ -322,8 +326,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;)((?:[A-Za-z_][\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(?=[\s/>])</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.member.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.member.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
                 <type:TextEntity value="#memberBody" />
@@ -334,8 +338,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;)((?:[A-Za-z_][\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(?=[\s/>])</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.type.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
               </nestedIncludes>
@@ -343,15 +347,15 @@
             <contrib:GrammarPattern bml:id="patternCloseTagDomainType">
               <patternKey>closeTagDomainType</patternKey>
               <match>(&lt;/)((?:[A-Za-z_][\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(\s*(>))</match>
-              <capturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.type.bml&quot;},3:{name:&quot;punctuation.definition.tag.bml&quot;}}</capturesJson>
+              <capturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.bml"},"3":{"name":"punctuation.definition.tag.bml"}}</capturesJson>
             </contrib:GrammarPattern>
             <contrib:GrammarPattern bml:id="patternMemberElement">
               <patternKey>memberElement</patternKey>
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;)((?:[A-Za-z_][\w.-]*:)?[a-z_][\w.-]*)(?=[\s/>])</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.member.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.member.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
                 <type:TextEntity value="#memberBody" />
@@ -362,8 +366,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;)(properties|aggregations|associations|capabilities|constraints)(?=[\s/>])</begin>
               <end>(/>)|(&lt;/)(\2)\s*(>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;keyword.other.member-container.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;punctuation.definition.tag.bml&quot;},3:{name:&quot;keyword.other.member-container.bml&quot;},4:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.member-container.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"punctuation.definition.tag.bml"},"3":{"name":"keyword.other.member-container.bml"},"4":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
                 <type:TextEntity value="#memberContainerBody" />
@@ -374,8 +378,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;)(contracts|composition|genericTypes|groups|aliases|keywords|references)(?=[\s/>])</begin>
               <end>(/>)|(&lt;/)(\2)\s*(>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;keyword.other.block-container.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;punctuation.definition.tag.bml&quot;},3:{name:&quot;keyword.other.block-container.bml&quot;},4:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-container.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"punctuation.definition.tag.bml"},"3":{"name":"keyword.other.block-container.bml"},"4":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
                 <type:TextEntity value="#blockContainerBody" />
@@ -386,8 +390,8 @@
               <scopeName>meta.block-container.bml</scopeName>
               <begin>(&lt;)(subBlocks|embeddedBlocks)(?=[\s/>])</begin>
               <end>(\s*/>)|(?:(&lt;/)(\2)\s*(>))</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;keyword.other.block-container.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;punctuation.definition.tag.bml&quot;},3:{name:&quot;keyword.other.block-container.bml&quot;},4:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-container.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"punctuation.definition.tag.bml"},"3":{"name":"keyword.other.block-container.bml"},"4":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
                 <type:TextEntity value="#nestedBlockContainerBody" />
@@ -398,8 +402,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;)(name|type|baseType|is|isnot|isNot|version|abstract|final|definition|language)(?=[\s/>])</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;keyword.other.block-declaration.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-declaration.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
               </nestedIncludes>
@@ -409,8 +413,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;)(documentation|summary|status|since|changelog|examples|relation|see|bml:xml|bml:container|implementation)(?=[\s/>])</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;support.type.block-facet.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"support.type.block-facet.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
               </nestedIncludes>
@@ -420,8 +424,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;)(type|abstract|final|override|readOnly|visibility|default)(?=[\s/>])</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;keyword.other.member-field.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.member-field.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
               </nestedIncludes>
@@ -431,8 +435,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;)(value|documentation|summary|implementation|inputType|outputType|status|since|changelog|examples|relation|see|bml:xml|bml:container)(?=[\s/>])</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;support.type.member-facet.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"support.type.member-facet.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
               </nestedIncludes>
@@ -442,8 +446,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;/?)((?:[A-Za-z_][\w.-]*:)?(?:block|(?:_+)?[A-Z][A-Za-z0-9_]*))(?=[\s/>])</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.type.framework.root.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.framework.root.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
               </nestedIncludes>
@@ -453,8 +457,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;/?)(name|type|baseType|is|isnot|isNot|version|abstract|final|definition|language)(?=[\s/>])</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;keyword.other.block-declaration.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-declaration.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
               </nestedIncludes>
@@ -464,8 +468,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;/?)(contracts|subBlocks|embeddedBlocks|composition|genericTypes|groups|aliases|keywords|references)(?=[\s/>])</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;keyword.other.block-container.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.block-container.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
               </nestedIncludes>
@@ -475,8 +479,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;/?)(properties|aggregations|associations|capabilities|constraints)(?=[\s/>])</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;keyword.other.member-container.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"keyword.other.member-container.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
               </nestedIncludes>
@@ -486,8 +490,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;/?)(documentation|summary|status|since|changelog|examples|relation|see|bml:xml|bml:container|implementation)(?=[\s/>])</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;support.type.block-facet.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"support.type.block-facet.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
               </nestedIncludes>
@@ -497,8 +501,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;/?)((?:[A-Za-z_][\w.-]*:)?(?:_+)?[A-Z][A-Za-z0-9_]*)(?=[\s/>])</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.type.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.type.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
               </nestedIncludes>
@@ -508,8 +512,8 @@
               <scopeName>meta.tag.bml</scopeName>
               <begin>(&lt;/?)((?:[A-Za-z_][\w.-]*:)?[a-z_][\w.-]*)</begin>
               <end>(/?>)</end>
-              <beginCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;},2:{name:&quot;entity.name.tag.bml&quot;}}</beginCapturesJson>
-              <endCapturesJson>{1:{name:&quot;punctuation.definition.tag.bml&quot;}}</endCapturesJson>
+              <beginCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"},"2":{"name":"entity.name.tag.bml"}}</beginCapturesJson>
+              <endCapturesJson>{"1":{"name":"punctuation.definition.tag.bml"}}</endCapturesJson>
               <nestedIncludes>
                 <type:TextEntity value="#attribute" />
               </nestedIncludes>

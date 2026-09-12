@@ -13,7 +13,7 @@
     A VS Code languages contribution
   </is>
   <documentation>
-    Declares a language id, aliases, extensions, filenames, configuration path, and the semantic
+    Declares a language id, languageAliases, extensions, filenames, configuration path, and the semantic
     contents of language-configuration.json (comments, brackets, autoClosingPairs,
     surroundingPairs). Maps to package.json contributes.languages plus the generated configuration
     file. V1 of the BlockML extension registers language id bml for .bml files.
@@ -76,11 +76,13 @@
     </xmlLanguageParticipant>
   </properties>
   <aggregations>
-    <aliases type="type:TextEntity[]">
+    <languageAliases type="type:TextEntity[]">
       <documentation>
-        Human-readable language aliases (BlockML, BML, …).
+        Human-readable VS Code language aliases (BlockML, BML, …). Maps to
+        contributes.languages[].aliases. Named languageAliases because aliases is the
+        BlockDefinition type-alias container and cannot be filled on instances.
       </documentation>
-    </aliases>
+    </languageAliases>
     <extensions type="type:TextEntity[]">
       <documentation>
         File extensions including the leading dot (for example .bml).
